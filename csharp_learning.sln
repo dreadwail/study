@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructures", "DataStructures\DataStructures.csproj", "{D6414746-1208-4673-A424-4DA80BF50EE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructuresTest", "DataStructuresTest\DataStructuresTest.csproj", "{62FBAD5A-681A-4397-B5FD-FFB09EE1335B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms", "Algorithms\Algorithms.csproj", "{DADFE61D-365C-461F-A6E5-5AE958F5C7CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmsTest", "AlgorithmsTest\AlgorithmsTest.csproj", "{8EF939B9-8282-4F15-82A6-E47271A1B6FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62FBAD5A-681A-4397-B5FD-FFB09EE1335B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62FBAD5A-681A-4397-B5FD-FFB09EE1335B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62FBAD5A-681A-4397-B5FD-FFB09EE1335B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62FBAD5A-681A-4397-B5FD-FFB09EE1335B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EF939B9-8282-4F15-82A6-E47271A1B6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EF939B9-8282-4F15-82A6-E47271A1B6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EF939B9-8282-4F15-82A6-E47271A1B6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EF939B9-8282-4F15-82A6-E47271A1B6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6414746-1208-4673-A424-4DA80BF50EE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6414746-1208-4673-A424-4DA80BF50EE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6414746-1208-4673-A424-4DA80BF50EE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6414746-1208-4673-A424-4DA80BF50EE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DADFE61D-365C-461F-A6E5-5AE958F5C7CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DADFE61D-365C-461F-A6E5-5AE958F5C7CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DADFE61D-365C-461F-A6E5-5AE958F5C7CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DADFE61D-365C-461F-A6E5-5AE958F5C7CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = DataStructures\DataStructures.csproj
+	EndGlobalSection
+EndGlobal
