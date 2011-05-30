@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LetterHistogram")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("LetterHistogramTest")]
+[assembly: AssemblyDescription("Unit tests for LetterHistogram")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("bytesrc.com")]
-[assembly: AssemblyProduct("LetterHistogram")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyCompany("Ben Lakey")]
+[assembly: AssemblyProduct("LetterHistogramTest")]
+[assembly: AssemblyCopyright("Copyright © Ben Lakey 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6efe1adb-4a53-4d2b-828c-9f6a39764a2e")]
+[assembly: Guid("dd9bc11e-7180-45a2-9129-22c55772bb1f")]
 
 // Version information for an assembly consists of the following four values:
 //
