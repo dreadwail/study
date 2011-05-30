@@ -117,9 +117,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="blox.ico" />
-    <Content Include="license.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
