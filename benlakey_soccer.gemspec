@@ -16,12 +16,13 @@ Gem::Specification.new do |spec|
   
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.files = [
-    "lib/benlakey_soccer.rb"
+    "lib/benlakey_soccer.rb",
+    "lib/benlakey_soccer/season.rb"
   ]
   spec.bindir = "bin"
   spec.executables << "benlakey_soccer"
   spec.test_files = [
-    "test/test_benlakey_soccer.rb"
+    "test/benlakey_soccer/test_season.rb"
   ]
 
 end
