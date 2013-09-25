@@ -1,2 +1,1 @@
-class BenLakeySoccer
-end
+require "benlakey_soccer/season"
