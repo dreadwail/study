@@ -36,13 +36,37 @@ class TestSeason < Minitest::Test
     assert_equal 3, @season.scores["Foo"]
   end
 
-  def test_points_tie_makes_same_rank
-  end
-
-  def test_points_tie_orders_tied_alphabetical
+  def test_points_tie_makes_same_rank_ordered_alphabetical
+    @season.record_game("Foo 1, Bar 1")
+    expected = <<-eos
+1. Bar, 1 pt
+1. Foo, 1 pt
+eos
+    assert_equal expected, @season.to_s
   end
 
   def test_points_tie_with_same_rank_doesnt_affect_subsequent_rank
+    @season.record_game("Foo 2, Bar 1")
+    @season.record_game("Baz 3, Buz 1")
+    expected = <<-eos
+1. Baz, 3 pts
+1. Foo, 3 pts
+3. Bar, 0 pts
+3. Buz, 0 pts
+eos
+    assert_equal expected, @season.to_s
+  end
+
+  def test_pluralization_is_appropriate_for_points
+    @season.record_game("Foo 2, Bar 1")
+    @season.record_game("Baz 1, Buz 1")
+    expected = <<-eos
+1. Foo, 3 pts
+2. Baz, 1 pt
+2. Buz, 1 pt
+4. Bar, 0 pts
+eos
+    assert_equal expected, @season.to_s
   end
 
 end

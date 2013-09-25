@@ -8,7 +8,7 @@ module BenLakeySoccer
     attr_accessor :scores
 
     def initialize
-      @scores = Hash.new(LOSS_POINTS)
+      @scores = Hash.new
     end
 
     def record_game(game)
@@ -20,6 +20,8 @@ module BenLakeySoccer
       team2_points = team2.pop
       team2_name = team2.join(' ')
 
+      ensure_known(team1_name, team2_name)
+
       if team1_points < team2_points
         @scores[team2_name] += WIN_POINTS
       elsif team1_points > team2_points
@@ -29,6 +31,31 @@ module BenLakeySoccer
         @scores[team2_name] += TIE_POINTS
       end
 
+    end
+
+    def to_s
+      standings = ""
+      previous_rank = 1
+      previous_points = nil
+      ranked_teams.each_with_index do |(name, points), rank|
+        rank += 1
+        rank = previous_rank if previous_points == points
+        standings += "#{rank}. #{name}, #{points} pt#{"s" if points != 1}\n"
+        previous_points = points
+        previous_rank = rank
+      end
+      standings
+    end
+
+    private
+    def ensure_known(*team_names)
+      team_names.each do |name|
+        @scores[name] = @scores.fetch(name, 0)
+      end
+    end
+
+    def ranked_teams
+      @scores.sort_by {|name, points| [-1 * points, name]}
     end
 
   end
