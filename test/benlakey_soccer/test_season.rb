@@ -20,15 +20,29 @@ class TestSeason < Minitest::Test
   end
 
   def test_win_awards_three_points
+    @season.record_game("Foo 42, Bar 11")
+    assert_equal 3, @season.scores["Foo"]
+  end
+
+  def test_multiple_records_aggregate_existing_scores
+    @season.record_game("Foo 2, Bar 1")
+    @season.record_game("Foo 3, Bar 2")
+    assert_equal 6, @season.scores["Foo"]
   end
 
   def test_loss_awards_zero_points
+    @season.record_game("Foo 9, Bar 2")
+    @season.record_game("Foo 1, Bar 2")
+    assert_equal 3, @season.scores["Foo"]
   end
 
   def test_points_tie_makes_same_rank
   end
 
   def test_points_tie_orders_tied_alphabetical
+  end
+
+  def test_points_tie_with_same_rank_doesnt_affect_subsequent_rank
   end
 
 end
