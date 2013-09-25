@@ -40,7 +40,8 @@ module BenLakeySoccer
       ranked_teams.each_with_index do |(name, points), rank|
         rank += 1
         rank = previous_rank if previous_points == points
-        standings += "#{rank}. #{name}, #{points} pt#{"s" if points != 1}\n"
+        points_suffix = points == 1 ? "pt" : "pts"
+        standings += "#{rank}. #{name}, #{points} #{points_suffix}\n"
         previous_points = points
         previous_rank = rank
       end
