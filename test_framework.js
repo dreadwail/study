@@ -12,7 +12,7 @@ var pass = function(msg) {
   console.log(msg || "pass");
 };
 
-var assert = function(exp, msg) {
+var assertTrue = function(exp, msg) {
   if(!exp) {
     fail(msg || "Expression is falsey: " + exp);
   } else {
@@ -20,12 +20,16 @@ var assert = function(exp, msg) {
   }
 };
 
+var assertFalse = function(exp, msg) {
+  assertTrue(!exp, "Expression is truthy: " + exp);
+};
+
 var assertEquals = function(expected, actual) {
-  assert(expected == actual, "Expected: " + expected + ", Actual: " + actual);
+  assertTrue(expected == actual, "Expected: " + expected + ", Actual: " + actual);
 };
 
 var assertNotEquals = function(notExpected, actual) {
-  assert(expected != actual, "Not expected: " + expected + ", Actual: " + actual);
+  assertTrue(expected != actual, "Not expected: " + expected + ", Actual: " + actual);
 };
 
 var assertThrows = function(func) {

@@ -6,4 +6,5 @@ These are just my experiments as I went through 'JavaScript: The Good Parts' bru
 I hand-rolled a really basic test framework to allow me to perform assertions on javascript behavior. The reason I did
 this rather than grab an existing test framework was just additional js practice.
 
-
+I didn't bother doing chapters 1 and 2 because there just isn't much to them but basic syntax rules. Thus my experiments
+start at chapter 3.
