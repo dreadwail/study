@@ -1,0 +1,9 @@
+JavaScript: The Good Parts
+==========================
+
+These are just my experiments as I went through 'JavaScript: The Good Parts' brushing up on my javascript.
+
+I hand-rolled a really basic test framework to allow me to perform assertions on javascript behavior. The reason I did
+this rather than grab an existing test framework was just additional js practice.
+
+
