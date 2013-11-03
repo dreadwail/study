@@ -10,24 +10,24 @@
   };
 
   // enumeration and type checking
-  assertEquals("string", typeof testObject.foo);
-  assertEquals("string", typeof testObject.bar);
-  assertEquals("string", typeof testObject.baz);
-  assertEquals("function", typeof testObject.buz);
+  Assert.assertEquals("string", typeof testObject.foo);
+  Assert.assertEquals("string", typeof testObject.bar);
+  Assert.assertEquals("string", typeof testObject.baz);
+  Assert.assertEquals("function", typeof testObject.buz);
 
   for(propName in testObject) {
     if(typeof testObject[propName] !== 'function') {
-      assertEquals("string", typeof testObject[propName]);
+      Assert.assertEquals("string", typeof testObject[propName]);
     }
   }
 
   // retrieval, safe retrieval, defaults
-  assertEquals(testObject["bar"], testObject.bar);
-  assertEquals("default biz", testObject.biz || "default biz");
-  assertThrows(function() {
+  Assert.assertEquals(testObject["bar"], testObject.bar);
+  Assert.assertEquals("default biz", testObject.biz || "default biz");
+  Assert.assertThrows(function() {
     testObject.biz.bazzle;
   });
-  assertDoesntThrow(function() {
+  Assert.assertDoesntThrow(function() {
     testObject.biz && testObject.biz.bazzle;
   });
 
@@ -35,7 +35,7 @@
   var foo = {};
   var bar = foo;
   foo.prop = "derp";
-  assertEquals("derp", bar.prop);
+  Assert.assertEquals("derp", bar.prop);
 
   //Augmenting javascript with an Object.create method. I gather this exists in some implementations of javascript but
   //not all. 
@@ -50,13 +50,13 @@
   var superObj = {};
   var subObj = Object.create(superObj);
   superObj.superProp = "foo";
-  assertEquals("foo", subObj.superProp);
+  Assert.assertEquals("foo", subObj.superProp);
 
-  assertFalse(subObj.hasOwnProperty("superProp"));
-  assertTrue(superObj.hasOwnProperty("superProp"));
+  Assert.assertFalse(subObj.hasOwnProperty("superProp"));
+  Assert.assertTrue(superObj.hasOwnProperty("superProp"));
 
-  assertEquals("two", testObject.bar);
+  Assert.assertEquals("two", testObject.bar);
   delete testObject.bar;
-  assertEquals(undefined, testObject.bar);
+  Assert.assertEquals(undefined, testObject.bar);
 
 })();
