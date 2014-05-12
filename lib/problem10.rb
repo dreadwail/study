@@ -1,0 +1,9 @@
+require "prime"
+
+module Euler
+
+  def sum_of_primes(max)
+    Prime.each(ubound = max, generator = Prime::EratosthenesGenerator.new).inject(:+)
+  end
+
+end
