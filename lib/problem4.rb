@@ -1,22 +1,18 @@
-require "ostruct"
+require "object"
 
-module Euler
+module Problem4
 
-  def largest_pair_with_palindrome_product(max_digits_each)
-    max_value = ("9" * max_digits_each).to_i
-    answers = []
+  def largest_palindrome_product_using_digits(max_digits_each)
+    max_value = (10 ** max_digits_each) - 1
+    largest = 0
     (1..max_value).each do |left|
-      (1..max_value).each do |right|
+      (left..max_value).each do |right|
         product = left * right
-        answers << OpenStruct.new(product: product, parts: [left, right]) if palindrome?(product)
+        largest = [product, largest].max if product.palindrome?
       end
     end
-    answers.sort_by { |a| a.product }.last.parts
-  end
-
-  def palindrome?(suspect)
-    str = suspect.to_s
-    str == str.reverse
+    largest
   end
 
 end
+
