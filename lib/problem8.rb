@@ -1,10 +1,10 @@
-module Euler
+class Integer
 
-  def greatest_product_of_consecutives(num_consecutives, number)
-    numbers = number.to_s.split('')
+  def greatest_product_of_consecutive_digits(num_consecutives)
     biggest = 0
-    numbers.each_cons(5) do |candidates|
-      biggest = [biggest, candidates.map { |c| c.to_i }.inject(:*)].max
+    to_s.split('').each_cons(num_consecutives) do |candidates|
+      product_of_these = candidates.map { |c| c.to_i }.inject(:*)
+      biggest = [biggest, product_of_these].max
     end
     biggest
   end
