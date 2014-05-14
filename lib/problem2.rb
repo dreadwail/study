@@ -1,8 +1,8 @@
 require "fib"
 
-module Euler
+module Fib
 
-  def sum_even_fibs(max)
+  def sum_even_fibs_to(max)
     n = 1
     sum = 0
     while (Fib.fib_of(n) < max)
