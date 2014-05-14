@@ -1,15 +1,15 @@
-module Euler
+class Range
 
-  def sum_square_difference(range)
-    (square_of_sums(range) - sum_of_squares(range)).abs
+  def square_of_sums_diff_sum_of_squares
+    (square_of_sums - sum_of_squares).abs
   end
 
-  def sum_of_squares(range)
-    range.map { |i| i ** 2 }.inject(:+)
+  def sum_of_squares
+    map { |i| i ** 2 }.inject(:+)
   end
 
-  def square_of_sums(range)
-    range.inject(:+) ** 2
+  def square_of_sums
+    inject(:+) ** 2
   end
 
 end
