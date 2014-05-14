@@ -1,9 +1,9 @@
 require "prime"
 
-module Euler
+module Problem7
 
   def prime_at(n)
-    Prime.first(n).last
+    Prime.take(n).last
   end
 
 end
