@@ -1,7 +1,9 @@
-class Range
+require "range"
 
-  def sum_multiples_of_3_and_5
-    select { |n| n % 3 == 0 || n % 5 == 0 }.inject(:+)
+module Problem1
+
+  def sum_multiples_of_3_or_5(range)
+    range.multiples_of_any(3, 5).inject(:+)
   end
 
 end
