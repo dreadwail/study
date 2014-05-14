@@ -1,9 +1,9 @@
 require "prime"
 
-module Euler
+class Fixnum
 
-  def largest_prime_factor(number)
-    Prime.prime_division(number).max.first
+  def largest_prime_factor
+    Prime.prime_division(self).max.first
   end
 
 end
