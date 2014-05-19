@@ -1,8 +1,8 @@
 require "test_helper"
 require "problem10"
 
-class TestEuler < Minitest::Test
-  include Euler
+class TestProblem10 < Minitest::Test
+  include Problem10
 
   def test_sample_problem
     assert_equal 17, sum_of_primes(10)

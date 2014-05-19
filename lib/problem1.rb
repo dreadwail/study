@@ -1,4 +1,4 @@
-require "range"
+require "stdlib"
 
 module Problem1
 

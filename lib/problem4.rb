@@ -1,4 +1,4 @@
-require "object"
+require "stdlib"
 
 module Problem4
 

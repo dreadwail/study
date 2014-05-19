@@ -1,10 +1,10 @@
 require "test_helper"
 require "problem11"
 
-class TestEuler < Minitest::Test
-  include Euler
+class TestProblem11 < Minitest::Test
+  include Problem11
 
-  def test_diagonal
+  def test_forward_diagonal
     test_data = [
       [20, 10, 10, 10],
       [10, 30, 10, 10],
@@ -14,12 +14,12 @@ class TestEuler < Minitest::Test
     assert_equal (20*30*40*20), greatest_product_of_sequence_in_grid(test_data, 4)
   end
 
-  def test_forward_diagonal
+  def test_backward_diagonal
     test_data = [
-      [20, 10, 10, 11],
-      [10, 30, 10, 10],
-      [10, 10, 40, 10],
-      [10, 10, 10, 20]
+      [10, 10, 10, 20],
+      [10, 10, 30, 10],
+      [10, 40, 10, 10],
+      [20, 10, 10, 10]
     ]
     assert_equal (20*30*40*20), greatest_product_of_sequence_in_grid(test_data, 4)
   end
@@ -51,7 +51,7 @@ class TestEuler < Minitest::Test
     end
   end
 
-  def test_large_problem
+  def test_actual_problem
     test_data = [
       [ 8, 2,22,97,38,15, 0,40, 0,75, 4, 5, 7,78,52,12,50,77,91, 8],
       [49,49,99,40,17,81,18,57,60,87,17,40,98,43,69,48, 4,56,62, 0],
