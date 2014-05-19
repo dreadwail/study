@@ -1,107 +1,81 @@
-module Euler
+module Problem11
+
+  class Grid
+
+    def initialize(grid)
+      @grid = grid
+    end
+
+    def sequences(count)
+      hoz = horizontals(count)
+      ver = verticals(count)
+      fwd = forward_diagonals(count)
+      bck = backward_diagonals(count)
+      @sequences ||= [hoz, ver, fwd, bck].inject(:+)
+    end
+
+    private
+
+    def horizontals(count)
+      grid.flat_map { |row| row.each_cons(count).to_a }
+    end
+
+    def verticals(count)
+      ans = []
+      max_y = grid.length - count
+      (0..max_y).each do |y|
+        (0...grid.length).each do |x|
+          ans << extract(count, y, x, 1, 0)
+        end
+      end
+      ans
+    end
+
+    def forward_diagonals(count)
+      max = grid.length - count
+      ans = []
+      (0..max).each do |y|
+        (0..max).each do |x|
+          ans << extract(count, y, x, 1, 1)
+        end
+      end
+      ans
+    end
+
+    def backward_diagonals(count)
+      min_x = count - 1
+      max_y = grid.length - count
+      ans = []
+      (0..max_y).each do |y|
+        (min_x...grid.length).each do |x|
+          ans << extract(count, y, x, 1, -1)
+        end
+      end
+      ans
+    end
+
+    def extract(count, y, x, y_diff, x_diff)
+      ans = []
+      count.times do
+        ans << grid[y][x]
+        y += y_diff; x += x_diff
+      end
+      ans
+    end
+
+    attr_reader :grid
+
+  end
 
   def greatest_product_of_sequence_in_grid(grid, count)
     if count > grid.length
-      raise ArgumentError, "#{count} > grid (#{grid.length})"
+      raise ArgumentError, "count: (#{count}) > grid (#{grid.length})"
     end
-
     biggest = 0
-    sequences = []
-
-    horizontal_sequences = extract_horizontal_sequences(grid, count)
-    sequences += horizontal_sequences
-
-    vertical_sequences = extract_vertical_sequences(grid, count)
-    sequences += vertical_sequences
-
-    back_diagonal_sequences = extract_back_diagonal_sequences(grid, count)
-    sequences += back_diagonal_sequences
-
-    forward_diagonal_sequences = extract_forward_diagonal_sequences(grid, count)
-    sequences += forward_diagonal_sequences
-
-    sequences.each { |s| biggest = [biggest, s.inject(:*)].max }
-
+    Grid.new(grid).sequences(count).each do |seq|
+      biggest = [biggest, seq.inject(:*)].max
+    end
     biggest
-
-  end
-
-  def extract_back_diagonal_sequences(grid, count)
-
-    sequences = []
-    max_idx = grid.length - count
-
-    (0..max_idx).each do |y|
-      (0..max_idx).each do |x|
-        sequences << take_back_diagonal_from(grid, count, y, x)
-      end
-    end
-
-    sequences
-
-  end
-
-  def extract_forward_diagonal_sequences(grid, count)
-
-    sequences = []
-
-    min_x = count - 1
-    max_y = grid.length - count
-
-    (0..max_y).each do |y|
-      (min_x..(grid.length - 1)).each do |x|
-        sq = take_forward_diagonal_from(grid, count, y, x)
-        sequences << sq
-      end
-    end
-
-    sequences
-
-  end
-
-  def take_back_diagonal_from(grid, count, y, x)
-    sequence = []
-    while sequence.length < count
-      value = grid[y][x]
-      break unless value
-      sequence << value
-      x += 1
-      y += 1
-    end
-    sequence
-  end
-
-  def take_forward_diagonal_from(grid, count, y, x)
-    sequence = []
-    while sequence.length < count
-      value = grid[y][x]
-      break unless value
-      sequence << value
-      x -= 1
-      y += 1
-    end
-    sequence
-  end
-  
-  def extract_vertical_sequences(grid, count)
-    transformed = []
-    (0...grid.length).each do |y|
-      (0...grid.length).each do |x|
-        transformed[x] ||= []
-        transformed[x][y] = grid[y][x]
-      end
-    end
-    extract_horizontal_sequences(transformed, count)
-  end
-
-  def extract_horizontal_sequences(grid, count)
-    sequences = []
-    grid.each do |row|
-      row.each_cons(count) do |seq|
-        sequences << seq
-      end
-    end
-    sequences
   end
 
 end

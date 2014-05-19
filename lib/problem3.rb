@@ -1,1 +1,1 @@
-require "fixnum"
+require "stdlib"

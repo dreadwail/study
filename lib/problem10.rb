@@ -1,6 +1,6 @@
 require "prime"
 
-module Euler
+module Problem10
 
   def sum_of_primes(max)
     Prime.each(ubound = max, generator = Prime::EratosthenesGenerator.new).inject(:+)
