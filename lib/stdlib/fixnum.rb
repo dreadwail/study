@@ -2,6 +2,36 @@ require "prime"
 
 class Fixnum
 
+  def circular_prime?
+    num_chars = to_s.chars
+    num_chars.length.times do
+      num_chars.rotate!
+      test = num_chars.join.to_i
+      return false unless Prime.prime?(test)
+    end
+    true
+  end
+
+  def perfect?
+    sum_factors == self
+  end
+
+  def deficient?
+    sum_factors < self
+  end
+
+  def abundant?
+    sum_factors > self
+  end
+
+  def sum_factors(include_self: false)
+    sum = factors.inject(:+)
+    unless include_self
+      sum -= self
+    end
+    sum
+  end
+
   ONES_WORDS = {
     1 => "one",
     2 => "two",
@@ -97,29 +127,30 @@ class Fixnum
     Prime.prime_division(self).max.first
   end
 
-  FACTORS = Hash.new do |hash, key|
-    if key == 0
-      hash[key] = []
-    elsif key == 1
-      hash[key] = [key]
-    else
-      hash[key] = calculate_factors(key)
-    end
-  end
+  FACTORS = {}
 
-  def factors
-    FACTORS[self]
+  def factors(include_self: true)
+    if FACTORS[self].nil?
+      if self == 0
+        FACTORS[self] = []
+      elsif self == 1
+        FACTORS[self] = [self]
+      else
+        FACTORS[self] = calculate_factors
+      end
+    end
+    FACTORS[self].reject { |n| n == self unless include_self }
   end
 
   # I admit I copied this from http://stackoverflow.com/questions/3398159/all-factors-of-a-given-number
   # I'm bad at math :(
-  def self.calculate_factors(number)
-    primes, powers = number.prime_division.transpose
+  def calculate_factors
+    primes, powers = prime_division.transpose
     exponents = powers.map { |i| (0..i).to_a }
     divisors = exponents.shift.product(*exponents).map do |powers|
       primes.zip(powers).map { |prime, power| prime ** power }.inject(:*)
     end
-    divisors.flat_map { |div| [div, number / div] }.sort.uniq
+    divisors.flat_map { |div| [div, self / div] }.sort.uniq
   end
 
   def digits
