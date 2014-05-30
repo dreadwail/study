@@ -3,6 +3,26 @@ require "stdlib"
 
 class TestFixnum < Minitest::Test
 
+  def test_factorial_zero
+    assert_equal 1, 0.factorial
+  end
+
+  def test_factorial_one
+    assert_equal 1, 1.factorial
+  end
+
+  def test_factorial_two
+    assert_equal 2, 2.factorial
+  end
+
+  def test_factorial_three
+    assert_equal 6, 3.factorial
+  end
+
+  def test_factorial_99
+    assert_equal 933262154439441526816992388562667004907159682643816214685929638952175999932299156089414639761565182862536979208272237582511852109168640000000000000000000000, 99.factorial
+  end
+
   def test_triangle_numbers
     assert 29, 13195.largest_prime_factor
   end
@@ -87,6 +107,18 @@ class TestFixnum < Minitest::Test
 
   def test_112
     assert_equal "one hundred and twelve", 112.to_words
+  end
+
+  def test_digits_zero
+    assert_equal [0], 0.digits
+  end
+
+  def test_digits_one
+    assert_equal [1], 1.digits
+  end
+
+  def test_digits
+    assert_equal [1,4,2], 142.digits
   end
 
 end

@@ -103,7 +103,7 @@ class Fixnum
     elsif key == 1
       hash[key] = [key]
     else
-      hash[key] = calculate_factors_a(key)
+      hash[key] = calculate_factors(key)
     end
   end
 
@@ -113,13 +113,30 @@ class Fixnum
 
   # I admit I copied this from http://stackoverflow.com/questions/3398159/all-factors-of-a-given-number
   # I'm bad at math :(
-  def self.calculate_factors_a(number)
+  def self.calculate_factors(number)
     primes, powers = number.prime_division.transpose
     exponents = powers.map { |i| (0..i).to_a }
     divisors = exponents.shift.product(*exponents).map do |powers|
       primes.zip(powers).map { |prime, power| prime ** power }.inject(:*)
     end
     divisors.flat_map { |div| [div, number / div] }.sort.uniq
+  end
+
+  def digits
+    to_s.chars.map { |c| c.to_i }
+  end
+
+  FACTORIAL = { 1 => 1 }
+
+  def factorial
+    return 1 if self == 0
+    return self if self.abs < 2
+    if FACTORIAL[self].nil?
+      (2..self).each do |n| 
+        FACTORIAL[n] ||= n * FACTORIAL[n-1]
+      end
+    end
+    FACTORIAL[self]
   end
 
 end
