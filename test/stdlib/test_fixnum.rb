@@ -3,6 +3,26 @@ require "stdlib"
 
 class TestFixnum < Minitest::Test
 
+  def test_circular_prime
+    assert 197.circular_prime?
+  end
+
+  def test_non_circular_prime
+    refute 198.circular_prime?
+  end
+
+  def test_sum_factors
+    assert_equal 28, 28.sum_factors
+  end
+
+  def test_perfect_number_28
+    assert 28.perfect?
+  end
+
+  def test_abundant_number_12
+    assert 12.abundant?
+  end
+
   def test_factorial_zero
     assert_equal 1, 0.factorial
   end
@@ -27,23 +47,27 @@ class TestFixnum < Minitest::Test
     assert 29, 13195.largest_prime_factor
   end
 
-  def test_zero
+  def test_factors_zero
     assert_equal [], 0.factors
   end
 
-  def test_one
+  def test_factors_one
     assert_equal [1], 1.factors
   end
 
-  def test_factors_1
+  def test_factors_45
     assert_equal [1,3,5,9,15,45], 45.factors
   end
 
-  def test_factors_2
+  def test_factors_without_self
+    assert_equal [1,3,5,9,15], 45.factors(include_self: false)
+  end
+
+  def test_factors_28
     assert_equal [1,2,4,7,14,28], 28.factors
   end
 
-  def test_factors_3
+  def test_factors_25
     assert_equal [1,5,25], 25.factors
   end
 
