@@ -3,6 +3,7 @@ fn main() {
 
     assignment();
     conditionals();
+    functions();
 }
 
 fn assignment() {
@@ -42,4 +43,29 @@ fn conditionals() {
     let y = if x < 100 { x } else { 3000 };
     println!("y = {}", y);
 
+}
+
+fn functions() {
+    foo_func(10, 20);
+    let answer = add_one(41);
+    println!("answer from add_one: {}", answer);
+
+    println!("42 floored at 100: {}", floor_at_hundred(42));
+    println!("150 floored at 100: {}", floor_at_hundred(150));
+}
+
+fn foo_func(x: i32, y: i32) {
+    println!("foo_func's x = {}", x);
+    println!("foo_func's y = {}", y);
+}
+
+fn add_one(x: i32) -> i32 {
+    x + 1
+}
+
+fn floor_at_hundred(x: i32) -> i32 {
+    if x < 100 {
+        return 100;
+    }
+    return x;
 }
