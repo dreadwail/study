@@ -7,7 +7,13 @@ fn main() {
     tuples();
 }
 
+fn section_label(name: &str) {
+    println!("\n####################\n# {}\n####################\n", name);
+}
+
 fn assignment() {
+    section_label("ASSIGNMENT");
+
     let a = 42;
     println!("a = {}", a);
 
@@ -33,6 +39,8 @@ fn assignment() {
 }
 
 fn conditionals() {
+    section_label("CONDITIONALS");
+
     let x = 42;
     if x < 50 {
         println!("{} was less than 50", x);
@@ -47,6 +55,8 @@ fn conditionals() {
 }
 
 fn functions() {
+    section_label("FUNCTIONS");
+
     foo_func(10, 20);
     let answer = add_one(41);
     println!("answer from add_one: {}", answer);
@@ -72,6 +82,8 @@ fn floor_at_hundred(x: i32) -> i32 {
 }
 
 fn tuples() {
+    section_label("TUPLES");
+
     let inference = (10, "20");
     println!("inference: ({}, {})", inference.0, inference.1);
 
