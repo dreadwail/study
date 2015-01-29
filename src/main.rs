@@ -5,6 +5,7 @@ fn main() {
     conditionals();
     functions();
     tuples();
+    structs();
 }
 
 fn section_label(name: &str) {
@@ -97,4 +98,32 @@ fn tuples() {
     } else {
         println!("inferences are different");
     }
+}
+
+fn structs() {
+    section_label("STRUCTS");
+
+    struct Point {
+        x: i32,
+        y: i32
+    }
+
+    let coordinate = Point { x: 10, y: 20 };
+    println!("coordinate is at ({}, {})", coordinate.x, coordinate.y);
+
+    // This wont work because the coordinate is immutable
+    // coordinate.x = 42;
+
+    let mut mutable_coordinate = Point { x: 10, y: 20 };
+    mutable_coordinate.x = 30;
+    println!("mutable_coordinate is at ({}, {})", mutable_coordinate.x, mutable_coordinate.y);
+
+    struct Color(i32, i32, i32);
+
+    let tuple_struct = Color(255, 255, 255);
+    let first  = match tuple_struct { Color(x, _, _) => x };
+    let second = match tuple_struct { Color(_, y, _) => y };
+    let third  = match tuple_struct { Color(_, _, z) => z };
+    println!("tuple struct: ({}, {}, {})", first, second, third);
+
 }
