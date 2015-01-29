@@ -126,4 +126,9 @@ fn structs() {
     let third  = match tuple_struct { Color(_, _, z) => z };
     println!("tuple struct: ({}, {}, {})", first, second, third);
 
+    // Pattern match destructuring
+    struct Age(i32);
+    let age_instance = Age(30);
+    let Age(destructured_age_value) = age_instance;
+    println!("The destructured age value: {}", destructured_age_value);
 }
