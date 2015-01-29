@@ -74,6 +74,15 @@ fn floor_at_hundred(x: i32) -> i32 {
 fn tuples() {
     let inference = (10, "20");
     println!("inference: ({}, {})", inference.0, inference.1);
+
     let explicit: (i32, &str) = (30, "40");
     println!("explicit: ({}, {})", explicit.0, explicit.1);
+
+    let another_inference = (10, "20");
+
+    if inference == another_inference {
+        println!("inferences are the same");
+    } else {
+        println!("inferences are different");
+    }
 }
