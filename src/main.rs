@@ -4,6 +4,7 @@ fn main() {
     assignment();
     conditionals();
     functions();
+    tuples();
 }
 
 fn assignment() {
@@ -68,4 +69,11 @@ fn floor_at_hundred(x: i32) -> i32 {
         return 100;
     }
     return x;
+}
+
+fn tuples() {
+    let inference = (10, "20");
+    println!("inference: ({}, {})", inference.0, inference.1);
+    let explicit: (i32, &str) = (30, "40");
+    println!("explicit: ({}, {})", explicit.0, explicit.1);
 }
