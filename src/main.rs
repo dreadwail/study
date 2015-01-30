@@ -6,6 +6,7 @@ fn main() {
     functions();
     tuples();
     structs();
+    enums();
 }
 
 fn section_label(name: &str) {
@@ -131,4 +132,22 @@ fn structs() {
     let age_instance = Age(30);
     let Age(destructured_age_value) = age_instance;
     println!("The destructured age value: {}", destructured_age_value);
+}
+
+use std::cmp::Ordering;
+
+fn enums() {
+    section_label("ENUMS");
+
+    enum Foo {
+        One,
+        Two
+    }
+
+    let comp = Ordering::Less;
+    if comp == Ordering::Less {
+        println!("yep");
+    } else {
+        println!("nope");
+    }
 }
