@@ -3,7 +3,6 @@ package com.benlakey.java_learning.algorithms;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -33,14 +32,16 @@ public class ArrayProxyTests {
 
     @Test
     public void canFindExistingNumberInArrayBinarySearch() {
+        Integer[] array = new Integer[] { 1, 3, 4, 6, 7, 12 };
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array);
+        assertEquals(4, proxy.binarySearch(7));
+    }
 
-        int[] array = new int[] { 1, 3, 4, 6, 7, 12 };
-
-        for(int i = 0; i < array.length; i++) {
-            int toFind = array[i];
-            assertTrue(Arrays.binarySearch(array, 0, array.length - 1, toFind));
-        }
-
+    @Test
+    public void canDetermineNonExistentTargetInBinarySearch() {
+        Integer[] array = new Integer[] { 1, 3, 4, 6, 7, 12 };
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array);
+        assertEquals(-1, proxy.binarySearch(42));
     }
 
     @Test

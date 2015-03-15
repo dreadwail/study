@@ -67,33 +67,24 @@ public class ArrayProxy<T extends Comparable<T>> {
         return result;
     }
 
-//
-//    public static boolean binarySearch(int[] array, int startIdx, int endIdx, int toFind) {
-//
-//        if(array.length == 0 || startIdx < 0 || endIdx > (array.length - 1) || startIdx > endIdx) {
-//            return false;
-//        }
-//
-//        if(startIdx == endIdx) {
-//            return array[startIdx] == toFind;
-//        }
-//
-//        int halfIdx = startIdx + ((endIdx - startIdx) / 2);
-//
-//        if(array[halfIdx] == toFind) {
-//            return true;
-//        }
-//
-//        if(toFind < array[halfIdx]) {
-//            return binarySearch(array, startIdx, halfIdx - 1, toFind);
-//        }
-//
-//        if(array[halfIdx] <= toFind) {
-//            return binarySearch(array, halfIdx + 1, endIdx, toFind);
-//        }
-//
-//        return false;
-//    }
+    public int binarySearch(T target) {
+        return binarySearch(0, wrapped.length - 1, target);
+    }
+
+    public int binarySearch(int startIdx, int endIdx, T toFind) {
+        if(startIdx == endIdx) {
+            return wrapped[startIdx].equals(toFind) ? startIdx : -1;
+        } else {
+            int midIdx = startIdx + ((endIdx - startIdx) / 2);
+            if(toFind.equals(wrapped[midIdx])) {
+                return midIdx;
+            } else if(toFind.compareTo(wrapped[midIdx]) < 0) {
+                return binarySearch(startIdx, midIdx - 1, toFind);
+            } else {
+                return binarySearch(midIdx + 1, endIdx, toFind);
+            }
+        }
+    }
 //
 //    public static int[] mergeSortedArrays(int[] arrayOne, int[] arrayTwo) {
 //
