@@ -68,10 +68,13 @@ public class ArrayProxy<T extends Comparable<T>> {
     }
 
     public int binarySearch(T target) {
+        if(wrapped.length == 0) {
+            return -1;
+        }
         return binarySearch(0, wrapped.length - 1, target);
     }
 
-    public int binarySearch(int startIdx, int endIdx, T toFind) {
+    private int binarySearch(int startIdx, int endIdx, T toFind) {
         if(startIdx == endIdx) {
             return wrapped[startIdx].equals(toFind) ? startIdx : -1;
         } else {

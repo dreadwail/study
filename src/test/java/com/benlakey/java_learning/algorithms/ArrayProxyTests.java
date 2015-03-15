@@ -2,7 +2,6 @@ package com.benlakey.java_learning.algorithms;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
@@ -45,23 +44,17 @@ public class ArrayProxyTests {
     }
 
     @Test
-    public void emptyArrayIsHandledOkInBinarySearch() {
-
-        int[] array = new int[0];
-
-        assertFalse(Arrays.binarySearch(array, 0, 0, 4));
-
+    public void emptyArrayIsHandledInBinarySearch() {
+        Integer[] array = new Integer[0];
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array);
+        assertEquals(-1, proxy.binarySearch(4));
     }
 
     @Test
     public void nonExistantNumberIsNotFoundBinarySearch() {
-
-        int[] array = new int[] { 1, 3, 4, 6, 7, 12 };
-
-        int toFind = 5;
-
-        assertFalse(Arrays.binarySearch(array, 0, array.length - 1, toFind));
-
+        Integer[] array = new Integer[] { 1, 3, 4, 6, 7, 12 };
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array);
+        assertEquals(-1, proxy.binarySearch(5));
     }
 
     @Test
