@@ -18,14 +18,7 @@ public class ArrayProxyTests {
         ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array);
         proxy.rotateArray(offset);
 
-        assertEquals(array[0].intValue(), 5);
-        assertEquals(array[1].intValue(), 6);
-        assertEquals(array[2].intValue(), 7);
-        assertEquals(array[3].intValue(), 0);
-        assertEquals(array[4].intValue(), 1);
-        assertEquals(array[5].intValue(), 2);
-        assertEquals(array[6].intValue(), 3);
-        assertEquals(array[7].intValue(), 4);
+        assertArrayEquals(array, new Integer[] { 5, 6, 7, 0, 1, 2, 3, 4 });
     }
 
     @Test
