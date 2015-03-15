@@ -1,149 +1,150 @@
 package com.benlakey.java_learning.algorithms;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.benlakey.java_learning.algorithms.Arrays;
-
 public class ArrayProxyTests {
-	
-	@Test
-	public void canRotateArrayByOffset() {
-		int offset = 3;
-		
-		Integer[] array = new Integer[] { 0,1,2,3,4,5,6,7 };
-		
-		ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array);
-		proxy.rotateArray(offset);
-		
-		assertEquals(array[0].intValue(), 5);
-		assertEquals(array[1].intValue(), 6);
-		assertEquals(array[2].intValue(), 7);
-		assertEquals(array[3].intValue(), 0);
-		assertEquals(array[4].intValue(), 1);
-		assertEquals(array[5].intValue(), 2);
-		assertEquals(array[6].intValue(), 3);
-		assertEquals(array[7].intValue(), 4);
-	}
-	
-	@Test
-	public void canFindIntersection() {
-		Integer[] array1 = new Integer[] { 1, 3, 4, 5, 6, 7, 9 };
 
-		ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array1);
+    @Test
+    public void canRotateArrayByOffset() {
+        int offset = 3;
 
-		Integer[] intersection = proxy.findIntersection(2, 4, 6, 8);
-		assertArrayEquals(new Integer[] { 4, 6 }, intersection);
-	}
-	
-	@Test
-	public void canFindExistingNumberInArrayBinarySearch() {
-		
-		int[] array = new int[] { 1, 3, 4, 6, 7, 12 };
-		
-		for(int i = 0; i < array.length; i++) {
-			int toFind = array[i];
-			assertTrue(Arrays.binarySearch(array, 0, array.length - 1, toFind));
-		}
-		
-	}
-	
-	@Test
-	public void emptyArrayIsHandledOkInBinarySearch() {
-		
-		int[] array = new int[0];
-		
-		assertFalse(Arrays.binarySearch(array, 0, 0, 4));
-		
-	}
-	
-	@Test
-	public void nonExistantNumberIsNotFoundBinarySearch() {
-		
-		int[] array = new int[] { 1, 3, 4, 6, 7, 12 };
-		
-		int toFind = 5;
-		
-		assertFalse(Arrays.binarySearch(array, 0, array.length - 1, toFind));
-		
-	}
-	
-	@Test
-	public void sortedArraysOfDifferentLengthsCanBeMerged() {
-		
-		int[] arrayOne = new int[] { 1, 3, 5, 6 };
-		int[] arrayTwo = new int[] { 1, 4, 8 };
-		
-		int[] expectedArray = new int[] { 1, 1, 3, 4, 5, 6, 8 };
-		
-		int[] actualArray = Arrays.mergeSortedArrays(arrayOne, arrayTwo);
-		
-		for(int i = 0; i < expectedArray.length; i++) {
-			assertEquals(expectedArray[i], actualArray[i]);
-		}
-		
-	}
-	
-	@Test
-	public void sortedArraysOfSameLengthsCanBeMerged() {
-		
-		int[] arrayOne = new int[] { 1, 3, 5 };
-		int[] arrayTwo = new int[] { 1, 4, 8 };
-		
-		int[] expectedArray = new int[] { 1, 1, 3, 4, 5, 8 };
-		
-		int[] actualArray = Arrays.mergeSortedArrays(arrayOne, arrayTwo);
-		
-		for(int i = 0; i < expectedArray.length; i++) {
-			assertEquals(expectedArray[i], actualArray[i]);
-		}
-		
-	}
-	
-	@Test
-	public void emptyArraysCanBeMerged() {
-		
-		int[] arrayOne = new int[] { 1, 3, 5 };
-		int[] arrayTwo = new int[0];
-		
-		int[] expectedArray = new int[] { 1, 3, 5 };
-		
-		int[] actualArray = Arrays.mergeSortedArrays(arrayOne, arrayTwo);
-		
-		for(int i = 0; i < expectedArray.length; i++) {
-			assertEquals(expectedArray[i], actualArray[i]);
-		}
-		
-	}
-	
-	@Test
-	public void duplicateNumberInSortedContiguousArrayCanBeFound() {
-		
-		int[] array = new int[20];
-		
-		for(int i = 1; i < array.length; i++) {
-			array[i] = i;
-		}
+        Integer[] array = new Integer[] { 0,1,2,3,4,5,6,7 };
 
-		int expected = 4;
-		array[0] = expected;
-		
-		long foo = Arrays.findElementRepeatedInSortedContiguousArray(array, 19);
-		assertEquals(expected, foo);
-		
-	}
-	
-	@Test
-	public void numberRepeatedOddNumberOfTimesIsFound2() throws Exception {
-		
-		int[] array = new int[] { 2,2,2,2,3,3,3,4,4,4,4 };
-		
-		int expected = 3;
-		
-		int actual = Arrays.findElementRepeatedOddTimes(array);
-		
-		assertEquals(expected, actual);
-		
-	}
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array);
+        proxy.rotateArray(offset);
+
+        assertEquals(array[0].intValue(), 5);
+        assertEquals(array[1].intValue(), 6);
+        assertEquals(array[2].intValue(), 7);
+        assertEquals(array[3].intValue(), 0);
+        assertEquals(array[4].intValue(), 1);
+        assertEquals(array[5].intValue(), 2);
+        assertEquals(array[6].intValue(), 3);
+        assertEquals(array[7].intValue(), 4);
+    }
+
+    @Test
+    public void canFindIntersection() {
+        Integer[] array1 = new Integer[] { 1, 3, 4, 5, 6, 7, 9 };
+
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array1);
+
+        Integer[] intersection = proxy.findIntersection(2, 4, 6, 8);
+        assertArrayEquals(new Integer[] { 4, 6 }, intersection);
+    }
+
+    @Test
+    public void canFindExistingNumberInArrayBinarySearch() {
+
+        int[] array = new int[] { 1, 3, 4, 6, 7, 12 };
+
+        for(int i = 0; i < array.length; i++) {
+            int toFind = array[i];
+            assertTrue(Arrays.binarySearch(array, 0, array.length - 1, toFind));
+        }
+
+    }
+
+    @Test
+    public void emptyArrayIsHandledOkInBinarySearch() {
+
+        int[] array = new int[0];
+
+        assertFalse(Arrays.binarySearch(array, 0, 0, 4));
+
+    }
+
+    @Test
+    public void nonExistantNumberIsNotFoundBinarySearch() {
+
+        int[] array = new int[] { 1, 3, 4, 6, 7, 12 };
+
+        int toFind = 5;
+
+        assertFalse(Arrays.binarySearch(array, 0, array.length - 1, toFind));
+
+    }
+
+    @Test
+    public void sortedArraysOfDifferentLengthsCanBeMerged() {
+
+        int[] arrayOne = new int[] { 1, 3, 5, 6 };
+        int[] arrayTwo = new int[] { 1, 4, 8 };
+
+        int[] expectedArray = new int[] { 1, 1, 3, 4, 5, 6, 8 };
+
+        int[] actualArray = Arrays.mergeSortedArrays(arrayOne, arrayTwo);
+
+        for(int i = 0; i < expectedArray.length; i++) {
+            assertEquals(expectedArray[i], actualArray[i]);
+        }
+
+    }
+
+    @Test
+    public void sortedArraysOfSameLengthsCanBeMerged() {
+
+        int[] arrayOne = new int[] { 1, 3, 5 };
+        int[] arrayTwo = new int[] { 1, 4, 8 };
+
+        int[] expectedArray = new int[] { 1, 1, 3, 4, 5, 8 };
+
+        int[] actualArray = Arrays.mergeSortedArrays(arrayOne, arrayTwo);
+
+        for(int i = 0; i < expectedArray.length; i++) {
+            assertEquals(expectedArray[i], actualArray[i]);
+        }
+
+    }
+
+    @Test
+    public void emptyArraysCanBeMerged() {
+
+        int[] arrayOne = new int[] { 1, 3, 5 };
+        int[] arrayTwo = new int[0];
+
+        int[] expectedArray = new int[] { 1, 3, 5 };
+
+        int[] actualArray = Arrays.mergeSortedArrays(arrayOne, arrayTwo);
+
+        for(int i = 0; i < expectedArray.length; i++) {
+            assertEquals(expectedArray[i], actualArray[i]);
+        }
+
+    }
+
+    @Test
+    public void duplicateNumberInSortedContiguousArrayCanBeFound() {
+
+        int[] array = new int[20];
+
+        for(int i = 1; i < array.length; i++) {
+            array[i] = i;
+        }
+
+        int expected = 4;
+        array[0] = expected;
+
+        long foo = Arrays.findElementRepeatedInSortedContiguousArray(array, 19);
+        assertEquals(expected, foo);
+
+    }
+
+    @Test
+    public void numberRepeatedOddNumberOfTimesIsFound2() throws Exception {
+
+        int[] array = new int[] { 2,2,2,2,3,3,3,4,4,4,4 };
+
+        int expected = 3;
+
+        int actual = Arrays.findElementRepeatedOddTimes(array);
+
+        assertEquals(expected, actual);
+
+    }
 }
