@@ -10,12 +10,11 @@ public class ArrayProxyTests {
 	
 	@Test
 	public void canRotateArrayByOffset() {
-
 		int offset = 3;
 		
 		Integer[] array = new Integer[] { 0,1,2,3,4,5,6,7 };
 		
-		ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(array);
+		ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array);
 		proxy.rotateArray(offset);
 		
 		assertEquals(array[0].intValue(), 5);
@@ -26,22 +25,16 @@ public class ArrayProxyTests {
 		assertEquals(array[5].intValue(), 2);
 		assertEquals(array[6].intValue(), 3);
 		assertEquals(array[7].intValue(), 4);
-		
 	}
 	
 	@Test
-	public void canFindIntersectionOfTwoSortedArrays() {
-		
-		int[] array1 = new int[] { 1, 3, 4, 5, 6, 7, 9 };
-		int[] array2 = new int[] { 2, 4, 6, 8 };
-		
-		Integer[] expected = new Integer[] { 4, 6 };
-		
-		Integer[] actual = Arrays.findIntersectionOfSortedArrays(array1, array2);
-		for(int i = 0; i < actual.length; i++) {
-			assertEquals(expected[i], actual[i]);
-		}
-		
+	public void canFindIntersection() {
+		Integer[] array1 = new Integer[] { 1, 3, 4, 5, 6, 7, 9 };
+
+		ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array1);
+
+		Integer[] intersection = proxy.findIntersection(2, 4, 6, 8);
+		assertArrayEquals(new Integer[] { 4, 6 }, intersection);
 	}
 	
 	@Test

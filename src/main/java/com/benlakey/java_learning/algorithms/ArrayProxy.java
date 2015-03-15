@@ -1,11 +1,18 @@
 package com.benlakey.java_learning.algorithms;
 
-public class ArrayProxy<T> {
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ArrayProxy<T extends Comparable<T>> {
     
+    private Class<T> type;
     private T[] wrapped;
     
-    public ArrayProxy(T[] array) {
-        wrapped = array;
+    public ArrayProxy(Class<T> type, T ... array) {
+        this.type = type;
+        this.wrapped = array;
     }
 
     public void rotateArray(int offset) {
@@ -26,36 +33,40 @@ public class ArrayProxy<T> {
         }
     }
 
-//
-//    public static Integer[] findIntersectionOfSortedArrays(int[] array1, int[] array2) {
-//        
-//        int array1idx = 0;
-//        int array2idx = 0;
-//        
-//        List<Integer> intersectionList = new LinkedList<Integer>();
-//        
-//        while(array1idx < array1.length && array2idx < array2.length) {
-//            
-//            int array1num = array1[array1idx];
-//            int array2num = array2[array2idx];
-//            
-//            if(array1num < array2num) {
-//                array1idx++;
-//            } else if(array1num > array2num) {
-//                array2idx++;
-//            } else {
-//                intersectionList.add(array1num);
-//                array1idx++;
-//                array2idx++;
-//            }
-//
-//        }
-//        
-//        Integer[] intersection = new Integer[0];
-//
-//        return intersectionList.toArray(intersection);
-//        
-//    }
+    public T[] findIntersection(T ... otherArray) {
+
+        T[] thisArray = wrapped.clone();
+        otherArray = otherArray.clone();
+
+        Arrays.sort(thisArray);
+        Arrays.sort(otherArray);
+
+        List<T> resultList = new ArrayList<T>();
+
+        int array1idx = 0;
+        int array2idx = 0;
+
+        while(array1idx < thisArray.length && array2idx < otherArray.length) {
+            T array1num = thisArray[array1idx];
+            T array2num = otherArray[array2idx];
+
+            if(array1num.compareTo(array2num) < 0) {
+                array1idx++;
+            } else if(array1num.compareTo(array2num) > 0) {
+                array2idx++;
+            } else {
+                resultList.add(array1num);
+                array1idx++;
+                array2idx++;
+            }
+        }
+
+        @SuppressWarnings("unchecked")
+        T[] result = (T[])Array.newInstance(type, resultList.size());
+        resultList.toArray(result);
+        return result;
+    }
+
 //    
 //    public static boolean binarySearch(int[] array, int startIdx, int endIdx, int toFind) {
 //
