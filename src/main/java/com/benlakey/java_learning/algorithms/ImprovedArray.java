@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ArrayProxy<T extends Comparable<T>> {
+public class ImprovedArray<T extends Comparable<T>> {
 
     private Class<T> type;
     private T[] wrapped;
 
-    public ArrayProxy(Class<T> type, T ... array) {
+    public ImprovedArray(Class<T> type, T ... array) {
         this.type = type;
         this.wrapped = array;
     }
 
-    public ArrayProxy<T> sort() {
+    public ImprovedArray<T> sort() {
         Arrays.sort(wrapped);
         return this;
     }
@@ -39,7 +39,6 @@ public class ArrayProxy<T extends Comparable<T>> {
     }
 
     public T[] findSortedIntersection(T ... otherSortedArray) {
-
         List<T> resultList = new ArrayList<T>();
 
         int array1idx = 0;
