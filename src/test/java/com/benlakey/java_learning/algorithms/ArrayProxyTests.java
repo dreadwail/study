@@ -10,99 +10,62 @@ public class ArrayProxyTests {
     @Test
     public void canRotateArrayByOffset() {
         int offset = 3;
-
         Integer[] array = new Integer[] { 0,1,2,3,4,5,6,7 };
-
         ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array);
         proxy.rotateArray(offset);
-
         assertArrayEquals(array, new Integer[] { 5, 6, 7, 0, 1, 2, 3, 4 });
     }
 
     @Test
-    public void canFindIntersection() {
-        Integer[] array1 = new Integer[] { 1, 3, 4, 5, 6, 7, 9 };
-
-        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array1);
-
-        Integer[] intersection = proxy.findIntersection(2, 4, 6, 8);
+    public void canFindSortedIntersection() {
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, 1, 3, 4, 5, 6, 7, 9).sort();
+        Integer[] intersection = proxy.findSortedIntersection(2, 4, 6, 8);
         assertArrayEquals(new Integer[] { 4, 6 }, intersection);
     }
 
     @Test
     public void canFindExistingNumberInArrayBinarySearch() {
-        Integer[] array = new Integer[] { 1, 3, 4, 6, 7, 12 };
-        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array);
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, 1, 3, 4, 6, 7, 12);
         assertEquals(4, proxy.binarySearch(7));
     }
 
     @Test
     public void canDetermineNonExistentTargetInBinarySearch() {
-        Integer[] array = new Integer[] { 1, 3, 4, 6, 7, 12 };
-        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array);
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, 1, 3, 4, 6, 7, 12);
         assertEquals(-1, proxy.binarySearch(42));
     }
 
     @Test
     public void emptyArrayIsHandledInBinarySearch() {
-        Integer[] array = new Integer[0];
-        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array);
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class);
         assertEquals(-1, proxy.binarySearch(4));
     }
 
     @Test
     public void nonExistantNumberIsNotFoundBinarySearch() {
-        Integer[] array = new Integer[] { 1, 3, 4, 6, 7, 12 };
-        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, array);
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, 1, 3, 4, 6, 7, 12);
         assertEquals(-1, proxy.binarySearch(5));
     }
 
     @Test
     public void sortedArraysOfDifferentLengthsCanBeMerged() {
-
-        int[] arrayOne = new int[] { 1, 3, 5, 6 };
-        int[] arrayTwo = new int[] { 1, 4, 8 };
-
-        int[] expectedArray = new int[] { 1, 1, 3, 4, 5, 6, 8 };
-
-        int[] actualArray = Arrays.mergeSortedArrays(arrayOne, arrayTwo);
-
-        for(int i = 0; i < expectedArray.length; i++) {
-            assertEquals(expectedArray[i], actualArray[i]);
-        }
-
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, 1, 3, 5, 6).sort();
+        Integer[] merged = proxy.mergeSorted(1, 4, 8);
+        assertArrayEquals(new Integer[] { 1, 1, 3, 4, 5, 6, 8 }, merged);
     }
 
     @Test
     public void sortedArraysOfSameLengthsCanBeMerged() {
-
-        int[] arrayOne = new int[] { 1, 3, 5 };
-        int[] arrayTwo = new int[] { 1, 4, 8 };
-
-        int[] expectedArray = new int[] { 1, 1, 3, 4, 5, 8 };
-
-        int[] actualArray = Arrays.mergeSortedArrays(arrayOne, arrayTwo);
-
-        for(int i = 0; i < expectedArray.length; i++) {
-            assertEquals(expectedArray[i], actualArray[i]);
-        }
-
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, 1, 3, 5);
+        Integer[] merged = proxy.mergeSorted(1, 4, 8);
+        assertArrayEquals(new Integer[] { 1, 1, 3, 4, 5, 8 }, merged);
     }
 
     @Test
     public void emptyArraysCanBeMerged() {
-
-        int[] arrayOne = new int[] { 1, 3, 5 };
-        int[] arrayTwo = new int[0];
-
-        int[] expectedArray = new int[] { 1, 3, 5 };
-
-        int[] actualArray = Arrays.mergeSortedArrays(arrayOne, arrayTwo);
-
-        for(int i = 0; i < expectedArray.length; i++) {
-            assertEquals(expectedArray[i], actualArray[i]);
-        }
-
+        ArrayProxy<Integer> proxy = new ArrayProxy<Integer>(Integer.class, 1, 3, 5);
+        Integer[] merged = proxy.mergeSorted();
+        assertArrayEquals(new Integer[] { 1, 3, 5 }, merged);
     }
 
     @Test

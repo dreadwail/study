@@ -15,6 +15,11 @@ public class ArrayProxy<T extends Comparable<T>> {
         this.wrapped = array;
     }
 
+    public ArrayProxy<T> sort() {
+        Arrays.sort(wrapped);
+        return this;
+    }
+
     public void rotateArray(int offset) {
         reverse();
         reverse(0, offset);
@@ -33,22 +38,16 @@ public class ArrayProxy<T extends Comparable<T>> {
         }
     }
 
-    public T[] findIntersection(T ... otherArray) {
-
-        T[] thisArray = wrapped.clone();
-        otherArray = otherArray.clone();
-
-        Arrays.sort(thisArray);
-        Arrays.sort(otherArray);
+    public T[] findSortedIntersection(T ... otherSortedArray) {
 
         List<T> resultList = new ArrayList<T>();
 
         int array1idx = 0;
         int array2idx = 0;
 
-        while(array1idx < thisArray.length && array2idx < otherArray.length) {
-            T array1num = thisArray[array1idx];
-            T array2num = otherArray[array2idx];
+        while(array1idx < wrapped.length && array2idx < otherSortedArray.length) {
+            T array1num = wrapped[array1idx];
+            T array2num = otherSortedArray[array2idx];
 
             if(array1num.compareTo(array2num) < 0) {
                 array1idx++;
@@ -88,45 +87,39 @@ public class ArrayProxy<T extends Comparable<T>> {
             }
         }
     }
-//
-//    public static int[] mergeSortedArrays(int[] arrayOne, int[] arrayTwo) {
-//
-//        int[] newArray = new int[arrayOne.length + arrayTwo.length];
-//
-//        int arrayOnePtr = 0;
-//        int arrayTwoPtr = 0;
-//        int newArrayPtr = 0;
-//
-//        while(arrayOnePtr < arrayOne.length || arrayTwoPtr < arrayTwo.length) {
-//
-//            if(arrayOnePtr == arrayOne.length) {
-//                newArray[newArrayPtr] = arrayTwo[arrayTwoPtr];
-//                arrayTwoPtr++;
-//            } else if(arrayTwoPtr == arrayTwo.length) {
-//                newArray[newArrayPtr] = arrayOne[arrayOnePtr];
-//                arrayOnePtr++;
-//            } else {
-//
-//                int arrayOneValue = arrayOne[arrayOnePtr];
-//                int arrayTwoValue = arrayTwo[arrayTwoPtr];
-//
-//                if(arrayOneValue <= arrayTwoValue) {
-//                    newArray[newArrayPtr] = arrayOneValue;
-//                    arrayOnePtr++;
-//                } else {
-//                    newArray[newArrayPtr] = arrayTwoValue;
-//                    arrayTwoPtr++;
-//                }
-//
-//            }
-//
-//            newArrayPtr++;
-//
-//        }
-//
-//        return newArray;
-//
-//    }
+
+    public T[] mergeSorted(T ... other) {
+        @SuppressWarnings("unchecked")
+        T[] newArray = (T[])Array.newInstance(type, wrapped.length + other.length);
+
+        int arrayOnePtr = 0;
+        int arrayTwoPtr = 0;
+        int newArrayPtr = 0;
+
+        while(arrayOnePtr < wrapped.length || arrayTwoPtr < other.length) {
+            if(arrayOnePtr == wrapped.length) {
+                newArray[newArrayPtr] = other[arrayTwoPtr];
+                arrayTwoPtr++;
+            } else if(arrayTwoPtr == other.length) {
+                newArray[newArrayPtr] = wrapped[arrayOnePtr];
+                arrayOnePtr++;
+            } else {
+                T arrayOneValue = wrapped[arrayOnePtr];
+                T arrayTwoValue = other[arrayTwoPtr];
+
+                if(arrayOneValue.compareTo(arrayTwoValue) <= 0) {
+                    newArray[newArrayPtr] = arrayOneValue;
+                    arrayOnePtr++;
+                } else {
+                    newArray[newArrayPtr] = arrayTwoValue;
+                    arrayTwoPtr++;
+                }
+            }
+            newArrayPtr++;
+        }
+
+        return newArray;
+    }
 //
 //    public static long findElementRepeatedInSortedContiguousArray(int[] array, int maxValue) {
 //
@@ -160,5 +153,7 @@ public class ArrayProxy<T extends Comparable<T>> {
 //
 //        return valueBits;
 //    }
+
+
 
 }
