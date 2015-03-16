@@ -68,33 +68,4 @@ public class ImprovedArrayTests {
         assertArrayEquals(new Integer[] { 1, 3, 5 }, merged);
     }
 
-    @Test
-    public void duplicateNumberInSortedContiguousArrayCanBeFound() {
-
-        int[] array = new int[20];
-
-        for(int i = 1; i < array.length; i++) {
-            array[i] = i;
-        }
-
-        int expected = 4;
-        array[0] = expected;
-
-        long foo = Arrays.findElementRepeatedInSortedContiguousArray(array, 19);
-        assertEquals(expected, foo);
-
-    }
-
-    @Test
-    public void numberRepeatedOddNumberOfTimesIsFound2() throws Exception {
-
-        int[] array = new int[] { 2,2,2,2,3,3,3,4,4,4,4 };
-
-        int expected = 3;
-
-        int actual = Arrays.findElementRepeatedOddTimes(array);
-
-        assertEquals(expected, actual);
-
-    }
 }
