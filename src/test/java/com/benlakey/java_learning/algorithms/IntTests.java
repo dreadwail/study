@@ -35,4 +35,14 @@ public class IntTests {
         assertTrue(new Int(32).isPowerOfTwo());
     }
 
+    @Test
+    public void binaryRepresentationOfZeroIsCorrect() {
+        assertEquals("", new Int(0).getBinaryRepresentation());
+    }
+
+    @Test
+    public void binaryRepresentationOfNonZeroNumbersIsCorrect() {
+        assertEquals("101111", new Int(47).getBinaryRepresentation());
+    }
+
 }

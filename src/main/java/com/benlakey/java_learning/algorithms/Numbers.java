@@ -2,23 +2,6 @@ package com.benlakey.java_learning.algorithms;
 
 public class Numbers {
 
-	public static String getBinaryRepresentation(int num) {
-
-		String numberString = "";
-
-		while(num > 0) {
-			if(num % 2 != 0) {
-				numberString = "1" + numberString;
-			} else {
-				numberString = "0" + numberString;
-			}
-			num = num / 2;
-		}
-
-		return numberString;
-
-	}
-
 	public static int[] getPrimes(int numberOfPrimesToGet) {
 
 		int[] primes = new int[numberOfPrimesToGet];

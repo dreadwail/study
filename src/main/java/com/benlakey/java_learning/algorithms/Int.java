@@ -26,4 +26,17 @@ public class Int {
         return numberOfSetBits() == 1;
     }
 
+    public String getBinaryRepresentation() {
+        String numberString = "";
+        while(value > 0) {
+            if(value % 2 != 0) {
+                numberString = "1" + numberString;
+            } else {
+                numberString = "0" + numberString;
+            }
+            value = value / 2;
+        }
+        return numberString;
+    }
+
 }

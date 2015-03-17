@@ -9,32 +9,6 @@ import org.junit.Test;
 public class NumbersTests {
 
 	@Test
-	public void binaryRepresentationOfZeroIsCorrect() {
-
-		String binary = Numbers.getBinaryRepresentation(0);
-		String expected = "";
-
-		assertEquals(expected, binary);
-
-	}
-
-	@Test
-	public void binaryRepresentationOfNonZeroNumbersIsCorrect() {
-
-		String binary = "";
-		String expected = "";
-
-		binary = Numbers.getBinaryRepresentation(47);
-		expected = "101111";
-		assertEquals(expected, binary);
-
-		binary = Numbers.getBinaryRepresentation(33);
-		expected = "100001";
-		assertEquals(expected, binary);
-
-	}
-
-	@Test
 	public void canGetFirstNPrimes() {
 
 		int[] primes = Numbers.getPrimes(5);
