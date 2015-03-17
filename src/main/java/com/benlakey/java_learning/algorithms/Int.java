@@ -47,4 +47,18 @@ public class Int {
         return !isEven();
     }
 
+    public String toString() {
+        int largestDivisor = 1;
+        while(value / (largestDivisor * 10) != 0) {
+            largestDivisor *= 10;
+        }
+        String str = "";
+        for(int divisor = largestDivisor; divisor > 0; divisor /= 10) {
+            //this stuff is cheezy/cheaty, but is here for demonstration.
+            char[] resultChars = ("" + (value / divisor)).toCharArray();
+            str += resultChars[resultChars.length - 1];
+        }
+        return str;
+    }
+
 }

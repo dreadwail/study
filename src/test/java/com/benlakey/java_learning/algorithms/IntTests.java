@@ -70,4 +70,19 @@ public class IntTests {
         assertFalse(new Int(3).isEven());
     }
 
+    @Test
+    public void zeroIsConvertedToString() {
+        assertEquals("0", new Int(0).toString());
+    }
+
+    @Test
+    public void oneIsConvertedToString() {
+        assertEquals("1", new Int(1).toString());
+    }
+
+    @Test
+    public void numberIsConvertedToString() {
+        assertEquals("42", new Int(42).toString());
+    }
+
 }

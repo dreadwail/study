@@ -19,15 +19,4 @@ public class NumbersTests {
 
 	}
 
-
-	@Test
-	public void numberIsConvertedToString() {
-
-		assertEquals("42", Numbers.itoa(42));
-		assertEquals("147", Numbers.itoa(147));
-		assertEquals("0", Numbers.itoa(0));
-		assertEquals("1", Numbers.itoa(1));
-
-	}
-
 }
