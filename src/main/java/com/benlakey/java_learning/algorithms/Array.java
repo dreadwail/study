@@ -1,21 +1,20 @@
 package com.benlakey.java_learning.algorithms;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ImprovedArray<T extends Comparable<T>> {
+public class Array<T extends Comparable<T>> {
 
     private Class<T> type;
     protected T[] wrapped;
 
-    public ImprovedArray(Class<T> type, T ... array) {
+    public Array(Class<T> type, T ... array) {
         this.type = type;
         this.wrapped = array;
     }
 
-    public ImprovedArray<T> sort() {
+    public Array<T> sort() {
         Arrays.sort(wrapped);
         return this;
     }
@@ -60,7 +59,7 @@ public class ImprovedArray<T extends Comparable<T>> {
         }
 
         @SuppressWarnings("unchecked")
-        T[] result = (T[])Array.newInstance(type, resultList.size());
+        T[] result = (T[])java.lang.reflect.Array.newInstance(type, resultList.size());
         resultList.toArray(result);
         return result;
     }
@@ -89,7 +88,7 @@ public class ImprovedArray<T extends Comparable<T>> {
 
     public T[] mergeSorted(T ... other) {
         @SuppressWarnings("unchecked")
-        T[] newArray = (T[])Array.newInstance(type, wrapped.length + other.length);
+        T[] newArray = (T[])java.lang.reflect.Array.newInstance(type, wrapped.length + other.length);
 
         int arrayOnePtr = 0;
         int arrayTwoPtr = 0;

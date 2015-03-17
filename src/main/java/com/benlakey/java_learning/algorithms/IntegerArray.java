@@ -1,8 +1,8 @@
 package com.benlakey.java_learning.algorithms;
 
-public class ImprovedIntegerArray extends ImprovedArray<Integer> {
+public class IntegerArray extends Array<Integer> {
 
-    public ImprovedIntegerArray(Integer ... array) {
+    public IntegerArray(Integer ... array) {
         super(Integer.class, array);
     }
 

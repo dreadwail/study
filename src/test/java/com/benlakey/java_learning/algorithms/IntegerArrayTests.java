@@ -4,17 +4,17 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class ImprovedIntegerArrayTests {
+public class IntegerArrayTests {
 
     @Test
     public void duplicateNumberInRangeArray() {
-        ImprovedIntegerArray array = new ImprovedIntegerArray(1, 4, 2, 3, 4, 5);
+        IntegerArray array = new IntegerArray(1, 4, 2, 3, 4, 5);
         assertEquals(4, array.findNumberRepeatedInRangeArray().intValue());
     }
 
     @Test
     public void numberRepeatedOddNumberOfTimesIsFound() throws Exception {
-        ImprovedIntegerArray array = new ImprovedIntegerArray(2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4);
+        IntegerArray array = new IntegerArray(2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4);
         assertEquals(3, array.findNumberRepeatedOddTimes().intValue());
 
     }
