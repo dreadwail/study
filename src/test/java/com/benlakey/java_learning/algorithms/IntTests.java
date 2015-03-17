@@ -45,4 +45,29 @@ public class IntTests {
         assertEquals("101111", new Int(47).getBinaryRepresentation());
     }
 
+    @Test
+    public void zeroIsCorrectlyIdentifiedAsEven() {
+        assertTrue(new Int(0).isEven());
+    }
+
+    @Test
+    public void evenNumbersAreCorrectlyIdentified() {
+        assertTrue(new Int(2).isEven());
+    }
+
+    @Test
+    public void evenNumbersAreNotIdentifiedAsOdd() {
+        assertFalse(new Int(2).isOdd());
+    }
+
+    @Test
+    public void oddNumbersAreCorrectlyIdentified() {
+        assertTrue(new Int(3).isOdd());
+    }
+
+    @Test
+    public void oddNumbersAreNotIdentifiedAsEven() {
+        assertFalse(new Int(3).isEven());
+    }
+
 }

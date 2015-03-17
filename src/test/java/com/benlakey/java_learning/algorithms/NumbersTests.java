@@ -1,8 +1,6 @@
 package com.benlakey.java_learning.algorithms;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -18,25 +16,6 @@ public class NumbersTests {
 		assertEquals(5, primes[2]);
 		assertEquals(7, primes[3]);
 		assertEquals(11, primes[4]);
-
-	}
-
-	@Test
-	public void evenNumbersAreCorrectlyIdentified() {
-
-		assertTrue(Numbers.isEven(0));
-		assertFalse(Numbers.isEven(1));
-		assertTrue(Numbers.isEven(2));
-		assertFalse(Numbers.isEven(3));
-		assertTrue(Numbers.isEven(4));
-		assertFalse(Numbers.isEven(5));
-		assertTrue(Numbers.isEven(6));
-		assertFalse(Numbers.isEven(7));
-		assertTrue(Numbers.isEven(8));
-		assertFalse(Numbers.isEven(9));
-		assertTrue(Numbers.isEven(10));
-		assertFalse(Numbers.isEven(11));
-		assertTrue(Numbers.isEven(12));
 
 	}
 

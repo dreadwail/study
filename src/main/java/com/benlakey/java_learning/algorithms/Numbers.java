@@ -32,14 +32,6 @@ public class Numbers {
 
 	}
 
-	public static boolean isEven(int num) {
-		return num % 2 == 0;
-	}
-
-	public static boolean isOdd(int num) {
-		return !isEven(num);
-	}
-
 	public static int atoi(String numberString) {
 
 		char[] numberStringChars = numberString.toCharArray();

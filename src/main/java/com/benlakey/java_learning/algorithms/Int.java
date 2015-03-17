@@ -39,4 +39,12 @@ public class Int {
         return numberString;
     }
 
+    public boolean isEven() {
+        return value % 2 == 0;
+    }
+
+    public boolean isOdd() {
+        return !isEven();
+    }
+
 }
