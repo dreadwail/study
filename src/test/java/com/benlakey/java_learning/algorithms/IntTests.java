@@ -85,4 +85,14 @@ public class IntTests {
         assertEquals("42", new Int(42).toString());
     }
 
+    @Test
+    public void canGetFirstNPrimes() {
+        int[] primes = Int.getPrimes(5);
+        assertEquals(2, primes[0]);
+        assertEquals(3, primes[1]);
+        assertEquals(5, primes[2]);
+        assertEquals(7, primes[3]);
+        assertEquals(11, primes[4]);
+    }
+
 }
