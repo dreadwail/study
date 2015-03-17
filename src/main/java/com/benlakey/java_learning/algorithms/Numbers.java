@@ -2,24 +2,6 @@ package com.benlakey.java_learning.algorithms;
 
 public class Numbers {
 
-	public static boolean IsPowerOfTwo(int num) {
-
-		if(num == 0) {
-			return false;
-		}
-
-		// When taking a power of 2 number and subtracting 1, it should cause a 'rollover' effect (ex: 100 to 011, or 1000 to 0111, etc).
-		// Therefor, subtracting 1 and doing a bitwise & on a power of 2 number should make the result = 0.
-		// This is because the 2 are effectively inverse binary representations.
-
-		int oneLess = num - 1;
-		if((num & oneLess) == 0) {
-			return true;
-		}
-
-		return false;
-	}
-
 	public static String getBinaryRepresentation(int num) {
 
 		String numberString = "";

@@ -9,23 +9,6 @@ import org.junit.Test;
 public class NumbersTests {
 
 	@Test
-	public void zeroDoesNotGetIdentifiedAsPowerOfTwo() {
-		assertFalse(Numbers.IsPowerOfTwo(0));
-	}
-
-	@Test
-	public void correctNumbersAreIdentifiedAsBeingPowerOfTwo() {
-
-		assertTrue(Numbers.IsPowerOfTwo(1));
-		assertTrue(Numbers.IsPowerOfTwo(2));
-		assertTrue(Numbers.IsPowerOfTwo(4));
-		assertTrue(Numbers.IsPowerOfTwo(8));
-		assertTrue(Numbers.IsPowerOfTwo(16));
-		assertTrue(Numbers.IsPowerOfTwo(32));
-
-	}
-
-	@Test
 	public void binaryRepresentationOfZeroIsCorrect() {
 
 		String binary = Numbers.getBinaryRepresentation(0);

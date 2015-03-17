@@ -19,4 +19,11 @@ public class Int {
         return bits;
     }
 
+    public boolean isPowerOfTwo() {
+        if(value == 0) {
+            return false;
+        }
+        return numberOfSetBits() == 1;
+    }
+
 }
