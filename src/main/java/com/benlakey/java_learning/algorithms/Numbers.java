@@ -32,28 +32,6 @@ public class Numbers {
 
 	}
 
-	public static int atoi(String numberString) {
-
-		char[] numberStringChars = numberString.toCharArray();
-
-		int currentMultiplier = 1;
-		int sum = 0;
-
-		for(int i = 0; i < numberStringChars.length; i++) {
-
-			int currentIdx = numberStringChars.length - 1 - i;
-
-			char currentChar = numberStringChars[currentIdx];
-			int currentValue = currentChar - '0';
-
-			sum += currentValue * currentMultiplier;
-
-			currentMultiplier *= 10;
-		}
-
-		return sum;
-	}
-
 	public static String itoa(int num) {
 
 		int largestDivisor = 1;

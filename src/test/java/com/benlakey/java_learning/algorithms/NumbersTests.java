@@ -19,14 +19,6 @@ public class NumbersTests {
 
 	}
 
-	@Test
-	public void numberStringIsConvertedToNumber() {
-
-		assertEquals(42, Numbers.atoi("42"));
-		assertEquals(147, Numbers.atoi("147"));
-		assertEquals(0, Numbers.atoi("0"));
-		assertEquals(1, Numbers.atoi("1"));
-	}
 
 	@Test
 	public void numberIsConvertedToString() {
