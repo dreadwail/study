@@ -21,4 +21,19 @@ public class StrTests {
         assertEquals(42, new Str("42").toInt());
     }
 
+    @Test
+    public void canFindSubstring() {
+        assertEquals(11, new Str("mary had a little lamb").indexOf("little"));
+    }
+
+    @Test
+    public void impossibleSubstringCausesNegativeOneReturn() {
+        assertEquals(-1, new Str("").indexOf("foo"));
+    }
+
+    @Test
+    public void nonExistantSubstringCausesNegativeOneReturn() {
+        assertEquals(-1, new Str("mary had a little lamb").indexOf("foo"));
+    }
+
 }

@@ -24,5 +24,35 @@ public class Str {
         return sum;
     }
 
+    public int indexOf(String target) {
+
+        char[] haystackChars = wrapped.toCharArray();
+        char[] needleChars = target.toCharArray();
+
+        if(haystackChars.length == 0 || haystackChars.length < needleChars.length) {
+            return -1;
+        }
+
+        int hPtr = 0;
+        int nPtr = 0;
+
+        while(hPtr < haystackChars.length && nPtr < needleChars.length) {
+
+            if(haystackChars[hPtr] == needleChars[nPtr]) {
+                nPtr++;
+            } else {
+                nPtr = 0;
+            }
+
+            hPtr++;
+        }
+
+        if(nPtr == needleChars.length) {
+            return hPtr - needleChars.length;
+        }
+
+        return -1;
+    }
+
 
 }
