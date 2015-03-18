@@ -9,6 +9,26 @@ public class Str {
         wrapped = str.toCharArray();
     }
 
+    public void reverseSentence() {
+        reverseCharArray(wrapped, 0, wrapped.length);
+
+        int start = 0;
+        int count = 0;
+
+        for(int i = 0; i < wrapped.length; i++) {
+            if(Character.isWhitespace(wrapped[i]) || i == wrapped.length - 1) {
+                if(i == wrapped.length - 1) {
+                    count++;
+                }
+                reverseCharArray(wrapped, start, count);
+                start = i + 1;
+                count = 0;
+            } else {
+                count++;
+            }
+        }
+    }
+
     public void reverse() {
         int len = wrapped.length;
         for(int i = 0; i < len / 2; i++) {
@@ -61,6 +81,16 @@ public class Str {
     @Override
     public String toString() {
         return new String(wrapped);
+    }
+
+    private static void reverseCharArray(char[] array, int start, int count) {
+
+        for(int i = 0; i < count / 2; i++) {
+            char tmp = array[i + start];
+            array[i + start] = array[count - 1 - i + start];
+            array[count - 1 - i + start] = tmp;
+        }
+
     }
 
 }

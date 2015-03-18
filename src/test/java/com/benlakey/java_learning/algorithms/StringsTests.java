@@ -9,18 +9,6 @@ import org.junit.Test;
 public class StringsTests {
 
 	@Test
-	public void sentenceIsReversed() {
-
-		String sentence = "mary had a little lamb";
-		String expected = "lamb little a had mary";
-
-		String reversedSentence = Strings.reverseSentence(sentence);
-
-		assertEquals(expected, reversedSentence);
-
-	}
-
-	@Test
 	public void sentenceIsReversedInPlace() {
 
 		String sentence = "mary had a little lamb";

@@ -57,4 +57,11 @@ public class StrTests {
         assertEquals("", str.toString());
     }
 
+    @Test
+    public void sentenceIsReversed() {
+        Str sentence = new Str("mary had a little lamb");
+        sentence.reverseSentence();
+        assertEquals("lamb little a had mary", sentence.toString());
+    }
+
 }

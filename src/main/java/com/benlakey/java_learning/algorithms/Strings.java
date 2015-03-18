@@ -2,44 +2,6 @@ package com.benlakey.java_learning.algorithms;
 
 public class Strings {
 
-	//O(n) (linear time)
-	public static String reverseSentence(String sentence) {
-
-		char[] sentenceChars = sentence.toCharArray();
-
-		reverseCharArray(sentenceChars, 0, sentenceChars.length);
-
-		int start = 0;
-		int count = 0;
-
-		for(int i = 0; i < sentenceChars.length; i++) {
-
-			if(Character.isWhitespace(sentenceChars[i]) || i == sentenceChars.length - 1) {
-				if(i == sentenceChars.length - 1) {
-					count++;
-				}
-				reverseCharArray(sentenceChars, start, count);
-				start = i + 1;
-				count = 0;
-			} else {
-				count++;
-			}
-
-		}
-
-		return new String(sentenceChars);
-	}
-
-	private static void reverseCharArray(char[] array, int start, int count) {
-
-		for(int i = 0; i < count / 2; i++) {
-			char tmp = array[i + start];
-			array[i + start] = array[count - 1 - i + start];
-			array[count - 1 - i + start] = tmp;
-		}
-
-	}
-
 	public static String reverseSentenceInPlace(String sentence) {
 
 		char[] sentenceChars = sentence.toCharArray();
