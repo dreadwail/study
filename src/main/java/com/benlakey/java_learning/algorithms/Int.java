@@ -12,18 +12,15 @@ public class Int {
 
     public int getSumEvenFibs() {
         int sum = 0;
-        int last = 0;
-        int current = 1;
-        while(true) {
-            int fib = current + last;
-            if(fib > value) {
-                break;
+        int last = 1;
+        int current = 2;
+        while(current < value) {
+            if(current % 2 == 0) {
+                sum += current;
             }
-            if(fib % 2 == 0) {
-                sum += fib;
-            }
+            int prev = last;
             last = current;
-            current = fib;
+            current += prev;
         }
         return sum;
     }
