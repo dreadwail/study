@@ -3,23 +3,6 @@ package com.benlakey.java_learning.algorithms;
 public class Strings {
 
 	//O(n) (linear time)
-	public static String reverseStringInPlace(String input) {
-
-		char[] inputChars = input.toCharArray();
-
-		int len = inputChars.length;
-
-		for(int i = 0; i < len / 2; i++) {
-			char tmp = inputChars[i];
-			inputChars[i] = inputChars[len - 1 - i];
-			inputChars[len - 1 - i] = tmp;
-		}
-
-		return new String(inputChars);
-
-	}
-
-	//O(n) (linear time)
 	public static String reverseSentence(String sentence) {
 
 		char[] sentenceChars = sentence.toCharArray();

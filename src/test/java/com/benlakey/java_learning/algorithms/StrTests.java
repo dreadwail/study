@@ -36,4 +36,25 @@ public class StrTests {
         assertEquals(-1, new Str("mary had a little lamb").indexOf("foo"));
     }
 
+    @Test
+    public void stringWithOddCharacterCountIsReversedInPlace() {
+        Str str = new Str("abc def");
+        str.reverse();
+        assertEquals("fed cba", str.toString());
+    }
+
+    @Test
+    public void stringWithEvenCharacterCountIsReversedInPlace() {
+        Str str = new Str("abc de");
+        str.reverse();
+        assertEquals("ed cba", str.toString());
+    }
+
+    @Test
+    public void emptyStringDoesNotThrowExceptionWhenReversed() {
+        Str str = new Str("");
+        str.reverse();
+        assertEquals("", str.toString());
+    }
+
 }

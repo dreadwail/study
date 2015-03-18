@@ -9,41 +9,6 @@ import org.junit.Test;
 public class StringsTests {
 
 	@Test
-	public void stringWithOddCharacterCountIsReversedInPlace() {
-
-		String input = "abc def";
-		String expected = "fed cba";
-
-		String reversed = Strings.reverseStringInPlace(input);
-
-		assertEquals(expected, reversed);
-
-	}
-
-	@Test
-	public void stringWithEvenCharacterCountIsReversedInPlace() {
-
-		String input = "abc de";
-		String expected = "ed cba";
-
-		String reversed = Strings.reverseStringInPlace(input);
-
-		assertEquals(expected, reversed);
-
-	}
-
-	@Test
-	public void emptyStringDoesNotThrowExceptionWhenReversed() {
-
-		String input = "";
-
-		String reversed = Strings.reverseStringInPlace(input);
-
-		assertEquals("", reversed);
-
-	}
-
-	@Test
 	public void sentenceIsReversed() {
 
 		String sentence = "mary had a little lamb";

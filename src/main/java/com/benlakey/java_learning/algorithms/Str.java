@@ -3,42 +3,46 @@ package com.benlakey.java_learning.algorithms;
 
 public class Str {
 
-    private String wrapped;
+    private char[] wrapped;
 
     public Str(String str) {
-        wrapped = str;
+        wrapped = str.toCharArray();
+    }
+
+    public void reverse() {
+        int len = wrapped.length;
+        for(int i = 0; i < len / 2; i++) {
+            char tmp = wrapped[i];
+            wrapped[i] = wrapped[len - 1 - i];
+            wrapped[len - 1 - i] = tmp;
+        }
     }
 
     public int toInt() {
-        char[] numberStringChars = wrapped.toCharArray();
-
         int currentMultiplier = 1;
         int sum = 0;
-
-        for(int i = 0; i < numberStringChars.length; i++) {
-            char currentChar = numberStringChars[numberStringChars.length - 1 - i];
+        for(int i = 0; i < wrapped.length; i++) {
+            char currentChar = wrapped[wrapped.length - 1 - i];
             sum += (currentChar - '0') * currentMultiplier;
             currentMultiplier *= 10;
         }
-
         return sum;
     }
 
     public int indexOf(String target) {
 
-        char[] haystackChars = wrapped.toCharArray();
         char[] needleChars = target.toCharArray();
 
-        if(haystackChars.length == 0 || haystackChars.length < needleChars.length) {
+        if(wrapped.length == 0 || wrapped.length < needleChars.length) {
             return -1;
         }
 
         int hPtr = 0;
         int nPtr = 0;
 
-        while(hPtr < haystackChars.length && nPtr < needleChars.length) {
+        while(hPtr < wrapped.length && nPtr < needleChars.length) {
 
-            if(haystackChars[hPtr] == needleChars[nPtr]) {
+            if(wrapped[hPtr] == needleChars[nPtr]) {
                 nPtr++;
             } else {
                 nPtr = 0;
@@ -54,5 +58,9 @@ public class Str {
         return -1;
     }
 
+    @Override
+    public String toString() {
+        return new String(wrapped);
+    }
 
 }
