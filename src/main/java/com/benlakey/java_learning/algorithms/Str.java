@@ -9,6 +9,26 @@ public class Str {
         wrapped = str.toCharArray();
     }
 
+    public int wordCount() {
+        int wordCount = 0;
+        boolean inWord = false;
+        for(int i = 0; i < wrapped.length; i++) {
+            if(Character.isWhitespace(wrapped[i])) {
+                if(inWord) {
+                    wordCount++;
+                }
+                inWord = false;
+            } else {
+                inWord = true;
+            }
+
+        }
+        if(inWord) {
+            wordCount++;
+        }
+        return wordCount;
+    }
+
     public void reverseSentence() {
         reverseCharArray(wrapped, 0, wrapped.length);
 

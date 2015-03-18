@@ -64,4 +64,22 @@ public class StrTests {
         assertEquals("lamb little a had mary", sentence.toString());
     }
 
+    @Test
+    public void correctNumberOfWordsAreCountedInSentence() {
+        Str str = new Str("foo bar baz buz biz");
+        assertEquals(5, str.wordCount());
+    }
+
+    @Test
+    public void correctNumberOfWordsAreCountedInSentenceWithLeadingWhitespace() {
+        Str str = new Str(" foo bar baz buz biz");
+        assertEquals(5, str.wordCount());
+    }
+
+    @Test
+    public void correctNumberOfWordsAreCountedInSentenceWithTrailingWhitespace() {
+        Str str = new Str("foo bar baz buz biz ");
+        assertEquals(5, str.wordCount());
+    }
+
 }
