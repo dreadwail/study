@@ -9,6 +9,16 @@ public class Str {
         wrapped = str.toCharArray();
     }
 
+    public boolean isPalindrome() {
+        int totalChars = wrapped.length;
+        for(int i = 0; i < totalChars / 2; i++) {
+            if(wrapped[i] != wrapped[totalChars - 1 - i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public int wordCount() {
         int wordCount = 0;
         boolean inWord = false;

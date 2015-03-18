@@ -1,6 +1,8 @@
 package com.benlakey.java_learning.algorithms;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -80,6 +82,18 @@ public class StrTests {
     public void correctNumberOfWordsAreCountedInSentenceWithTrailingWhitespace() {
         Str str = new Str("foo bar baz buz biz ");
         assertEquals(5, str.wordCount());
+    }
+
+    @Test
+    public void palindromeCorrectlyIdentified() {
+        Str str = new Str("alphabetacharlie eilrahcatebahpla");
+        assertTrue(str.isPalindrome());
+    }
+
+    @Test
+    public void nonPalindromeCorrectlyIdentified() {
+        Str str = new Str("alphabetacharlie");
+        assertFalse(str.isPalindrome());
     }
 
 }
