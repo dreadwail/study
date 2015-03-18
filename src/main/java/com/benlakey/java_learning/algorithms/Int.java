@@ -1,11 +1,41 @@
 package com.benlakey.java_learning.algorithms;
 
+
+
 public class Int {
 
     private int value;
 
     public Int(int value) {
         this.value = value;
+    }
+
+    public int getSumEvenFibs() {
+        int sum = 0;
+        int last = 0;
+        int current = 1;
+        while(true) {
+            int fib = current + last;
+            if(fib > value) {
+                break;
+            }
+            if(fib % 2 == 0) {
+                sum += fib;
+            }
+            last = current;
+            current = fib;
+        }
+        return sum;
+    }
+
+    public int getSumOfMultiplesLessThan() {
+        int sum = 0;
+        for(int i = 0; i < value; i++) {
+            if(i % 3 == 0 || i % 5 == 0) {
+                sum += i;
+            }
+        }
+        return sum;
     }
 
     public int numberOfSetBits() {
@@ -90,5 +120,6 @@ public class Int {
         return primes;
 
     }
+
 
 }
