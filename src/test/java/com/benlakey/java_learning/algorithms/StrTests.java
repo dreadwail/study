@@ -96,4 +96,24 @@ public class StrTests {
         assertFalse(str.isPalindrome());
     }
 
+    @Test
+    public void canMultiplySingleDigitStrings() {
+        assertEquals("10", new Str("2").multiply("5"));
+    }
+
+    @Test
+    public void canMultiplyDoubleDigitAgainstSingleDigit() {
+        assertEquals("24", new Str("12").multiply("2"));
+    }
+
+    @Test
+    public void canMultiplyDoubleDigitAgainstDoubleDigit() {
+        assertEquals("156", new Str("12").multiply("13"));
+    }
+
+    @Test
+    public void canMultiplyBigIntegers() {
+        assertEquals("999999999998000000000001", new Str("999999999999").multiply("999999999999"));
+    }
+
 }

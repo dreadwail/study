@@ -1,5 +1,11 @@
 package com.benlakey.java_learning.algorithms;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.benlakey.java_learning.algorithms.Enumerable.Functor;
+
 
 public class Str {
 
@@ -7,6 +13,73 @@ public class Str {
 
     public Str(String str) {
         wrapped = str.toCharArray();
+    }
+
+    public static String add(String ... toSum) {
+        return add(Arrays.asList(toSum));
+    }
+    public static String add(List<String> toSum) {
+
+        String result = "";
+
+        int currentAdderIndexOffset = 0;
+        int carry = 0;
+        while(true) {
+            final int offset = currentAdderIndexOffset;
+            List<Integer> digitsHere = new Enumerable<String>(toSum)
+                .map(new Functor<String, Integer>() {
+                    public Integer apply(String input) {
+                        int index = input.length() - 1 - offset;
+                        if(index < 0) {
+                            return null;
+                        }
+                        return input.charAt(index) - '0';
+                    }
+                })
+                .compact()
+                .getValues();
+
+            if(digitsHere.isEmpty() && carry == 0) {
+                break;
+            }
+            int digitSum = carry;
+            for(Integer digit : digitsHere) {
+                digitSum += digit;
+            }
+            int keep = digitSum % 10;
+            result = keep + result;
+            carry = digitSum / 10;
+            currentAdderIndexOffset++;
+        }
+        return result;
+    }
+
+    public String multiply(String factorString) {
+        char[] factor = factorString.toCharArray();
+
+        List<String> interimResults = new ArrayList<String>();
+
+        for(int factorPointer = factor.length - 1; factorPointer >= 0; factorPointer--) {
+            int carry = 0;
+            String interimResult = "";
+            for(int wrappedPointer = wrapped.length - 1; wrappedPointer >= 0; wrappedPointer--) {
+                int factorDigit = factor[factorPointer] - '0';
+                int wrappedDigit = wrapped[wrappedPointer] - '0';
+                int product = (factorDigit * wrappedDigit) + carry;
+                int toPrepend = product % 10;
+                carry = product / 10;
+                interimResult = toPrepend + interimResult;
+            }
+            for(int i = 0; i < factor.length - 1 - factorPointer; i++) {
+                interimResult += '0';
+            }
+            if(carry > 0) {
+                interimResult = carry + interimResult;
+            }
+            interimResults.add(interimResult);
+        }
+
+        return Str.add(interimResults);
     }
 
     public boolean isPalindrome() {
