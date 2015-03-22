@@ -70,4 +70,29 @@ public class IntegerArray extends Array<Integer> {
         return valueBits;
     }
 
+    public Integer largestContiguousSum() {
+        if(wrapped.length == 0) {
+            return 0;
+        }
+
+        int largestSum = wrapped[0];
+        int currentSum = wrapped[0];
+
+        for(int i = 1; i < wrapped.length; i++) {
+            int val = wrapped[i];
+            if(val >= 0 && largestSum < 0) {
+                largestSum = val;
+                currentSum = val;
+            } else {
+                currentSum += val;
+                if(currentSum > largestSum) {
+                    largestSum = currentSum;
+                }
+            }
+
+        }
+
+        return largestSum;
+    }
+
 }

@@ -24,4 +24,10 @@ public class IntegerArrayTests {
         assertEquals(3, array.findMinimalJumps().intValue());
     }
 
+    @Test
+    public void canFindLargestContiguousSum() {
+        IntegerArray array = new IntegerArray(-10, 2, 3, -2, 0, 5, -15);
+        assertEquals(8, array.largestContiguousSum().intValue());
+    }
+
 }
