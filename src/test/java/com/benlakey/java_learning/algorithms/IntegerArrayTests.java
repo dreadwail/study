@@ -16,7 +16,12 @@ public class IntegerArrayTests {
     public void numberRepeatedOddNumberOfTimesIsFound() throws Exception {
         IntegerArray array = new IntegerArray(2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4);
         assertEquals(3, array.findNumberRepeatedOddTimes().intValue());
+    }
 
+    @Test
+    public void canFindMinimalJumps() {
+        IntegerArray array = new IntegerArray(1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9);
+        assertEquals(3, array.findMinimalJumps().intValue());
     }
 
 }
