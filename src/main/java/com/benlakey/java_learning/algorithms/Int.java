@@ -1,7 +1,5 @@
 package com.benlakey.java_learning.algorithms;
 
-
-
 public class Int {
 
     private int value;
@@ -38,10 +36,8 @@ public class Int {
     public int numberOfSetBits() {
         int bits = 0;
         while(value > 0) {
-            if(value % 2 != 0) {
-                bits++;
-            }
-            value /= 2;
+            bits += (value & 1);
+            value >>= 1;
         }
         return bits;
     }

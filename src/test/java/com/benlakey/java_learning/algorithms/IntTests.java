@@ -9,10 +9,23 @@ import org.junit.Test;
 public class IntTests {
 
     @Test
-    public void canFindCountOfBitsInNumbers() {
+    public void canFindCountOfBitsIn7() {
         assertEquals(3, new Int(7).numberOfSetBits());
+    }
+
+    @Test
+    public void canFindCountOfBitsIn5() {
         assertEquals(2, new Int(5).numberOfSetBits());
+    }
+
+    @Test
+    public void canFindCountOfBitsIn16() {
         assertEquals(1, new Int(16).numberOfSetBits());
+    }
+
+    @Test
+    public void canDetermineZeroSetBitsInLargeNumber() {
+        assertEquals(14, new Int(537262763).numberOfSetBits());
     }
 
     @Test
