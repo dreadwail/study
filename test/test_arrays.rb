@@ -2,6 +2,22 @@ require "test_helper"
 
 class TestArrays < Minitest::Test
 
+  def test_find_number_seen_twice_nil_gets_nil
+    assert_nil Algos::Arrays.find_number_seen_twice(nil)
+  end
+
+  def test_find_number_seen_twice_empty_gets_nil
+    assert_nil Algos::Arrays.find_number_seen_twice([])
+  end
+
+  def test_find_number_seen_twice_no_repeaters_gets_nil
+    assert_nil Algos::Arrays.find_number_seen_twice([1,2,3,4,5])
+  end
+
+  def test_find_number_seen_twice
+    assert_equal 4, Algos::Arrays.find_number_seen_twice([1,6,5,8,9,4,3,4,2,7])
+  end
+
   def test_find_missing_number_in_ascending_consecutives
     numbers = 100
     arr = (0..numbers).to_a.shuffle

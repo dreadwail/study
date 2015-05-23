@@ -1,6 +1,18 @@
 module Algos
   module Arrays
 
+    def self.find_number_seen_twice(arr)
+      return nil if !arr || arr.length == 0
+      seen = Hash.new(0)
+      arr.each do |i|
+        seen[i] += 1
+      end
+      seen.each do |k,v|
+        return k if v > 1
+      end
+      nil
+    end
+
     def self.find_missing_number_in_ascending_consecutives(arr, max)
       sum_expected = (max * (max+1))/2
       sum = arr.inject(:+)
