@@ -28,5 +28,24 @@ module Algos
       jumps
     end
 
+    def self.binary_search(arr, val)
+      return nil if !arr || arr.length == 0
+
+      left_idx = 0
+      right_idx = arr.length - 1
+
+      while left_idx < right_idx
+        center_idx = (left_idx + right_idx) / 2
+        if val < arr[center_idx]
+          right_idx = center_idx - 1
+        elsif val > arr[center_idx]
+          left_idx = center_idx + 1
+        elsif val == arr[center_idx]
+          return center_idx
+        end
+      end
+      
+    end
+
   end
 end

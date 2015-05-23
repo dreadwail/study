@@ -14,4 +14,24 @@ class TestArrays < Minitest::Test
     assert_equal 2, Algos::Arrays.array_hopper([4, 11, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
   end
 
+  def test_binary_search_nil_returns_nil
+    assert_nil Algos::Arrays.binary_search(nil, 42)
+  end
+  
+  def test_binary_search_empty_array_returns_nil
+    assert_nil Algos::Arrays.binary_search([], 42)
+  end
+
+  def test_binary_search_can_find_in_even_count_array
+    assert_equal 2, Algos::Arrays.binary_search([10, 20, 42, 30], 42)
+  end
+
+  def test_binary_search_can_find_in_odd_count_array
+    assert_equal 3, Algos::Arrays.binary_search([10, 20, 22, 42, 30], 42)
+  end
+
+  def test_binary_search_not_in_array
+    assert_nil Algos::Arrays.binary_search([10,20,30], 42)
+  end
+
 end
