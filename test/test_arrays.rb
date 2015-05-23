@@ -1,6 +1,6 @@
 require "test_helper"
 
-class TestArrayHopper < Minitest::Test
+class TestArrays < Minitest::Test
 
   def test_array_hopper_single_el
     assert_equal [5], Algos::Arrays.array_hopper([5])
