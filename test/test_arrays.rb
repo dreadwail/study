@@ -2,6 +2,14 @@ require "test_helper"
 
 class TestArrays < Minitest::Test
 
+  def test_find_missing_number_in_ascending_consecutives
+    numbers = 100
+    arr = (0..numbers).to_a.shuffle
+    removed = arr.delete rand(numbers)
+    missing = Algos::Arrays.find_missing_number_in_ascending_consecutives(arr, numbers)
+    assert_equal removed, missing
+  end
+
   def test_array_hopper_single_el
     assert_equal [5], Algos::Arrays.array_hopper([5])
   end

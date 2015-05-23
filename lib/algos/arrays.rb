@@ -1,6 +1,12 @@
 module Algos
   module Arrays
 
+    def self.find_missing_number_in_ascending_consecutives(arr, max)
+      sum_expected = (max * (max+1))/2
+      sum = arr.inject(:+)
+      sum_expected - sum
+    end
+
     def self.array_hopper(arr)
       return [] if arr.nil? || arr.empty?
       return arr if arr.length == 1 && arr[0] != 0
