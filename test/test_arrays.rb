@@ -2,6 +2,22 @@ require "test_helper"
 
 class TestArrays < Minitest::Test
 
+  def test_sum_closest_zero_nil_array
+    assert_nil Algos::Arrays.sum_closest_zero(nil)
+  end
+
+  def test_sum_closest_zero_empty_array
+    assert_nil Algos::Arrays.sum_closest_zero([])
+  end
+
+  def test_sum_closest_zero_single_item_array
+    assert_nil Algos::Arrays.sum_closest_zero([10])
+  end
+
+  def test_sum_closest_zero
+    assert_equal [-80, 85], Algos::Arrays.sum_closest_zero([1, 60, -10, 70, -80, 85])
+  end
+
   def test_largest_continuous_sum_nil_gets_zero
     assert_equal 0, Algos::Arrays.largest_continuous_sum(nil)
   end

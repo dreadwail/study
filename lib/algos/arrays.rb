@@ -1,6 +1,28 @@
 module Algos
   module Arrays
 
+    def self.sum_closest_zero(arr)
+      return nil if arr.nil? || arr.empty?
+      arr.sort!
+      closest = nil
+      answer = nil
+      left = 0
+      right = arr.length - 1
+      while left < right
+        sum = arr[left] + arr[right]
+        if closest.nil? || sum.abs < closest.abs
+          closest = sum
+          answer = [arr[left], arr[right]]
+        end
+        if sum < 0
+          left += 1
+        else
+          right -= 1
+        end
+      end
+      answer
+    end
+
     def self.largest_continuous_sum(arr)
       return 0 if !arr || arr.length == 0
       current_sum = max_sum = arr[0]
