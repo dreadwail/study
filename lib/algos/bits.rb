@@ -22,5 +22,15 @@ module Algos
 
     end
 
+    def self.count_set_bits(n)
+      return 0 if n.nil?
+      bits = 0
+      while n > 0
+        bits += 1 if n % 2 == 1
+        n /= 2
+      end
+      bits
+    end
+
   end
 end
