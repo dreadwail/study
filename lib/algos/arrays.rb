@@ -1,6 +1,21 @@
 module Algos
   module Arrays
 
+    def self.sum_two_largest(arr)
+      return 0 if !arr || arr.length == 0
+      largest = []
+      arr.drop(1).each do |el|
+        if largest.length < 2
+          largest.push el
+        elsif el > largest[0]
+          largest[0] = el
+        elsif el > largest[1]
+          largest[1] = el
+        end
+      end
+      largest.inject(:+)
+    end
+
     def self.sum_closest_zero(arr)
       return nil if arr.nil? || arr.empty?
       arr.sort!
