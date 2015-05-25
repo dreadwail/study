@@ -2,6 +2,34 @@ require "test_helper"
 
 class TestArrays < Minitest::Test
 
+  def test_largest_continuous_sum_nil_gets_zero
+    assert_equal 0, Algos::Arrays.largest_continuous_sum(nil)
+  end
+
+  def test_largest_continuous_sum_empty_gets_zero
+    assert_equal 0, Algos::Arrays.largest_continuous_sum([])
+  end
+
+  def test_largest_continuous_sum_single_gets_single
+    assert_equal 10, Algos::Arrays.largest_continuous_sum([10])
+  end
+
+  def test_largest_continuous_sum_all_positive
+    assert_equal 60, Algos::Arrays.largest_continuous_sum([10, 20, 30])
+  end
+
+  def test_largest_continuous_sum_positive_negative_positive
+    assert_equal 10, Algos::Arrays.largest_continuous_sum([10, -5, 5])
+  end
+
+  def test_largest_continuous_sum_negative_positive_negative
+    assert_equal 10, Algos::Arrays.largest_continuous_sum([-5, 10, -3])
+  end
+
+  def test_largest_continuous_sum_sample_input
+    assert_equal 8, Algos::Arrays.largest_continuous_sum([-10, 2, 3, -2, 0, 5, -15])
+  end
+
   def test_first_non_repeating_nil_returns_nil
     assert_nil Algos::Arrays.first_non_repeating(nil)
   end

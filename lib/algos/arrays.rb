@@ -1,6 +1,16 @@
 module Algos
   module Arrays
 
+    def self.largest_continuous_sum(arr)
+      return 0 if !arr || arr.length == 0
+      current_sum = max_sum = arr[0]
+      arr.drop(1).each do |el|
+        current_sum = [current_sum + el, el].max
+        max_sum = current_sum if current_sum >= max_sum
+      end
+      max_sum
+    end
+
     def self.first_non_repeating(str)
       return nil if str.nil? || str.empty?
       seen = Hash.new(0)
