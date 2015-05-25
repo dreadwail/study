@@ -2,6 +2,26 @@ require "test_helper"
 
 class TestArrays < Minitest::Test
 
+  def test_first_non_repeating_nil_returns_nil
+    assert_nil Algos::Arrays.first_non_repeating(nil)
+  end
+
+  def test_first_non_repeating_empty_returns_nil
+    assert_nil Algos::Arrays.first_non_repeating("")
+  end
+
+  def test_first_non_repeating_single_returns_single
+    assert_equal "a", Algos::Arrays.first_non_repeating("a")
+  end
+
+  def test_first_non_repeating_no_non_repeaters_returns_nil
+    assert_nil Algos::Arrays.first_non_repeating("abcdefgabcdefg")
+  end
+
+  def test_first_non_repeating
+    assert_equal "z", Algos::Arrays.first_non_repeating("abczdefgabcdefg")
+  end
+
   def test_find_number_seen_twice_nil_gets_nil
     assert_nil Algos::Arrays.find_number_seen_twice(nil)
   end

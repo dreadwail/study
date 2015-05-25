@@ -1,6 +1,18 @@
 module Algos
   module Arrays
 
+    def self.first_non_repeating(str)
+      return nil if str.nil? || str.empty?
+      seen = Hash.new(0)
+      str.chars.each do |c|
+        seen[c] += 1
+      end
+      str.chars.each do |c|
+        return c if seen[c] == 1
+      end
+      nil
+    end
+
     def self.find_number_seen_twice(arr)
       return nil if !arr || arr.length == 0
       seen = Hash.new(0)
