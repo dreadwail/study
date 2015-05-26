@@ -1,6 +1,23 @@
 module Algos
   module Strings
 
+    def self.reverse_words(str)
+      return nil if str.nil?
+      reverse_string(str, 0, str.length - 1)
+      in_word = false
+      start_index = 0
+      (0..str.length).each do |idx|
+        if str[idx] == " " || str[idx] == "\t" || idx == str.length
+          reverse_string(str, start_index, idx-1) if in_word
+          in_word = false
+        else
+          start_index = idx if !in_word
+          in_word = true
+        end
+      end
+      str
+    end
+
     def self.reverse_string(str, front=0, back=(str && str.length-1))
       return nil if str.nil?
       while front < back
