@@ -1,6 +1,20 @@
 module Algos
   module Strings
 
+    def self.strstr(haystack, needle)
+      return -1 if haystack.nil? || needle.nil? || needle.empty?
+      haystack.each_char.with_index do |char, haystack_idx|
+        start_idx = haystack_idx
+        needle_idx = 0
+        while(haystack[haystack_idx] == needle[needle_idx] && needle_idx < needle.length)
+          haystack_idx += 1
+          needle_idx += 1
+        end
+        return start_idx if needle_idx == needle.length
+      end
+      -1
+    end
+
     def self.reverse_words(str)
       return nil if str.nil?
       reverse_string(str, 0, str.length - 1)

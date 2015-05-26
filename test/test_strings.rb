@@ -70,4 +70,24 @@ class TestSorts < Minitest::Test
     assert_equal "lamb little a had mary", Algos::Strings.reverse_words("mary had a little lamb")
   end
 
+  def test_strstr_nil_haystack
+    assert_equal -1, Algos::Strings.strstr(nil, "foo")
+  end
+
+  def test_strstr_nil_needle
+    assert_equal -1, Algos::Strings.strstr("foo", nil)
+  end
+
+  def test_strstr_empty_haystack
+    assert_equal -1, Algos::Strings.strstr("", "foo")
+  end
+
+  def test_strstr_empty_needl
+    assert_equal -1, Algos::Strings.strstr("foo", "")
+  end
+
+  def test_strstr_can_find_needle_in_haystack
+    assert_equal 3, Algos::Strings.strstr("foobar", "bar")
+  end
+
 end
