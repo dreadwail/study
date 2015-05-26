@@ -30,4 +30,20 @@ class TestSorts < Minitest::Test
     assert Algos::Strings.is_rotation("testing", "ngtesti")
   end
 
+  def test_reverse_string_with_nil
+    assert_equal nil, Algos::Strings.reverse_string(nil)
+  end
+
+  def test_reverse_string_with_empty
+    assert_equal "", Algos::Strings.reverse_string("")
+  end
+
+  def test_reverse_string_with_single_char
+    assert_equal "a", Algos::Strings.reverse_string("a")
+  end
+
+  def test_reverse_string
+    assert_equal "bmal elttil a dah yram", Algos::Strings.reverse_string("mary had a little lamb")
+  end
+
 end

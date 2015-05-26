@@ -1,6 +1,16 @@
 module Algos
   module Strings
 
+    def self.reverse_string(str, front=0, back=(str && str.length-1))
+      return nil if str.nil?
+      while front < back
+        str[front], str[back] = str[back], str[front]
+        front += 1
+        back -= 1
+      end
+      str
+    end
+
     def self.is_rotation(str1, str2)
       (str1+str1).include?(str2) || (str2+str2).include?(str1)
     end
