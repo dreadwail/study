@@ -22,4 +22,12 @@ class TestSorts < Minitest::Test
     refute Algos::Strings.is_palindrome("abcde")
   end
 
+  def test_is_rotation_false_case
+    refute Algos::Strings.is_rotation("testing", "ngetsti")
+  end
+
+  def test_is_rotation
+    assert Algos::Strings.is_rotation("testing", "ngtesti")
+  end
+
 end
