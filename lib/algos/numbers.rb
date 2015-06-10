@@ -17,6 +17,8 @@ module Algos
       1000 => "M"
     }
 
+    ROMAN_VALUES = ROMAN_NUMERALS.dup.invert
+
     def self.romanize(number)
       numerals = ""
       ROMAN_NUMERALS.reverse_each do |value, numeral|
@@ -25,6 +27,21 @@ module Algos
         number -= (value * how_many)
       end
       numerals
+    end
+
+    def self.deromanize(numerals)
+      value = 0
+      last_value = 0
+      numerals.reverse.each_char do |ch|
+        value_here = ROMAN_VALUES[ch]
+        if value_here >= last_value
+          value += value_here
+        else
+          value -= value_here
+        end
+        last_value = value_here
+      end
+      value
     end
 
     def self.dec2bin(str)

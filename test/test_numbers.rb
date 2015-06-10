@@ -74,6 +74,46 @@ class TestNumbers < Minitest::Test
     assert_equal "MMMCMXCIX", Algos::Numbers.romanize(3999)
   end
 
+  def test_deromanize_one
+    assert_equal 1, Algos::Numbers.deromanize("I")
+  end
+
+  def test_deromanize_two
+    assert_equal 2, Algos::Numbers.deromanize("II")
+  end
+
+  def test_deromanize_four
+    assert_equal 4, Algos::Numbers.deromanize("IV")
+  end
+
+  def test_deromanize_five
+    assert_equal 5, Algos::Numbers.deromanize("V")
+  end
+
+  def test_deromanize_six
+    assert_equal 6, Algos::Numbers.deromanize("VI")
+  end
+
+  def test_deromanize_nine
+    assert_equal 9, Algos::Numbers.deromanize("IX")
+  end
+
+  def test_deromanize_ten
+    assert_equal 10, Algos::Numbers.deromanize("X")
+  end
+
+  def test_deromanize_eleven
+    assert_equal 11, Algos::Numbers.deromanize("XI")
+  end
+
+  def test_deromanize_fourteen
+    assert_equal 14, Algos::Numbers.deromanize("XIV")
+  end
+
+  def test_deromanize_sixteen
+    assert_equal 16, Algos::Numbers.deromanize("XVI")
+  end
+
   def test_dec2bin_nil_gets_nil
     assert_nil Algos::Numbers.dec2bin(nil)
   end
