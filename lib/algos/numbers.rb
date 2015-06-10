@@ -1,29 +1,29 @@
 module Algos
   module Numbers
 
-    # TODO: doesnt handle 4 == IV style numerals yet
+    ROMAN_NUMERALS = {
+      1    => "I",
+      4    => "IV",
+      5    => "V",
+      9    => "IX",
+      10   => "X", 
+      40   => "XL",
+      50   => "L",
+      90   => "XC",
+      100  => "C", 
+      400  => "CD",
+      500  => "D",
+      900  => "CM",
+      1000 => "M"
+    }
+
     def self.romanize(number)
       numerals = ""
-
-      cees = number / 100
-      numerals += "C" * cees
-      number -= (cees * 100)
-
-      ells = number / 50
-      numerals += "L" * ells
-      number -= (ells * 50)
-
-      exes = number / 10
-      numerals += "X" * exes
-      number -= (exes * 10)
-
-      vees = number / 5
-      numerals += "V" * vees
-      number -= (vees * 5)
-
-      eyes = number % 5
-      numerals += "I" * eyes
-
+      ROMAN_NUMERALS.reverse_each do |value, numeral|
+        how_many = number / value
+        numerals += (numeral * how_many)
+        number -= (value * how_many)
+      end
       numerals
     end
 
