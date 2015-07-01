@@ -14,8 +14,8 @@ module Algos
       end.inject(0, :+)
     end
 
-    def self.sum_closest_zero(arr)
-      return nil if arr.nil? || arr.empty?
+    def self.sum_closest_zero(*arr)
+      return [] if arr.length < 2
       arr.sort!
       closest = nil
       answer = nil
