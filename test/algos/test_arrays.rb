@@ -2,16 +2,12 @@ require "test_helper"
 
 class TestArrays < Minitest::Test
 
-  def test_sum_two_largest_nil_gets_zero
-    assert_equal 0, Algos::Arrays.sum_two_largest(nil)
-  end
-
   def test_sum_two_largest_empty_gets_zero
-    assert_equal 0, Algos::Arrays.sum_two_largest([])
+    assert_equal 0, Algos::Arrays.sum_two_largest
   end
 
   def test_sum_two_largest
-    assert_equal 72, Algos::Arrays.sum_two_largest([2, 9, 1, 5, 60, 3, 12])
+    assert_equal 72, Algos::Arrays.sum_two_largest(60, 2, 9, 1, 5, 3, 12)
   end
 
   def test_sum_closest_zero_nil_array
