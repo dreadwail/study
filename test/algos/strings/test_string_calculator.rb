@@ -48,4 +48,9 @@ class TestStringCalculator < Minitest::Test
     assert_equal actual_sum, @calculator.value
   end
 
+  def test_calculate_one_negative
+    @calculator.add("-2")
+    assert_equal -2, @calculator.value
+  end
+
 end
