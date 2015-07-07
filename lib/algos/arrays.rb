@@ -1,10 +1,8 @@
 module Algos
   module Arrays
 
-    def self.sum_two_largest(arr)
-      return 0 if !arr || arr.length == 0
-      largest = []
-      arr.drop(1).each do |el|
+    def self.sum_two_largest(*items)
+      items.inject([]) do |largest, el|
         if largest.length < 2
           largest.push el
         elsif el > largest[0]
@@ -12,12 +10,12 @@ module Algos
         elsif el > largest[1]
           largest[1] = el
         end
-      end
-      largest.inject(:+)
+        largest
+      end.inject(0, :+)
     end
 
-    def self.sum_closest_zero(arr)
-      return nil if arr.nil? || arr.empty?
+    def self.sum_closest_zero(*arr)
+      return [] if arr.length < 2
       arr.sort!
       closest = nil
       answer = nil
