@@ -1,6 +1,6 @@
 require "test_helper"
 
-class TestSorts < Minitest::Test
+class TestStrings < Minitest::Test
 
   def test_is_palindrome_nil_gets_false
     refute Algos::Strings.is_palindrome(nil)
