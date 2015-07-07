@@ -53,4 +53,9 @@ class TestStringCalculator < Minitest::Test
     assert_equal -2, @calculator.value
   end
 
+  def test_calculate_two_negatives
+    @calculator.add("-2", "-6")
+    assert_equal -8, @calculator.value
+  end
+
 end
