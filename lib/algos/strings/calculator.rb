@@ -11,8 +11,12 @@ module Algos
       end
 
       def add(*string_nums)
-        string_nums.each do |string_num|
-          @value += (string_num.ord - ZERO) unless string_num.empty?
+        string_nums.reject(&:empty?).each do |string_num|
+          multiplier = 1
+          string_num.chars.reverse_each do |digit_char|
+            @value += (digit_char.ord - ZERO) * multiplier
+            multiplier *= 10
+          end
         end
       end
 
