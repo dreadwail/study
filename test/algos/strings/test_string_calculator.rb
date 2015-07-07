@@ -6,4 +6,9 @@ class TestStringCalculator < Minitest::Test
     @calculator = Algos::Strings::Calculator.new
   end
 
+  def test_calculate_with_empty_string
+    @calculator.add("")
+    assert_equal 0, @calculator.value
+  end
+
 end
