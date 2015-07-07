@@ -1,3 +1,5 @@
+require "algos/strings/calculator"
+
 module Algos
   module Strings
 
