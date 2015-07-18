@@ -4,15 +4,15 @@ module Algos
   module Strings
 
     def self.strstr(haystack, needle)
-      return -1 if haystack.nil? || needle.nil? || needle.empty?
-      haystack.each_char.with_index do |char, haystack_idx|
-        start_idx = haystack_idx
-        needle_idx = 0
-        while(haystack[haystack_idx] == needle[needle_idx] && needle_idx < needle.length)
-          haystack_idx += 1
-          needle_idx += 1
+      haystack ||= ""
+      needle ||= ""
+      needle_end = needle.length - 1
+      (0...haystack.length).each do |haystack_index|
+        needle.each_char.with_index do |needle_char, needle_index|
+          break if haystack[haystack_index] != needle_char
+          return haystack_index - needle_end if needle_index == needle_end
+          haystack_index += 1
         end
-        return start_idx if needle_idx == needle.length
       end
       -1
     end

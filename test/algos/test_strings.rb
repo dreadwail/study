@@ -82,7 +82,7 @@ class TestStrings < Minitest::Test
     assert_equal -1, Algos::Strings.strstr("", "foo")
   end
 
-  def test_strstr_empty_needl
+  def test_strstr_empty_needle
     assert_equal -1, Algos::Strings.strstr("foo", "")
   end
 
