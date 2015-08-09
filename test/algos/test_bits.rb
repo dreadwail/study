@@ -2,14 +2,6 @@ require "test_helper"
 
 class TestBits < Minitest::Test
 
-  def test_count_set_bits_zero
-    assert_equal 0, Algos::Bits.count_set_bits(0)
-  end
-
-  def test_count_set_bits
-    assert_equal 3, Algos::Bits.count_set_bits(7)
-  end
-
   def test_alter_pixel_transparency_invalid_small_pixel
     assert_raises(RuntimeError) do
       Algos::Bits.alter_pixel_transparency(-1, 0)

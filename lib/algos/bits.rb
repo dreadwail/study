@@ -24,9 +24,5 @@ module Algos
 
     end
 
-    def self.count_set_bits(n)
-      n.bit_count
-    end
-
   end
 end
