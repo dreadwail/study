@@ -1,3 +1,5 @@
+require "algos/numbers/roman_numerals"
+
 module Algos
   module Numbers
 
@@ -20,13 +22,7 @@ module Algos
     ROMAN_VALUES = ROMAN_NUMERALS.dup.invert
 
     def self.romanize(number)
-      numerals = ""
-      ROMAN_NUMERALS.reverse_each do |value, numeral|
-        how_many = number / value
-        numerals += (numeral * how_many)
-        number -= (value * how_many)
-      end
-      numerals
+      number.to_roman_numerals
     end
 
     def self.deromanize(numerals)
