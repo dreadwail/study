@@ -10,19 +10,27 @@ module Algos
         @value = 0
       end
 
-      def add(*string_nums)
-        string_nums.reject(&:empty?).each do |string_num|
-          multiplier = 1
-          string_num_value = 0
-          string_num.chars.reject { |c| c == "-" }.reverse_each do |digit_char|
-            string_num_value += (digit_char.ord - ZERO) * multiplier
-            multiplier *= 10
-          end
-          if string_num.chars[0] == "-"
-            string_num_value *= -1
-          end
-          @value += string_num_value
+      def add(*string_numbers)
+        string_numbers.reject(&:empty?).each { |s| add_one(s) }
+      end
+
+      private
+
+      def add_one(string_number)
+        multiplier = 1
+        string_number_value = 0
+        string_number.chars.reject { |c| c == "-" }.reverse_each do |digit_char|
+          string_number_value += value_of(digit_char) * multiplier
+          multiplier *= 10
         end
+        if string_number.chars[0] == "-"
+          string_number_value *= -1
+        end
+        @value += string_number_value
+      end
+
+      def value_of(character)
+        character.ord - ZERO
       end
 
     end
