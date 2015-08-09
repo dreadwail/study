@@ -2,10 +2,6 @@ require "test_helper"
 
 class TestBits < Minitest::Test
 
-  def test_count_set_bits_nil
-    assert_equal 0, Algos::Bits.count_set_bits(nil)
-  end
-
   def test_count_set_bits_zero
     assert_equal 0, Algos::Bits.count_set_bits(0)
   end
