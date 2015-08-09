@@ -16,8 +16,6 @@ class Fixnum
     1000 => "M"
   }
 
-  ROMAN_VALUES = ROMAN_NUMERALS.dup.invert
-
   def to_roman_numerals
     number = self
     numerals = ""

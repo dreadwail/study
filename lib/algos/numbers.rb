@@ -21,10 +21,6 @@ module Algos
 
     ROMAN_VALUES = ROMAN_NUMERALS.dup.invert
 
-    def self.romanize(number)
-      number.to_roman_numerals
-    end
-
     def self.deromanize(numerals)
       value = 0
       last_value = 0
