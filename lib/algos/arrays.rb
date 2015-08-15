@@ -1,15 +1,10 @@
-require "byebug"
+require "algos/enumerable"
 
 module Algos
   module Arrays
 
     def self.sum_two_largest(*items)
-      items.inject([]) do |largest, el|
-        largest
-          .push(el)
-          .sort_by { |e| -e }
-          .take(2)
-      end.inject(0, :+)
+      items.sum_two_largest
     end
 
     def self.sum_closest_zero(*arr)
