@@ -1,6 +1,7 @@
 require "algos/version"
 require "algos/arrays"
 require "algos/bits"
+require "algos/enumerable"
 require "algos/numbers"
 require "algos/sorts"
 require "algos/strings"
