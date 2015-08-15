@@ -1,11 +1,5 @@
-require "algos/enumerable"
-
 module Algos
   module Arrays
-
-    def self.sum_two_largest(*items)
-      items.sum_two_largest
-    end
 
     def self.sum_closest_zero(*arr)
       return [] if arr.length < 2
