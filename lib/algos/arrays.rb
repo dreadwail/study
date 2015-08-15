@@ -1,16 +1,14 @@
+require "byebug"
+
 module Algos
   module Arrays
 
     def self.sum_two_largest(*items)
       items.inject([]) do |largest, el|
-        if largest.length < 2
-          largest.push el
-        elsif el > largest[0]
-          largest[0] = el
-        elsif el > largest[1]
-          largest[1] = el
-        end
         largest
+          .push(el)
+          .sort_by { |e| -e }
+          .take(2)
       end.inject(0, :+)
     end
 
