@@ -2,6 +2,10 @@ require "prime"
 
 class Fixnum
 
+  def mantissa
+    0
+  end
+
   def circular_prime?
     num_chars = to_s.chars
     num_chars.length.times do
