@@ -3,6 +3,10 @@ require "stdlib"
 
 class TestFixnum < Minitest::Test
 
+  def test_mantissa_integer
+    assert_equal 0, 21.mantissa
+  end
+
   def test_circular_prime
     assert 197.circular_prime?
   end

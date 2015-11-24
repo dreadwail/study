@@ -5,4 +5,5 @@ group :test do
   gem "minitest",        "~> 5.3.4"
   gem "guard-minitest",  "~> 2.3.0"
   gem "rake",            "~> 10.3.2"
+  gem "byebug"
 end
