@@ -11,7 +11,7 @@ module TheLadders
       @employer == employer
     end
 
-    def apply(job_seeker, resume = nil)
+    def apply(application)
       unless resume.owned_by?(job_seeker)
         raise ArgumentError, "Cannot apply with someone elses resume"
       end

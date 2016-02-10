@@ -1,5 +1,3 @@
-# Object Calisthenics
+# Ruby starter repo
 
-https://github.com/TheLadders/object-calisthenics
-
-Run with 'rake'.
+Run tests with 'rake'.
