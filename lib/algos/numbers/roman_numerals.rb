@@ -27,4 +27,19 @@ class Fixnum
     numerals
   end
 
+  def self.deromanize(numerals)
+    value = 0
+    last_value = 0
+    numerals.reverse.each_char do |ch|
+      value_here = ROMAN_VALUES[ch]
+      if value_here >= last_value
+        value += value_here
+      else
+        value -= value_here
+      end
+      last_value = value_here
+    end
+    value
+  end
+
 end
