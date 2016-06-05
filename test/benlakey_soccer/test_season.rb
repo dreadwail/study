@@ -8,32 +8,43 @@ class TestSeason < Minitest::Test
     @season = Season.new
   end
 
+  def test_tied_points_sorts_by_aggregate_differential
+    @season.record_game("Foo 3, Baz 1")
+    @season.record_game("Bar 3, Baz 2")
+    expected = <<-eos
+1. Foo, 3 pts
+2. Bar, 3 pts
+3. Baz, 0 pts
+eos
+    assert_equal expected, @season.to_s
+  end
+
   def test_draw_awards_one_point
     @season.record_game("Foo 3, Bar 3")
-    assert_equal 1, @season.scores["Foo"]
-    assert_equal 1, @season.scores["Bar"]
+    assert_equal 1, @season.scores["Foo"].points
+    assert_equal 1, @season.scores["Bar"].points
   end
 
   def test_spaces_in_name_handled
     @season.record_game("Foo Bar 2, Baz 1")
-    assert_equal 3, @season.scores["Foo Bar"]
+    assert_equal 3, @season.scores["Foo Bar"].points
   end
 
   def test_win_awards_three_points
     @season.record_game("Foo 42, Bar 11")
-    assert_equal 3, @season.scores["Foo"]
+    assert_equal 3, @season.scores["Foo"].points
   end
 
   def test_multiple_records_aggregate_existing_scores
     @season.record_game("Foo 2, Bar 1")
     @season.record_game("Foo 3, Bar 2")
-    assert_equal 6, @season.scores["Foo"]
+    assert_equal 6, @season.scores["Foo"].points
   end
 
   def test_loss_awards_zero_points
     @season.record_game("Foo 9, Bar 2")
     @season.record_game("Foo 1, Bar 2")
-    assert_equal 3, @season.scores["Foo"]
+    assert_equal 3, @season.scores["Foo"].points
   end
 
   def test_points_tie_makes_same_rank_ordered_alphabetical
@@ -50,9 +61,9 @@ eos
     @season.record_game("Baz 3, Buz 1")
     expected = <<-eos
 1. Baz, 3 pts
-1. Foo, 3 pts
+2. Foo, 3 pts
 3. Bar, 0 pts
-3. Buz, 0 pts
+4. Buz, 0 pts
 eos
     assert_equal expected, @season.to_s
   end
@@ -88,7 +99,7 @@ Lions 4, Grouches 0
 1. Tarantulas, 6 pts
 2. Lions, 5 pts
 3. FC Awesome, 1 pt
-3. Snakes, 1 pt
+4. Snakes, 1 pt
 5. Grouches, 0 pts
   EOF
 
