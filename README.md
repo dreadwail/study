@@ -2,7 +2,7 @@
 
 We will be writing a program that, given a word, computes the scrabble score for that word.
 
-## Contraint
+## Constraint
 
 However, it is not enough to simply solve the problem. Sometimes constraints help to inspire new ways of thinking about code. In this week's exercise we will be solving the problem with **no assignment operators**. This means you are not allowed to use the `=` to assign values to variables. Try and think about the problem in terms of pure functions that operate on data to return an answer.
 
