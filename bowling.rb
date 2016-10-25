@@ -3,16 +3,15 @@ require_relative "./frame"
 class Game
 
   def initialize
-    @frames = []
-    @frame_number = 0
+    @frames = Array.new(10) { Frame.new }
+    @frame_index = 0
   end
 
   def roll(pins)
-    frame = @frames[@frame_number] || Frame.new
+    frame = @frames[@frame_index]
     frame.rolls << pins
-    @frames[@frame_number] = frame
-    if pins == 10 || frame.rolls.length == 2
-      @frame_number += 1
+    if frame.closed?
+      @frame_index += 1
     end
   end
 
