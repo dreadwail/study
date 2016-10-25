@@ -27,13 +27,13 @@ class Game
   end
 
   def frames
-    [].tap do |list|
-      this_frame = @head_frame
-      while this_frame
-        list << this_frame
-        this_frame = this_frame.next_frame
-      end
+    list = []
+    this_frame = @head_frame
+    while this_frame
+      list << this_frame
+      this_frame = this_frame.next_frame
     end
+    list
   end
 
 end
