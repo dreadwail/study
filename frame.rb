@@ -31,20 +31,35 @@ class Frame
     tally = pins_down_count
     return tally if next_frame.nil?
 
-    if strike?
-      tally += next_frame.pins_down_count
-    elsif spare?
-      tally += next_frame.rolls.first
-    end
+    rolls_to_consume = if strike?
+                         2
+                       elsif spare?
+                         1
+                       else
+                         0
+                       end
 
-    tally
+    future_rolls = next_n_rolls(rolls_to_consume)
+    tally + future_rolls.inject(0, :+)
   end
 
   def pins_down_count
-    @rolls.inject(0, :+)
+    rolls.inject(0, :+)
   end
 
   private
+
+  def next_n_rolls(n_to_take)
+    to_take_from = next_frame
+    results = []
+    while to_take_from && results.length < n_to_take
+      taken = to_take_from.rolls.take(n_to_take)
+      results += taken
+      n_to_take -= taken.length
+      to_take_from = to_take_from.next_frame
+    end
+    results
+  end
 
   def all_pins_down?
     pins_down_count == PIN_COUNT
@@ -55,7 +70,7 @@ class Frame
   end
 
   def roll_count
-    @rolls.length
+    rolls.length
   end
 
 end
