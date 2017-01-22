@@ -1,4 +1,4 @@
-defmodule EulerTest do
+defmodule EulerElixir.Problem1Test do
   use ExUnit.Case
   doctest EulerElixir.Problem1
 
