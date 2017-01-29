@@ -1,0 +1,129 @@
+; prefix notation (operator operands)
+
+(+ 10 5)
+
+; naming variables
+
+(define number 42)
+
+(define multiplied (* 100 (+ 10 number)))
+
+multiplied
+
+; procedure definition
+
+(define (square x) (* x x))
+
+(square 10)
+
+(square (square 10))
+
+; cond
+
+(define (abs x)
+  (cond ((> x 0) x)
+        ((= x 0) 0)
+        ((< x 0) (- x))))
+
+(abs -4)
+(abs 0)
+(abs 4)
+
+; else
+
+(define (abs x)
+  (cond ((< x 0) (- x))
+        (else x)))
+
+(abs -4)
+(abs 0)
+(abs 4)
+
+; if
+
+(define (abs x)
+  (if (< x) (- x) (x)))
+
+(abs -4)
+(abs 0)
+(abs 4)
+
+; and
+
+(define (inside-ten x)
+  (and (> x (- 1)) (< x 11)))
+
+(inside-ten 5)
+(inside-ten 15)
+
+; or
+
+(define (two-four-six x)
+  (or (= x 2) (= x 4) (= x 6)))
+
+(two-four-six 1)
+(two-four-six 2)
+(two-four-six 3)
+(two-four-six 4)
+(two-four-six 5)
+(two-four-six 6)
+(two-four-six 7)
+
+; not
+
+(define (answer-to-life-the-universe-and-everything x)
+  (and (not (< x 42)) (not (> x 42))))
+
+(answer-to-life-the-universe-and-everything 41)
+(answer-to-life-the-universe-and-everything 42)
+(answer-to-life-the-universe-and-everything 43)
+
+; exercise 1.1
+
+(assert (= 10 10))
+(assert (= 12 (+ 5 3 4)))
+(assert (= 8 (- 9 1)))
+(assert (= 3 (/ 6 2)))
+(assert (= 6 (+ (* 2 4) (- 4 6))))
+
+(define a 3)
+
+(assert (= 3 a))
+
+(define b (+ a 1))
+
+(assert (= 4 b))
+(assert (= 19 (+ a b (* a b))))
+(assert (= 4 (if (and (> b a) (< b (* a b)))
+              b
+              a)))
+(assert (= 16 (cond ((= a 4) 6)
+                    ((= b 4) (+ 6 7 a))
+                    (else 25))))
+(assert (= 6 (+ 2 (if (> b a) b a))))
+(assert (= 16 (* (cond ((> a b) a)
+                       ((< a b) b)
+                       (else -1))
+                 (+ a 1))))
+
+; exercise 1.2
+
+(/ (+ 5 4 (- 2 (- 3 (+ 6 (/ 4 5)))))
+   (* 3 (- 6 2)(- 2 7)))
+
+; exercise 1.3
+
+(define (sum-of-squares a b)
+  (+ (* a a) (* b b)))
+
+(define (sum-two-largest-squares a b c)
+  (cond ((and (> b a) (> c a)) (sum-of-squares b c))
+        ((and (> a b) (> c b)) (sum-of-squares a c))
+        ((and (> a c) (> b c)) (sum-of-squares a b))))
+
+(assert (= (+ 16 36) (sum-two-largest-squares 2 4 6)))
+(assert (= (+ 16 36) (sum-two-largest-squares 4 2 6)))
+(assert (= (+ 16 36) (sum-two-largest-squares 4 6 2)))
+
+; exercise 1.4
+
