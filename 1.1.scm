@@ -126,4 +126,34 @@ multiplied
 (assert (= (+ 16 36) (sum-two-largest-squares 4 6 2)))
 
 ; exercise 1.4
+;
+; if b is positive then the operator used against 'a' and 'b' will be '+' (+ a b) otherwise it will be '-' (- a b)
+; the program modifies itself based upon the inputs through the condition
+(define (a-plus-abs-b a b)
+  ((if (> b 0) + -) a b))
 
+; exercise 1.5
+
+(define (p) (p))
+
+(define (test x y)
+  (if (= x 0)
+      0
+      y))
+
+;(test 0 (p))  ; would infinitely recurse so i've commented it out
+
+; applicative-order evaluation (immediate apply):
+
+; 1; (test 0 (p)) ; 0 is 0,  evaluating (p) results in itself (p)
+; 2; (test 0 (p)) ; back where we started, so infinitely recurse from here
+
+; normal-order evaluation (fully expand delayed apply):
+
+; 1; (test 0 (p)) ; expand 'test'
+; 2; (if (= 0 0)  ; 'if' does not expand, so evaluate it. (= 0 0) is true so evaluate first arg
+;        0        ; condition was true so evaluate this arg
+;        (p))     ; never worry about this arg because the condition was true
+;
+; applicative-order will infinitely try and evaluate (p)
+; normal-order will never attempt to evaluate (p) because the 'if' short-circuited us from getting there
