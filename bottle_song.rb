@@ -1,13 +1,8 @@
 class BottleSong
 
-  def initialize
-  end
-
   def verse(n)
-    case n
-      when 0 then final_verse
-      else standard_verse(n)
-    end
+    return final_verse if n == 0
+    standard_verse(n)
   end
 
   def to_s
@@ -18,9 +13,17 @@ class BottleSong
 
   def standard_verse(n)
     [
-      "#{bottle_count(n)} of beer on the wall, #{bottle_count(n)} of beer.",
-      "Take one down and pass it around, #{bottle_count(n - 1)} of beer on the wall."
+      verse_part_one(n),
+      verse_part_two(n)
     ].join("\n")
+  end
+
+  def verse_part_one(n)
+    "#{bottle_count_phrases[n]} of beer on the wall, #{bottle_count_phrases[n]} of beer."
+  end
+
+  def verse_part_two(n)
+    "Take one down and pass it around, #{bottle_count_phrases[n - 1]} of beer on the wall."
   end
 
   def final_verse
@@ -30,14 +33,13 @@ class BottleSong
     ].join("\n")
   end
 
-  def bottle_count(n)
-    return "no more bottles" if n == 0
-    return "1 bottle" if n == 1
-    "#{n} bottles"
-  end
-
-  def plural_char(n)
-    n != 1 ? "s" : ""
+  def bottle_count_phrases
+    {
+      0 => "no more bottles",
+      1 => "1 bottle"
+    }.tap do |counts|
+      counts.default_proc = proc { |_, bottle_count| "#{bottle_count} bottles" }
+    end
   end
 
 end
