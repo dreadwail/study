@@ -14,11 +14,18 @@ class BottleSongTest < Minitest::Test
     assert_equal expected_song, @song.to_s
   end
 
-  def test_can_sing_one_verse
+  def test_can_sing_standard_verse
     expected_verse = "99 bottles of beer on the wall, 99 bottles of beer.\n" + 
                      "Take one down and pass it around, 98 bottles of beer on the wall."
     
     assert_equal expected_verse, @song.verse(99)
+  end
+
+  def test_can_sing_verse_one
+    expected_verse = "1 bottle of beer on the wall, 1 bottle of beer.\n" +
+                     "Take one down and pass it around, no more bottles of beer on the wall."
+
+    assert_equal expected_verse, @song.verse(1)
   end
 
   def test_can_sing_final_verse
