@@ -5,9 +5,13 @@ class BottleSong
 
   def verse(n)
     case n
-      when 0 then zero_verse
+      when 0 then final_verse
       else standard_verse(n)
     end
+  end
+
+  def to_s
+    99.downto(0).map { |n| verse(n) }.join("\n")
   end
 
   private
@@ -19,7 +23,7 @@ class BottleSong
     ].join("\n")
   end
 
-  def zero_verse
+  def final_verse
     [
       "No more bottles of beer on the wall, no more bottles of beer.",
       "Go to the store and buy some more, 99 bottles of beer on the wall."
