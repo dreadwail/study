@@ -1,8 +1,10 @@
 class BottleSong
 
   def verse(n)
-    return final_verse if n == 0
-    standard_verse(n)
+    [
+      verse_part_one(n),
+      verse_part_two(n)
+    ].map(&:capitalize).join("\n")
   end
 
   def to_s
@@ -11,26 +13,13 @@ class BottleSong
 
   private
 
-  def standard_verse(n)
-    [
-      verse_part_one(n),
-      verse_part_two(n)
-    ].join("\n")
-  end
-
   def verse_part_one(n)
     "#{bottle_count_phrases[n]} of beer on the wall, #{bottle_count_phrases[n]} of beer."
   end
 
   def verse_part_two(n)
+    return "Go to the store and buy some more, 99 bottles of beer on the wall." if n == 0
     "Take one down and pass it around, #{bottle_count_phrases[n - 1]} of beer on the wall."
-  end
-
-  def final_verse
-    [
-      "No more bottles of beer on the wall, no more bottles of beer.",
-      "Go to the store and buy some more, 99 bottles of beer on the wall."
-    ].join("\n")
   end
 
   def bottle_count_phrases
