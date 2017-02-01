@@ -14,8 +14,8 @@ class BottleSong
 
   def standard_verse(n)
     [
-      "#{n} bottles of beer on the wall, #{n} bottles of beer.",
-      "Take one down and pass it around, #{n - 1} bottles of beer on the wall."
+      "#{bottle_count(n)} of beer on the wall, #{bottle_count(n)} of beer.",
+      "Take one down and pass it around, #{bottle_count(n - 1)} of beer on the wall."
     ].join("\n")
   end
 
@@ -24,6 +24,16 @@ class BottleSong
       "No more bottles of beer on the wall, no more bottles of beer.",
       "Go to the store and buy some more, 99 bottles of beer on the wall."
     ].join("\n")
+  end
+
+  def bottle_count(n)
+    return "no more bottles" if n == 0
+    return "1 bottle" if n == 1
+    "#{n} bottles"
+  end
+
+  def plural_char(n)
+    n != 1 ? "s" : ""
   end
 
 end
