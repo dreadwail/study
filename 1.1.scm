@@ -42,7 +42,7 @@ multiplied
 ; if
 
 (define (abs x)
-  (if (< x) (- x) (x)))
+  (if (< x 0) (- x) x))
 
 (abs -4)
 (abs 0)
