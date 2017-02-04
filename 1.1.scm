@@ -157,3 +157,22 @@ multiplied
 ;
 ; applicative-order will infinitely try and evaluate (p)
 ; normal-order will never attempt to evaluate (p) because the 'if' short-circuited us from getting there
+
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (improve guess number)
+  (average guess (/ number guess)))
+
+(define (good-enough? guess number)
+  (< (abs (- number (* guess guess))) 0.001))
+
+(define (sqr-root-iter guess number)
+  (if (good-enough? guess number)
+      guess
+      (sqr-root-iter (improve guess number) number)))
+
+(define (sqr-root-of x)
+  (sqr-root-iter 1.0 x))
+
+(sqr-root-of 9)
