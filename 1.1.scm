@@ -158,6 +158,9 @@ multiplied
 ; applicative-order will infinitely try and evaluate (p)
 ; normal-order will never attempt to evaluate (p) because the 'if' short-circuited us from getting there
 
+
+; exercise 1.5
+
 (define (average x y)
   (/ (+ x y) 2))
 
@@ -176,3 +179,53 @@ multiplied
   (sqr-root-iter 1.0 x))
 
 (sqr-root-of 9)
+
+
+; exercise 1.6
+
+; new-if defined using cond
+(define (new-if predicate then-clause else-clause)
+  (cond (predicate then-clause)
+        (else else-clause)))
+
+; same sq-root-iter exercise from before but implemented via new-if
+
+(define (new-if-sqr-root-iter guess number)
+  (new-if (good-enough? guess number)
+          guess
+          (new-if-sqr-root-iter (improve guess number) number)))
+
+(define (new-if-sqr-root-of x)
+  (new-if-sqr-root-iter 1.0 x))
+
+; unfortunately executing it results in infinite recursion because unlike 'if' which is a special short-circuiting
+; form, new-if uses normal evaluation of both branches
+
+; commented-out to avoid the infinite recursion
+; (new-if-sqr-root-of 9)
+
+
+; exercise 1.7
+
+; I'm skipping this exercise because I'm aware of floating point issues and solving this would be of low value.
+
+
+; exercise 1.8
+
+; Cube-root in similar fashion to previous sqr-root calculations
+
+(define (improve guess number)
+  (/ (+ (/ number (* guess guess)) (* 2 guess)) 3))
+
+(define (good-enough? guess number)
+  (< (abs (- number (* guess guess guess))) 0.001))
+
+(define (cube-root-iter guess number)
+  (if (good-enough? guess number)
+      guess
+      (cube-root-iter (improve guess number) number)))
+
+(define (cube-root-of x)
+  (cube-root-iter 1.0 x))
+
+(cube-root-of 27)
