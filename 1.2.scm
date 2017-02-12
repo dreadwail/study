@@ -168,3 +168,46 @@
 ; check that both produce the same results
 ;
 (assert (= (recursive-process 5) (iterative-process 5)))
+
+; Exercise 1.12
+;
+; pascals triangle
+;         1
+;       1   1
+;     1   2   1
+;   1   3   3   1
+; 1   4   6   4   1
+;
+; or
+;
+; 1
+; 1   1
+; 1   2   1
+; 1   3   3   1
+; 1   4   6   4   1
+;
+;
+; compute using recursive process
+;
+(define (pascal-at row column)
+  (if (or (< column 1) (< row 2) (= column row))
+      1
+      (+ (pascal-at (- row 1) column)
+         (pascal-at (- row 1) (- column 1)))))
+
+; check it
+(assert (= 1 (pascal-at 0 0)))
+(assert (= 1 (pascal-at 1 0)))
+(assert (= 1 (pascal-at 1 1)))
+(assert (= 1 (pascal-at 2 0)))
+(assert (= 2 (pascal-at 2 1)))
+(assert (= 1 (pascal-at 2 2)))
+(assert (= 1 (pascal-at 3 0)))
+(assert (= 3 (pascal-at 3 1)))
+(assert (= 3 (pascal-at 3 2)))
+(assert (= 1 (pascal-at 3 3)))
+(assert (= 1 (pascal-at 4 0)))
+(assert (= 4 (pascal-at 4 1)))
+(assert (= 6 (pascal-at 4 2)))
+(assert (= 4 (pascal-at 4 3)))
+(assert (= 1 (pascal-at 4 4)))
