@@ -215,3 +215,50 @@
 ; 1.13
 
 ; too mathy. low value. didnt do.
+
+; 1.14
+
+(define (count-change amount)
+  (cc amount 5))
+
+(define (cc amount kinds-of-coins)
+  (cond ((= amount 0) 1)
+        ((or (< amount 0) (= kinds-of-coins 0)) 0)
+        (else (+ (cc amount
+                     (- kinds-of-coins 1))
+                 (cc (- amount
+                        (first-denomination kinds-of-coins))
+                     kinds-of-coins)))))
+
+(define (first-denomination kinds-of-coins)
+  (cond ((= kinds-of-coins 1) 1)
+        ((= kinds-of-coins 2) 5)
+        ((= kinds-of-coins 3) 10)
+        ((= kinds-of-coins 4) 25)
+        ((= kinds-of-coins 5) 50)))
+
+(assert (= 292 (count-change 100)))
+
+; analysis of change making for 11 cents
+
+; (cc amount kinds-of-coins) has 2 branches that call (cc amount kinds-of-coins)
+;
+; the order of growth for space is O(n) because the only thing kept at each
+; recursion step is the stack frame (no deferred operations, completely tail recursive)
+;
+; the order of growth for steps: n^2 because at each recursion 2 more steps are compounded
+; ex:
+; 1 recursion yields 3 steps:
+;                x
+;             2     2
+; 2 recursions yields 7 steps:
+;                x
+;             2     2
+;           2  2  2   2
+; 3 recursions yields 15 steps:
+;                      x
+;               2             2
+;           2       2     2       2
+;         2  2    2  2   2  2    2  2
+
+(assert (= 4 (count-change 11)))
