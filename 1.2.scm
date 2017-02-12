@@ -211,3 +211,7 @@
 (assert (= 6 (pascal-at 4 2)))
 (assert (= 4 (pascal-at 4 3)))
 (assert (= 1 (pascal-at 4 4)))
+
+; 1.13
+
+; too mathy. low value. didnt do.
