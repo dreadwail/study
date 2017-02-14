@@ -262,3 +262,126 @@
 ;         2  2    2  2   2  2    2  2
 
 (assert (= 4 (count-change 11)))
+
+; 1.15 - 1.19
+;
+; All of these were too mathy/analytical. Didnt do them.
+
+
+; 1.20
+
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
+
+; normal-order evaluation of (gcd 206 40):
+;
+; (gcd 206 40)
+; --------------------------
+; expand 'gcd'
+;
+; (if (= 40 0)
+;     206
+;     (gcd 40 (remainder 206 40)))
+; --------------------------
+; evaluate 'if'
+; (= 40 0) is #f so take 'else'
+;
+; (gcd 40 (remainder 206 40))
+; --------------------------
+; expand 'gcd'
+;
+; (if (= (remainder 206 40) 0)
+;     40
+;     (gcd (remainder 206 40) (remainder 40 (remainder 206 40))))
+; --------------------------
+; evaluate 'remainder'
+;
+; (if (= 6 0)
+;     40
+;     (gcd (remainder 206 40) (remainder 40 (remainder 206 40))))
+; --------------------------
+; (= 6 0) is #f so take 'else'
+;
+; (gcd (remainder 206 40) (remainder 40 (remainder 206 40)))
+; --------------------------
+; expand 'gcd'
+;
+; (if (= (remainder 40 (remainder 206 40)) 0)
+;     (remainder 206 40)
+;     (gcd (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40))))))
+; --------------------------
+; evaluate the 'remainder' calls in 'if'
+;
+; (if (= 4 0)
+;     (remainder 206 40)
+;     (gcd (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40))))))
+; --------------------------
+; (= 4 0) is #f so take 'else'
+;
+; (gcd (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40))))
+; --------------------------
+; expand 'gcd'
+;
+; (if (= (remainder (remainder 206 40) (remainder 40 (remainder 206 40))) 0)
+;     (remainder 40 (remainder 206 40))
+;     (gcd (remainder (remainder 206 40) (remainder 40 (remainder 206 40))) (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40))))))
+; --------------------------
+; evaluate the 'remainder' calls in 'if'
+;
+; (if (= 2 0)
+;     (remainder 40 (remainder 206 40))
+;     (gcd (remainder (remainder 206 40) (remainder 40 (remainder 206 40))) (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40))))))
+; --------------------------
+; (= 2 0) is #f so take 'else'
+;
+; (gcd (remainder (remainder 206 40) (remainder 40 (remainder 206 40))) (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))))
+; --------------------------
+; expand 'gcd'
+;
+; (if (= (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))) 0)
+;     (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))
+;     (gcd (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))) (remainder (remainder (remainder 206 40) (remainder 40 (remainder 206 40))) (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))))))
+; --------------------------
+; evaluate the 'remainder' calls in 'if'
+;
+; (if (= 0 0)
+;     (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))
+;     (gcd (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))) (remainder (remainder (remainder 206 40) (remainder 40 (remainder 206 40))) (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))))))
+; --------------------------
+; (= 0 0) is #t so take 'then'
+;
+; (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))
+; --------------------------
+; evaluate the 'remainder' calls
+;
+; 2
+; --------------------------
+;
+; 18 total calls to (remainder a b) were evaluated for normal-order evaluation
+
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
+
+; applicative-order evaluation of (gcd 206 40):
+;
+; (gcd 206 40)
+; --------------------------
+; no operands to evaluate, expand
+;
+; (if (= 40 0)
+;     206
+;     (gcd 40 (remainder 206 40)))
+; --------------------------
+; operands to evaluate
+;
+; (if (= 40 0)
+;     206
+;     (if (= 6 0)
+;         40
+;         (gcd 6 (remainder 40 6))))
+;
+; TODO .........
