@@ -159,7 +159,6 @@ multiplied
 ; normal-order will never attempt to evaluate (p) because the 'if' short-circuited us from getting there
 
 
-; exercise 1.5
 
 (define (average x y)
   (/ (+ x y) 2))
