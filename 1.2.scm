@@ -376,12 +376,68 @@
 ;     206
 ;     (gcd 40 (remainder 206 40)))
 ; --------------------------
-; operands to evaluate
+; #f, so
 ;
-; (if (= 40 0)
-;     206
-;     (if (= 6 0)
-;         40
-;         (gcd 6 (remainder 40 6))))
+; (gcd 40 (remainder 206 40))
+; --------------------------
+; eval 'remainder'
 ;
-; TODO .........
+; (gcd 40 6)
+; --------------------------
+; no operands to evaluate, expand
+;
+; (if (= 6 0)
+;     40
+;     (gcd 6 (remainder 40 6)))
+; --------------------------
+; #f, so
+;
+; (gcd 6 (remainder 40 6))
+; --------------------------
+; eval 'remainder'
+;
+; (gcd 6 4)
+; --------------------------
+; no operands to evaluate, expand
+;
+; (if (= 4 0)
+;     6
+;     (gcd 4 (remainder 6 4)))
+; --------------------------
+; #f, so
+;
+; (gcd 4 (remainder 6 4))
+; --------------------------
+; eval 'remainder'
+;
+; (gcd 4 2)
+; --------------------------
+; no operands to evaluate, expand
+;
+; (if (= 2 0)
+;     4
+;     (gcd 2 (remainder 4 2)))
+; --------------------------
+; #f, so
+;
+; (gcd 2 (remainder 4 2))
+; --------------------------
+; eval 'remainder'
+;
+; (gcd 2 0)
+; --------------------------
+; no operands to evaluate, expand
+;
+; (if (= 0 0)
+;     2
+;     (gcd 0 (remainder 2 0)))
+; --------------------------
+; #t, so
+;
+; 2
+; --------------------------
+;
+; 4 total calls to (remainder a b) were evaluated for applicative-order evaluation
+
+
+; 1.21 - 1.29 were too mathy and of low value to me right now. skipped.
