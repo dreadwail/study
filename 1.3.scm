@@ -59,3 +59,21 @@
 
 (assert (= 110 (accumulate-recursive add 0 double 0 add-one 10)))
 
+; 1.33
+
+; write (filtered-accumulate)
+
+(define (is-even a)
+  (= 0 (remainder a 2)))
+
+(define (filtered-accumulate combiner null-value func start next end filter)
+  (define (iter current result)
+    (if (> current end)
+        result
+        (if (filter current)
+          (iter (next current) (combiner (func current) result))
+          (iter (next current) (combiner null-value result)))))
+  (iter start null-value))
+
+(assert (= 60 (filtered-accumulate add 0 double 0 add-one 10 is-even)))
+
