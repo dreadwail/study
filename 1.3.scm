@@ -30,3 +30,32 @@
 
 (assert (= (sum-of-cubes-iterative 0 10) (sum-of-cubes 0 10)))
 
+; 1.32
+
+; write (accumulate) and leverage to write (sum-accumulate) and (product-accumulate)
+
+(define (add a b)
+  (+ a b))
+
+(define (add-one a)
+  (add a 1))
+
+(define (double a)
+  (add a a))
+
+(define (accumulate-iter combiner null-value func start next end)
+  (define (iter current result)
+    (if (> current end)
+        result
+        (iter (next current) (combiner (func current) result))))
+  (iter start null-value))
+
+(assert (= 110 (accumulate-iter add 0 double 0 add-one 10)))
+
+(define (accumulate-recursive combiner null-value func current next end)
+  (if (> current end)
+      null-value
+      (combiner (func current) (accumulate-recursive combiner null-value func (next current) next end))))
+
+(assert (= 110 (accumulate-recursive add 0 double 0 add-one 10)))
+
