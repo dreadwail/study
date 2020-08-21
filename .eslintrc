@@ -17,6 +17,7 @@
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-unused-vars": [2, { "ignoreRestSiblings": true, "argsIgnorePattern": "^_" }],
-    "quotes": [2, "single"]
+    "quotes": [2, "single"],
+    "no-console": 2
   }
 }
