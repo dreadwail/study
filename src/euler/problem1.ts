@@ -1,9 +1,9 @@
-import { generateSequence } from '../support';
-
-export const sumFizzBuzz = (max: number): number =>
-  generateSequence({ max, startsAt: 0, inclusive: false }).reduce((sum, number) => {
+export const sumFizzBuzz = (max: number): number => {
+  let sum = 0;
+  for (let number = 0; number < max; number += 1) {
     if (number % 3 === 0 || number % 5 === 0) {
-      return sum + number;
+      sum += number;
     }
-    return sum;
-  }, 0);
+  }
+  return sum;
+};
