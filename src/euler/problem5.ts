@@ -1,6 +1,8 @@
+import { generateSequence } from 'support/arrays';
+
 export const smallestMultiple = (maxFactor: number): number => {
   let candidate = maxFactor;
-  const factors = [...Array(maxFactor).keys()].map((_, index) => index + 1);
+  const factors = generateSequence({ start: 1, end: maxFactor, inclusive: true });
   while (!factors.every((factor) => candidate % factor === 0)) {
     candidate += maxFactor;
   }
