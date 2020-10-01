@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "target": "es5",
+    "target": "es2020",
     "lib": ["esnext", "es6"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
