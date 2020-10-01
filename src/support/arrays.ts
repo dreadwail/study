@@ -12,3 +12,22 @@ export const generateSequence = ({ start, end, inclusive }: GenerateSequenceOpti
   }
   return result;
 };
+
+type ChunkArrayOptions = {
+  arr: any[];
+  chunkSize: number;
+  mutuallyExclusive: boolean;
+};
+
+export const chunk = ({ arr, chunkSize, mutuallyExclusive }: ChunkArrayOptions): any[] => {
+  if (chunkSize < 1) {
+    return [];
+  }
+  const chunks = [];
+  const step = mutuallyExclusive ? chunkSize : 1;
+  for (let startingIndex = 0; startingIndex <= arr.length - chunkSize; startingIndex += step) {
+    const currentChunk = arr.slice(startingIndex, startingIndex + chunkSize);
+    chunks.push(currentChunk);
+  }
+  return chunks;
+};
