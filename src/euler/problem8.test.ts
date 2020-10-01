@@ -7,6 +7,6 @@ describe('findGreatestAdjacentDigitProduct', () => {
     [4, 5832],
     [13, 23514624000],
   ])('returns the correct product (%i) for %i digits in the test number', (digitCount, expectedProduct) => {
-    expect(findGreatestAdjacentDigitProduct(BigInt(testNumber), digitCount)).toEqual(expectedProduct);
+    expect(findGreatestAdjacentDigitProduct(testNumber, digitCount)).toEqual(expectedProduct);
   });
 });
