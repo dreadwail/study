@@ -1,4 +1,4 @@
-import { productOfSumEqualTo } from './dec1';
+import { productOfThreeSumEqualTo, productOfTwoSumEqualTo } from './dec1';
 
 const input: number[] = [
   1686,
@@ -204,7 +204,11 @@ const input: number[] = [
 ];
 
 describe('dec1', () => {
-  it('computes the correct answer for a 2020 sum', () => {
-    expect(productOfSumEqualTo(2020, input)).toEqual(955584);
+  it('computes the correct answer for a 2020 sum with 2 numbers', () => {
+    expect(productOfTwoSumEqualTo(2020, input)).toEqual(955584);
+  });
+
+  it('computes the correct answer for a 2020 sum with 3 numbers', () => {
+    expect(productOfThreeSumEqualTo(2020, input)).toEqual(287503934);
   });
 });
