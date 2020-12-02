@@ -1,16 +1,28 @@
-export const productOfSumEqualTo = (sum: number, input: number[]) => {
-  const values = new Set(input);
-
-  let number1 = 0;
-  let number2 = 0;
-
-  values.forEach((value) => {
-    const toFind = sum - value;
-    if (values.has(toFind)) {
-      number1 = value;
-      number2 = toFind;
+export const productOfTwoSumEqualTo = (sum: number, input: number[]): number => {
+  for (let a = 0; a < input.length; a += 1) {
+    for (let b = 0; b < input.length; b += 1) {
+      const numA = input[a];
+      const numB = input[b];
+      if (numA + numB === sum) {
+        return numA * numB;
+      }
     }
-  });
+  }
+  return 0;
+};
 
-  return number1 * number2;
+export const productOfThreeSumEqualTo = (sum: number, input: number[]): number => {
+  for (let a = 0; a < input.length; a += 1) {
+    for (let b = 0; b < input.length; b += 1) {
+      for (let c = 0; c < input.length; c += 1) {
+        const numA = input[a];
+        const numB = input[b];
+        const numC = input[c];
+        if (numA + numB + numC === sum) {
+          return numA * numB * numC;
+        }
+      }
+    }
+  }
+  return 0;
 };
