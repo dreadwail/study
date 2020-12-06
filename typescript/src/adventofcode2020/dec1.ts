@@ -23,20 +23,20 @@ export const productOfThreeSumEqualTo = (sum: number, input: number[]): number =
     }
   }
 
-  const sumsToTuples = new Map<number, number[]>();
+  const sumsToTuples: { [key: number]: number[] } = {};
 
   for (let tupleIndex = 0; tupleIndex < tuples.length; tupleIndex += 1) {
     const tuple = tuples[tupleIndex];
     const sum = tuple[0] + tuple[1];
-    sumsToTuples.set(sum, tuple);
+    sumsToTuples[sum] = tuple;
   }
 
   for (let number3index = 0; number3index < input.length; number3index += 1) {
     const numberHere = input[number3index];
     const numberNeeded = sum - numberHere;
 
-    if (sumsToTuples.has(numberNeeded)) {
-      const tuple = sumsToTuples.get(numberNeeded) || [];
+    if (sumsToTuples[numberNeeded]) {
+      const tuple = sumsToTuples[numberNeeded] || [];
       return [...tuple, numberHere].reduce((product, current) => product * current);
     }
   }
