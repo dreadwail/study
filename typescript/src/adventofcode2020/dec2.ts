@@ -1,21 +1,10 @@
-// '2-8 t: pncmjxlvckfbtrjh',
-// '8-9 l: lzllllldsl',
-// '3-11 c: ccchcccccclxnkcmc',
-
-/* const passwordData = {
-  min: 2,
-  max: 8,
-  requiredLetter: 't',
-  password: 'pncmjxlvckfbtrjh',
-}
-*/
-
 type PasswordData = {
   min: number;
   max: number;
   requiredLetter: string;
   password: string;
 };
+
 const parsePasswordData = (data: string): PasswordData => {
   const [range, letterWithColon, password] = data.split(' ');
   const [minString, maxString] = range.split('-');
@@ -29,14 +18,13 @@ const parsePasswordData = (data: string): PasswordData => {
   };
 };
 
-export const countValidPasswords = (datas: string[]): number => {
-  let validCount = 0;
-  for (let i = 0; i < datas.length; i++) {
-    const { min, max, requiredLetter, password } = parsePasswordData(datas[i]);
-    const count = password.split('').filter((char) => char === requiredLetter).length;
-    if (count >= min && count <= max) {
-      validCount++;
+export const countValidPasswords = (datas: string[]): number =>
+  datas.reduce((validCount, currentData) => {
+    const { min, max, requiredLetter, password } = parsePasswordData(currentData);
+    const passwordCharacters = password.split('');
+    const countOfRequiredCharacter = passwordCharacters.filter((char) => char === requiredLetter).length;
+    if (countOfRequiredCharacter >= min && countOfRequiredCharacter <= max) {
+      return validCount + 1;
     }
-  }
-  return validCount;
-};
+    return validCount;
+  }, 0);
