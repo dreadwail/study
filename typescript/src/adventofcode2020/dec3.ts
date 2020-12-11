@@ -2,8 +2,7 @@ const tree = '#';
 
 type Slope = { x: number; y: number };
 
-export const countTrees = (input: string, slope: Slope): number => {
-  const rows = input.split('\n');
+export const countTrees = (rows: string[], slope: Slope): number => {
   const mountain: string[][] = rows.map((row) => row.split(''));
 
   const rowLength = mountain[0].length;
@@ -25,7 +24,7 @@ export const countTrees = (input: string, slope: Slope): number => {
   return treeCount;
 };
 
-export const multiplyTreeCounts = (input: string, slopes: Slope[]): number => {
-  const treeCounts: number[] = slopes.map((slope) => countTrees(input, slope));
+export const multiplyTreeCounts = (rows: string[], slopes: Slope[]): number => {
+  const treeCounts: number[] = slopes.map((slope) => countTrees(rows, slope));
   return treeCounts.reduce((product, current) => product * current);
 };
