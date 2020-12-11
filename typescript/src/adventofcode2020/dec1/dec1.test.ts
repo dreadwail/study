@@ -6,7 +6,7 @@ describe('dec1 Ben', () => {
   let input: number[];
 
   beforeEach(() => {
-    const filePath = resolve(__dirname, './dec1.input.ben.txt');
+    const filePath = resolve(__dirname, './input.ben.txt');
     input = readRows(filePath).map((row) => parseInt(row, 10));
   });
 
@@ -23,7 +23,7 @@ describe('dec1 Susanna', () => {
   let input: number[];
 
   beforeEach(() => {
-    const filePath = resolve(__dirname, './dec1.input.susanna.txt');
+    const filePath = resolve(__dirname, './input.susanna.txt');
     input = readRows(filePath).map((row) => parseInt(row, 10));
   });
 
