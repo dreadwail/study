@@ -6,7 +6,7 @@ describe('dec2 Susanna', () => {
   let input: string[];
 
   beforeEach(() => {
-    const filePath = resolve(__dirname, './dec2.input.susanna.txt');
+    const filePath = resolve(__dirname, './input.susanna.txt');
     input = readRows(filePath);
   });
 
@@ -19,7 +19,7 @@ describe('dec2 Ben', () => {
   let input: string[];
 
   beforeEach(() => {
-    const filePath = resolve(__dirname, './dec2.input.ben.txt');
+    const filePath = resolve(__dirname, './input.ben.txt');
     input = readRows(filePath);
   });
 
