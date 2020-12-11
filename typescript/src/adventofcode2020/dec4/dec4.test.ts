@@ -40,7 +40,7 @@ describe('dec4 susanna', () => {
   let input: string;
 
   beforeEach(() => {
-    const filePath = resolve(__dirname, './dec4.input.susanna.txt');
+    const filePath = resolve(__dirname, './input.susanna.txt');
     input = readFileSync(filePath, 'utf8');
   });
 
@@ -57,7 +57,7 @@ describe('dec4 ben', () => {
   let input: string;
 
   beforeEach(() => {
-    const filePath = resolve(__dirname, './dec4.input.ben.txt');
+    const filePath = resolve(__dirname, './input.ben.txt');
     input = readFileSync(filePath, 'utf8');
   });
 
