@@ -1,4 +1,4 @@
-import { determineHighestSeatId } from './dec5';
+import { determineHighestSeatId, findOpenSeat } from './dec5';
 import { readRows } from 'support/files';
 import { resolve } from 'path';
 
@@ -11,7 +11,15 @@ describe('dec5 Ben', () => {
     input = readRows(filePath);
   });
 
-  it('should find the highest seat id', () => {
-    expect(determineHighestSeatId(input)).toEqual(987);
+  describe('determineHighestSeatId', () => {
+    it('should find the highest seat id', () => {
+      expect(determineHighestSeatId(input)).toEqual(987);
+    });
+  });
+
+  describe('findOpenSeat', () => {
+    it('should find the open seat', () => {
+      expect(findOpenSeat(input)).toEqual(603);
+    });
   });
 });
