@@ -53,4 +53,23 @@ const computeSeatId = (row: string): number => {
   return calculateSeatId(rowNumber, columnNumber);
 };
 
-export const determineHighestSeatId = (rows: string[]): number => Math.max(...rows.map(computeSeatId));
+const computeSeatIds = (rows: string[]): number[] => rows.map(computeSeatId);
+
+export const determineHighestSeatId = (rows: string[]): number => Math.max(...computeSeatIds(rows));
+
+export const findOpenSeat = (rows: string[]): number => {
+  const seatIds = computeSeatIds(rows);
+
+  const sortedSeatIds = [...seatIds].sort((a, b) => a - b);
+  const sortedSeatIdsSet = new Set(sortedSeatIds);
+  const minSeatId = Math.min(...sortedSeatIds);
+  const maxSeatId = Math.max(...sortedSeatIds);
+
+  for (let seatId = minSeatId + 1; seatId <= maxSeatId - 1; seatId += 1) {
+    if (!sortedSeatIdsSet.has(seatId)) {
+      return seatId;
+    }
+  }
+
+  return 0;
+};
