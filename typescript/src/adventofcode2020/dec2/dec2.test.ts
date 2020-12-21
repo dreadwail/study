@@ -13,6 +13,10 @@ describe('dec2 Susanna', () => {
   it('should return how many valid passwords are in the data set', () => {
     expect(countValidLengthPasswords(input)).toEqual(666);
   });
+
+  it('should return how many valid passwords are in the data set if measured by positions', () => {
+    expect(countValidPositionPasswords(input)).toEqual(670);
+  });
 });
 
 describe('dec2 Ben', () => {
