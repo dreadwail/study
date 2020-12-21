@@ -23,3 +23,25 @@ describe('dec5 Ben', () => {
     });
   });
 });
+
+describe('dec5 Susanna', () => {
+  let input: string[];
+
+  beforeEach(() => {
+    const filePath = resolve(__dirname, './input.susanna.txt');
+
+    input = readRows(filePath);
+  });
+
+  describe('determineHighestSeatId', () => {
+    it('should find the highest seat id', () => {
+      expect(determineHighestSeatId(input)).toEqual(818);
+    });
+  });
+
+  describe('findOpenSeat', () => {
+    it('should find the open seat', () => {
+      expect(findOpenSeat(input)).toEqual(559);
+    });
+  });
+});
