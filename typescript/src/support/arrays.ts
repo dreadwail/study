@@ -13,13 +13,13 @@ export const generateSequence = ({ start, end, inclusive }: GenerateSequenceOpti
   return result;
 };
 
-type ChunkArrayOptions = {
-  arr: any[];
+type ChunkArrayOptions<T> = {
+  arr: T[];
   chunkSize: number;
   mutuallyExclusive: boolean;
 };
 
-export const chunk = ({ arr, chunkSize, mutuallyExclusive }: ChunkArrayOptions): any[] => {
+export const chunk = <T>({ arr, chunkSize, mutuallyExclusive }: ChunkArrayOptions<T>): T[][] => {
   if (chunkSize < 1) {
     return [];
   }
