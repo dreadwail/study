@@ -1,9 +1,12 @@
+import { generateSequence } from 'support/arrays';
+
 export const sumFizzBuzz = (max: number): number => {
-  let sum = 0;
-  for (let number = 0; number < max; number += 1) {
+  const numbers = generateSequence({ start: 0, end: max, inclusive: false });
+
+  return numbers.reduce((sum, number) => {
     if (number % 3 === 0 || number % 5 === 0) {
-      sum += number;
+      return sum + number;
     }
-  }
-  return sum;
+    return sum;
+  });
 };
