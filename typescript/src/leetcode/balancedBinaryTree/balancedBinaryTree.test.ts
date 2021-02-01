@@ -1,4 +1,4 @@
-import { levelOrderTraversal, partition, sortedArrayToBST } from './balancedTree';
+import { levelOrderTraversal, partition, sortedArrayToBST } from './balancedBinaryTree';
 
 describe('partition', () => {
   it('correctly identifies the midpoint', () => {
