@@ -18,5 +18,9 @@ export const isAnagram = (str1: string, str2: string): boolean => {
   return Object.keys(str1counts).every((key) => str1counts[key] === str2counts[key]);
 };
 
-export const isAnagramUsingSort = (str1: string, str2: string): boolean =>
-  str1.split('').sort().join('') === str2.split('').sort().join('');
+export const isAnagramUsingSort = (str1: string, str2: string): boolean => {
+  const str1charsSorted = str1.split('').sort();
+  const str2charsSorted = str2.split('').sort();
+
+  return str1charsSorted.every((character, index) => str2charsSorted[index] === character);
+};
