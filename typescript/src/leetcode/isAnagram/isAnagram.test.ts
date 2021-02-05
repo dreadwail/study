@@ -1,6 +1,6 @@
-import { isAnagram, isAnagramUsingSort } from './isAnagram';
+import { isAnagramWithCounts, isAnagramWithCountsEach, isAnagramUsingSort } from './isAnagram';
 
-describe.each([isAnagram, isAnagramUsingSort])('isAnagram', (func) => {
+describe.each([isAnagramWithCounts, isAnagramWithCountsEach, isAnagramUsingSort])('isAnagram', (func) => {
   it('correctly identifies anagrams', () => {
     expect(func('anagram', 'nagaram')).toBe(true);
   });
