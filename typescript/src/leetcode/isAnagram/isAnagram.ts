@@ -19,8 +19,12 @@ export const isAnagram = (str1: string, str2: string): boolean => {
 };
 
 export const isAnagramUsingSort = (str1: string, str2: string): boolean => {
-  const str1charsSorted = str1.split('').sort();
-  const str2charsSorted = str2.split('').sort();
+  if (str1.length !== str2.length) {
+    return false;
+  }
+
+  const str1charsSorted = [...str1].sort();
+  const str2charsSorted = [...str2].sort();
 
   return str1charsSorted.every((character, index) => str2charsSorted[index] === character);
 };
