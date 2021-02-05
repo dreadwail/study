@@ -1,13 +1,27 @@
+export const isAnagramUsingSort = (str1: string, str2: string): boolean => {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+
+  const str1charsSorted = [...str1].sort();
+  const str2charsSorted = [...str2].sort();
+
+  return str1charsSorted.every((character, index) => str2charsSorted[index] === character);
+};
+
 type CharacterCounts = Record<string, number>;
 
-const toCounts = (str: string): CharacterCounts =>
-  str.split('').reduce<CharacterCounts>((counts, character) => {
+const toCounts = (str: string): CharacterCounts => {
+  const counts: CharacterCounts = {};
+  for (let i = 0; i < str.length; i += 1) {
+    const character = str[i];
     counts[character] = counts[character] || 0;
     counts[character] += 1;
-    return counts;
-  }, {});
+  }
+  return counts;
+};
 
-export const isAnagram = (str1: string, str2: string): boolean => {
+export const isAnagramWithCountsEach = (str1: string, str2: string): boolean => {
   if (str1.length !== str2.length) {
     return false;
   }
@@ -18,13 +32,20 @@ export const isAnagram = (str1: string, str2: string): boolean => {
   return Object.keys(str1counts).every((key) => str1counts[key] === str2counts[key]);
 };
 
-export const isAnagramUsingSort = (str1: string, str2: string): boolean => {
+export const isAnagramWithCounts = (str1: string, str2: string): boolean => {
   if (str1.length !== str2.length) {
     return false;
   }
 
-  const str1charsSorted = [...str1].sort();
-  const str2charsSorted = [...str2].sort();
+  const charCounts = toCounts(str1);
 
-  return str1charsSorted.every((character, index) => str2charsSorted[index] === character);
+  for (let i = 0; i < str2.length; i += 1) {
+    const str2char = str2[i];
+    if (!charCounts[str2char]) {
+      return false;
+    }
+    charCounts[str2char] -= 1;
+  }
+
+  return Object.values(charCounts).every((count) => count === 0);
 };
