@@ -1,16 +1,6 @@
-export class TreeNode {
-  val: number;
-  left: TreeNode | null;
-  right: TreeNode | null;
+import { Node } from 'support/trees';
 
-  constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-    this.val = val === undefined ? 0 : val;
-    this.left = left === undefined ? null : left;
-    this.right = right === undefined ? null : right;
-  }
-}
-
-export const getMaxDepth = (root: TreeNode | null): number => {
+export const getMaxDepth = (root: Node<number> | null): number => {
   if (!root) {
     return 0;
   }

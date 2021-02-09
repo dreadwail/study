@@ -1,8 +1,9 @@
-import { getMaxDepth, TreeNode } from './maxDepthOfBinaryTree';
+import { Node } from 'support/trees';
+import { getMaxDepth } from './maxDepthOfBinaryTree';
 
 describe('getMaxDepth', () => {
   it('can get the max depth of the sample input', () => {
-    const tree = new TreeNode(3, new TreeNode(9), new TreeNode(20, new TreeNode(15), new TreeNode(7)));
+    const tree = new Node(3, new Node(9), new Node(20, new Node(15), new Node(7)));
 
     expect(getMaxDepth(tree)).toEqual(3);
   });
@@ -12,6 +13,6 @@ describe('getMaxDepth', () => {
   });
 
   it('correctly handles a single node tree', () => {
-    expect(getMaxDepth(new TreeNode(0))).toEqual(1);
+    expect(getMaxDepth(new Node(0))).toEqual(1);
   });
 });
