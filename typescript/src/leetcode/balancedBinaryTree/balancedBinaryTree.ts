@@ -1,30 +1,20 @@
-class TreeNode {
-  left: TreeNode | null;
-  right: TreeNode | null;
-  val: number;
+import { Node } from 'support/trees';
 
-  constructor(val: number, left?: TreeNode | null, right?: TreeNode | null) {
-    this.val = val;
-    this.left = left || null;
-    this.right = right || null;
-  }
-}
-
-export const levelOrderTraversal = (node: TreeNode | null): number[] => {
+export const levelOrderTraversal = (node: Node<number> | null): number[] => {
   if (!node) {
     return [];
   }
 
-  const queue: TreeNode[] = [];
+  const queue: Node<number>[] = [];
   const out: number[] = [];
 
-  let current: TreeNode | null = node;
+  let current: Node<number> | null = node;
   queue.push(current);
 
   while (queue.length > 0) {
     current = queue.shift() || null;
     if (current) {
-      out.push(current.val);
+      out.push(current.value);
 
       if (current.left) {
         queue.push(current.left);
@@ -57,7 +47,7 @@ export const partition = (nums: number[]): Partitioned => {
   };
 };
 
-const addBalanced = (parent: TreeNode, numsToInsert: number[]) => {
+const addBalanced = (parent: Node<number>, numsToInsert: number[]) => {
   if (numsToInsert.length === 0) {
     return;
   }
@@ -65,20 +55,20 @@ const addBalanced = (parent: TreeNode, numsToInsert: number[]) => {
   const { midpointIndex, lefts, rights } = partition(numsToInsert);
   const midpointValue = numsToInsert[midpointIndex];
 
-  if (midpointValue <= parent.val) {
-    const newNode = new TreeNode(midpointValue);
+  if (midpointValue <= parent.value) {
+    const newNode = new Node(midpointValue);
     parent.left = newNode;
     addBalanced(newNode, lefts);
     addBalanced(newNode, rights);
   } else {
-    const newNode = new TreeNode(midpointValue);
+    const newNode = new Node(midpointValue);
     parent.right = newNode;
     addBalanced(newNode, lefts);
     addBalanced(newNode, rights);
   }
 };
 
-export const sortedArrayToBST = (nums: number[]): TreeNode | null => {
+export const sortedArrayToBST = (nums: number[]): Node<number> | null => {
   if (nums.length === 0) {
     return null;
   }
@@ -86,7 +76,7 @@ export const sortedArrayToBST = (nums: number[]): TreeNode | null => {
   const { midpointIndex, lefts, rights } = partition(nums);
 
   const midpointValue = nums[midpointIndex];
-  const rootNode = new TreeNode(midpointValue);
+  const rootNode = new Node(midpointValue);
 
   addBalanced(rootNode, lefts);
   addBalanced(rootNode, rights);

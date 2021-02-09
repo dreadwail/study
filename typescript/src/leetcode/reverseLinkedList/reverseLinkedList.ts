@@ -1,44 +1,11 @@
-class ListNode {
-  value: number;
-  next?: ListNode;
+import { Node } from 'support/lists';
 
-  constructor(value: number, next?: ListNode) {
-    this.value = value;
-    this.next = next;
-  }
-
-  values(): number[] {
-    const out: number[] = [];
-    let current: ListNode | undefined = this;
-
-    while (current) {
-      out.push(current.value);
-      current = current.next;
-    }
-
-    return out;
-  }
-}
-
-export const arrayToLinkedList = (nums: number[]): ListNode | undefined => {
-  const nodes = nums.map((num) => new ListNode(num));
-  nodes.forEach((node, index, allNodes) => {
-    const next = allNodes[index + 1];
-    node.next = next;
-  });
-  return nodes[0];
-};
-
-export const reverseLinkedList = (head: ListNode | undefined): ListNode | undefined => {
-  if (!head) {
-    return undefined;
-  }
-
-  let previous: ListNode | undefined = undefined;
-  let current: ListNode | undefined = head;
+export const reverseLinkedList = (head: Node<number>): Node<number> => {
+  let previous: Node<number> | null = null;
+  let current: Node<number> | null = head;
 
   while (current) {
-    const oldNext: ListNode | undefined = current.next;
+    const oldNext: Node<number> | null = current.next;
 
     current.next = previous;
 
@@ -46,5 +13,5 @@ export const reverseLinkedList = (head: ListNode | undefined): ListNode | undefi
     current = oldNext;
   }
 
-  return previous;
+  return previous as Node<number>;
 };

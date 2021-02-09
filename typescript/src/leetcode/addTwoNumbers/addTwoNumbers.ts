@@ -1,13 +1,13 @@
-type Maybe<T> = T | null;
+import { Node } from 'support/lists';
 
-export const listToNumber = (list: Maybe<ListNode>): number => {
-  let current: Maybe<ListNode> = list;
+export const listToNumber = (list: Node<number> | null): number => {
+  let current: Node<number> | null = list;
 
   let multiplier = 1;
   let out = 0;
 
   while (current) {
-    out += multiplier * current.val;
+    out += multiplier * current.value;
     multiplier *= 10;
     current = current.next;
   }
@@ -15,17 +15,7 @@ export const listToNumber = (list: Maybe<ListNode>): number => {
   return out;
 };
 
-export class ListNode {
-  val: number;
-  next: Maybe<ListNode>;
-
-  constructor(val?: number, next?: Maybe<ListNode>) {
-    this.val = val === undefined ? 0 : val;
-    this.next = next === undefined ? null : next;
-  }
-}
-
-export const addTwoNumbers = (list1: Maybe<ListNode>, list2: Maybe<ListNode>): Maybe<ListNode> => {
+export const addTwoNumbers = (list1: Node<number> | null, list2: Node<number> | null): Node<number> | null => {
   if (!list1) {
     return list2;
   }
@@ -35,13 +25,13 @@ export const addTwoNumbers = (list1: Maybe<ListNode>, list2: Maybe<ListNode>): M
 
   let carry = 0;
 
-  let list1pointer: Maybe<ListNode> = list1;
-  let list2pointer: Maybe<ListNode> = list2;
+  let list1pointer: Node<number> | null = list1;
+  let list2pointer: Node<number> | null = list2;
   const outDigits: number[] = [];
 
   while (list1pointer || list2pointer) {
-    const list1positionValue = list1pointer ? list1pointer.val : 0;
-    const list2positionValue = list2pointer ? list2pointer.val : 0;
+    const list1positionValue = list1pointer ? list1pointer.value : 0;
+    const list2positionValue = list2pointer ? list2pointer.value : 0;
 
     const subtotal = list1positionValue + list2positionValue + carry;
 
@@ -62,12 +52,12 @@ export const addTwoNumbers = (list1: Maybe<ListNode>, list2: Maybe<ListNode>): M
     return null;
   }
 
-  const head = new ListNode(outDigits[0]);
+  const head = new Node(outDigits[0]);
   let current = head;
 
   for (let i = 1; i < outDigits.length; i += 1) {
     const digit = outDigits[i];
-    current.next = new ListNode(digit);
+    current.next = new Node(digit);
     current = current.next;
   }
 
