@@ -1,3 +1,5 @@
+import { NonEmptyArray } from './types';
+
 export class Node<T> {
   value: T;
   next: Node<T> | null;
@@ -19,8 +21,6 @@ export const listToArray = <T>(node: Node<T>): T[] => {
 
   return out;
 };
-
-type NonEmptyArray<T> = T[] & { 0: T };
 
 export const arrayToList = <T>(values: NonEmptyArray<T>): Node<T> => {
   const nodes = values.map((value) => new Node(value));
