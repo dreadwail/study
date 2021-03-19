@@ -1,5 +1,4 @@
-data_struct
-==============
+# data_struct
 
 This is a collection of data structures I wrote in ruby as a study guide. Some of them already exist in the ruby core lib but that's not why I wrote it. To keep sharp on computer science fundamentals and languages I often write these.
 
@@ -25,7 +24,7 @@ Install the dev dependencies:
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Ben Lakey
+Copyright (c) 2015 Dreadwail
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -44,4 +43,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-

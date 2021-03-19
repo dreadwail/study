@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.summary = "This is a collection of data structures I wrote in ruby as a study guide."
   s.description = "This is a collection of data structures I wrote in ruby as a study guide. Some of them already exist in the ruby core lib but that's not why I wrote it. To keep sharp on computer science fundamentals and languages I often write these."
 
-  s.authors = ["Ben Lakey"]
-  s.email = "benlakey@gmail.com"
-  s.homepage = "http://github.com/benlakey/data_struct"
+  s.authors = ["Dreadwail"]
+  s.email = "dreadwail42@gmail.com"
+  s.homepage = "http://github.com/dreadwail/data_struct"
   s.license = "MIT"
 
   s.files         = `git ls-files`.split("\n")
