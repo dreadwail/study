@@ -53,11 +53,11 @@ describe('dec4 susanna', () => {
   });
 });
 
-describe('dec4 ben', () => {
+describe('dec4 Dreadwail', () => {
   let input: string;
 
   beforeEach(() => {
-    const filePath = resolve(__dirname, './input.ben.txt');
+    const filePath = resolve(__dirname, './input.dreadwail.txt');
     input = readFileSync(filePath, 'utf8');
   });
 

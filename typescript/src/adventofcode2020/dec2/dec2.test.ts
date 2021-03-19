@@ -19,11 +19,11 @@ describe('dec2 Susanna', () => {
   });
 });
 
-describe('dec2 Ben', () => {
+describe('dec2 Dreadwail', () => {
   let input: string[];
 
   beforeEach(() => {
-    const filePath = resolve(__dirname, './input.ben.txt');
+    const filePath = resolve(__dirname, './input.dreadwail.txt');
     input = readRows(filePath);
   });
 
