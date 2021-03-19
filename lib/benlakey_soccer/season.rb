@@ -1,4 +1,4 @@
-module BenLakeySoccer
+module DreadwailSoccer
   class Season
 
     class Team

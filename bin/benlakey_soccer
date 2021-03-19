@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-require "benlakey_soccer"
+require "dreadwail_soccer"
 
-include BenLakeySoccer
+include DreadwailSoccer
 
 season = Season.new
 

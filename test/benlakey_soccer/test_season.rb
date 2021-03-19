@@ -1,8 +1,8 @@
 require "minitest/autorun"
-require "benlakey_soccer"
+require "dreadwail_soccer"
 
 class TestSeason < Minitest::Test
-  include BenLakeySoccer
+  include DreadwailSoccer
 
   def setup
     @season = Season.new

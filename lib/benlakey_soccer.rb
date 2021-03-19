@@ -1,1 +1,1 @@
-require "benlakey_soccer/season"
+require "dreadwail_soccer/season"
