@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("LetterHistogram")]
 [assembly: AssemblyDescription("A command line application to create a letter histogram from a string input.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ben Lakey")]
+[assembly: AssemblyCompany("Dreadwail")]
 [assembly: AssemblyProduct("LetterHistogram")]
-[assembly: AssemblyCopyright("Copyright © Ben Lakey 2011")]
+[assembly: AssemblyCopyright("Copyright © Dreadwail 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

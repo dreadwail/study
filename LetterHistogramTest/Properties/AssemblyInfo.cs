@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("LetterHistogramTest")]
 [assembly: AssemblyDescription("Unit tests for LetterHistogram")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ben Lakey")]
+[assembly: AssemblyCompany("Dreadwail")]
 [assembly: AssemblyProduct("LetterHistogramTest")]
-[assembly: AssemblyCopyright("Copyright © Ben Lakey 2011")]
+[assembly: AssemblyCopyright("Copyright © Dreadwail 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
