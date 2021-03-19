@@ -1,5 +1,4 @@
-cpp_learning
-============
+# cpp_learning
 
 Misc code I've written in C++ to learn with.
 
@@ -7,7 +6,7 @@ Misc code I've written in C++ to learn with.
 
 The MIT License (MIT)
 
-Copyright (c) 2012 Ben Lakey
+Copyright (c) 2012 Dreadwail
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
