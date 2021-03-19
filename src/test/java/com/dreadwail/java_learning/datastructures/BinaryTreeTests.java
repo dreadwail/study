@@ -1,4 +1,4 @@
-package com.benlakey.java_learning.datastructures;
+package com.dreadwail.java_learning.datastructures;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -6,8 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.benlakey.java_learning.datastructures.BinaryTree;
-import com.benlakey.java_learning.datastructures.NodeParser;
+import com.dreadwail.java_learning.datastructures.BinaryTree;
+import com.dreadwail.java_learning.datastructures.NodeParser;
 
 public class BinaryTreeTests {
 	

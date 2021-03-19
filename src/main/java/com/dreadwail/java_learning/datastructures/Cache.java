@@ -1,4 +1,4 @@
-package com.benlakey.java_learning.datastructures;
+package com.dreadwail.java_learning.datastructures;
 
 import java.util.HashMap;
 import java.util.LinkedList;

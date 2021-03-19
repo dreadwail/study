@@ -1,4 +1,4 @@
-package com.benlakey.java_learning.algorithms;
+package com.dreadwail.java_learning.algorithms;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;

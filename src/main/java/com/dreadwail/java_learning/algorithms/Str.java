@@ -1,10 +1,10 @@
-package com.benlakey.java_learning.algorithms;
+package com.dreadwail.java_learning.algorithms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.benlakey.java_learning.algorithms.Enumerable.Functor;
+import com.dreadwail.java_learning.algorithms.Enumerable.Functor;
 
 
 public class Str {

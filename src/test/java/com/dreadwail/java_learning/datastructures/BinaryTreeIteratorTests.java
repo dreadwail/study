@@ -1,10 +1,10 @@
-package com.benlakey.java_learning.datastructures;
+package com.dreadwail.java_learning.datastructures;
 
 import static org.junit.Assert.assertArrayEquals;
 
 import org.junit.Test;
 
-import com.benlakey.java_learning.datastructures.BinaryTreeIterator.Traversal;
+import com.dreadwail.java_learning.datastructures.BinaryTreeIterator.Traversal;
 
 public class BinaryTreeIteratorTests {
 

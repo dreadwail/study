@@ -1,4 +1,4 @@
-package com.benlakey.java_learning.algorithms;
+package com.dreadwail.java_learning.algorithms;
 
 public class Int {
 

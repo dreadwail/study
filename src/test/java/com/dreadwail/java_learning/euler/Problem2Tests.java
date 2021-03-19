@@ -1,10 +1,10 @@
-package com.benlakey.java_learning.euler;
+package com.dreadwail.java_learning.euler;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.benlakey.java_learning.algorithms.Int;
+import com.dreadwail.java_learning.algorithms.Int;
 
 public class Problem2Tests {
 

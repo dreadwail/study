@@ -1,4 +1,4 @@
-package com.benlakey.java_learning.algorithms;
+package com.dreadwail.java_learning.algorithms;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.benlakey.java_learning.algorithms.Enumerable.Functor;
+import com.dreadwail.java_learning.algorithms.Enumerable.Functor;
 
 public class EnumerableTests {
 
