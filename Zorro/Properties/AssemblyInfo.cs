@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Zorro")]
 [assembly: AssemblyDescription("A simple command line app to print the alphabet in a Z.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ben Lakey")]
+[assembly: AssemblyCompany("Dreadwail")]
 [assembly: AssemblyProduct("Zorro")]
-[assembly: AssemblyCopyright("Copyright © Ben Lakey 2011")]
+[assembly: AssemblyCopyright("Copyright © Dreadwail 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

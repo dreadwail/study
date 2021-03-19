@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ZorroTest")]
 [assembly: AssemblyDescription("Unit tests for Zorro.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Ben Lakey")]
+[assembly: AssemblyCompany("Dreadwail")]
 [assembly: AssemblyProduct("ZorroTest")]
-[assembly: AssemblyCopyright("Copyright © Ben Lakey 2011")]
+[assembly: AssemblyCopyright("Copyright © Dreadwail 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
