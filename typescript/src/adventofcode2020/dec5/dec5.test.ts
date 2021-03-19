@@ -2,11 +2,11 @@ import { determineHighestSeatId, findOpenSeat } from './dec5';
 import { readRows } from 'support/files';
 import { resolve } from 'path';
 
-describe('dec5 Ben', () => {
+describe('dec5 Dreadwail', () => {
   let input: string[];
 
   beforeEach(() => {
-    const filePath = resolve(__dirname, './input.ben.txt');
+    const filePath = resolve(__dirname, './input.dreadwail.txt');
 
     input = readRows(filePath);
   });

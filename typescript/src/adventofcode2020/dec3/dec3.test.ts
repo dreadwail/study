@@ -2,11 +2,11 @@ import { countTrees, multiplyTreeCounts } from './dec3';
 import { readRows } from 'support/files';
 import { resolve } from 'path';
 
-describe('dec3 Ben', () => {
+describe('dec3 Dreadwail', () => {
   let input: string[];
 
   beforeEach(() => {
-    const filePath = resolve(__dirname, './input.ben.txt');
+    const filePath = resolve(__dirname, './input.dreadwail.txt');
     input = readRows(filePath);
   });
 

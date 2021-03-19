@@ -2,11 +2,11 @@ import { productOfThreeSumEqualTo, productOfTwoSumEqualTo } from './dec1';
 import { readRows } from 'support/files';
 import { resolve } from 'path';
 
-describe('dec1 Ben', () => {
+describe('dec1 Dreadwail', () => {
   let input: number[];
 
   beforeEach(() => {
-    const filePath = resolve(__dirname, './input.ben.txt');
+    const filePath = resolve(__dirname, './input.dreadwail.txt');
     input = readRows(filePath).map((row) => parseInt(row, 10));
   });
 

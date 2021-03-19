@@ -2,11 +2,11 @@ import { countIntersectedYesAnswers, countUnionedYesAnswers } from './dec6';
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
 
-describe('dec6 Ben', () => {
+describe('dec6 Dreadwail', () => {
   let input: string;
 
   beforeEach(() => {
-    const filePath = resolve(__dirname, './input.ben.txt');
+    const filePath = resolve(__dirname, './input.dreadwail.txt');
     input = readFileSync(filePath, 'utf8');
   });
 
