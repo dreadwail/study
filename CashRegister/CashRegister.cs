@@ -39,7 +39,7 @@ namespace CashRegister
             MessageBox.Show("A simple change-making cash register application." +
                 Environment.NewLine +
                 Environment.NewLine +
-                "Written by Ben Lakey.", "About", MessageBoxButtons.OK);
+                "Written by Dreadwail.", "About", MessageBoxButtons.OK);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
