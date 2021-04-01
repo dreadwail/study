@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
 
   s.authors = ["Dreadwail"]
   s.email = "dreadwail42@gmail.com"
-  s.homepage = "http://github.com/dreadwail/algos"
+  s.homepage = "https://github.com/dreadwail/study/tree/master/ruby/algos"
   s.license = "MIT"
 
   s.files         = `git ls-files`.split("\n")
