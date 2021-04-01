@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.authors = ["Dreadwail"]
   spec.email = "dreadwail42@gmail.com"
-  spec.homepage = "https://github.com/substantial-jobs/dreadwail"
+  spec.homepage = "https://github.com/dreadwail/study/tree/master/ruby/soccer_ranking"
   
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.files = [
