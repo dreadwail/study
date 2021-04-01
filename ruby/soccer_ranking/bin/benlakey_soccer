@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require "dreadwail_soccer"
+
+include DreadwailSoccer
+
+season = Season.new
+
+ARGV.each do |filename|
+  File.open(filename).read.split("\n").each do |game|
+    season.record_game(game)
+  end
+end
+
+puts season
