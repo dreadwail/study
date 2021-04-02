@@ -1,6 +1,6 @@
-# java_learning
+# Fundamentals
 
-Misc code I've written in java to learn with.
+Misc data structures and algorithms code I've written in java to study with.
 
 ## License
 
