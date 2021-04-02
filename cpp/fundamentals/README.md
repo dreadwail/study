@@ -1,6 +1,6 @@
-# cpp_learning
+# Fundamentals
 
-Misc code I've written in C++ to learn with.
+Misc data structures and algorithms code I've written in C++ to study with.
 
 ## License
 
