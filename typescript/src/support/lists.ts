@@ -22,6 +22,8 @@ export const listToArray = <T>(node: Node<T>): T[] => {
 
 type NonEmptyArray<T> = T[] & { 0: T };
 
+export const isNonEmpty = <T>(array: T[]): array is NonEmptyArray<T> => array.length > 0;
+
 export const arrayToList = <T>(values: NonEmptyArray<T>): Node<T> => {
   const nodes = values.map((value) => new Node(value));
   nodes.forEach((node, index, allNodes) => {
