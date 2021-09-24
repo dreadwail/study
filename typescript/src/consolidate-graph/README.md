@@ -1,6 +1,6 @@
 # Graph Consolidator
 
-_PLEASE NOTE: This code was written way back when I didn't really know Node.js very well, and was pre-ES6. There are lots of things wrong with this but I've not had time to come back and clean it up._
+_PLEASE NOTE: This code was written way WAY back when I didn't really know Javascript or Node.js very well, and was pre-ES6. There are lots of things wrong with this but I've not had time to come back and clean it up._
 
 Consolidates directed graph nodes that have only 1 input and 1 output.
 
