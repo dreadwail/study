@@ -42,3 +42,13 @@ To install a package use the `pip` package manager that comes with Python:
 ```sh
 python -m pip install matplotlib
 ```
+
+## Style Conventions
+
+Conventions in Python are dictated by the [pep8 styleguide](https://www.python.org/dev/peps/pep-0008/).
+
+This can be automatically adhered to by using [autopep8](https://pypi.org/project/autopep8/). Vscode in particular can also be configured to leverage `autopep8` to format automatically.
+
+### Filenames
+
+In the case of filenames specifically, the convention is to use `lowercasealloneword.py` or `lowercase_with_underscores_if_it_aids_readability.py`.
