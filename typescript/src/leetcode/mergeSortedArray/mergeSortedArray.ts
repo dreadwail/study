@@ -13,10 +13,8 @@ export const merge = (nums1: number[], m: number, nums2: number[], n: number): v
       nums1.splice(nums1ptr, 0, nums2num);
       nums1.length = m + n;
 
-      nums1ptr += 1;
       nums2ptr += 1;
-    } else {
-      nums1ptr += 1;
     }
+    nums1ptr += 1;
   }
 };
