@@ -1,6 +1,6 @@
-import { findRedundantConnection } from './redundantGraphConnection';
+import { findRedundantConnectionDFS, findRedundantConnectionUnionFind } from './redundantGraphConnection';
 
-describe('findRedundantConnection', () => {
+describe.each([findRedundantConnectionDFS, findRedundantConnectionUnionFind])('%p', (findRedundantConnection) => {
   it.each<[[number, number], [number, number][]]>([
     [
       [2, 3],
