@@ -17,8 +17,7 @@ export const traverseBreadthFirst = <T extends Value>(root: Node<T>): T[] => {
     for (const key in popped.connections) {
       const node = popped.connections[key];
       if (node) {
-        const thing: Node<T> = node;
-        toVisit.push(thing);
+        toVisit.push(node);
       }
     }
   }
