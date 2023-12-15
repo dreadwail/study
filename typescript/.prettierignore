@@ -3,3 +3,8 @@ package-lock.json
 *.md
 src/leetcode/pascalsTriangle/*
 src/consolidate-graph/*
+*.txt
+yarn.lock
+.eslintignore
+.nvmrc
+.prettierignore
