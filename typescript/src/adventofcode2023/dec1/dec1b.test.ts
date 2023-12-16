@@ -1,18 +1,26 @@
-import { sumCalibrationValues } from './dec1';
+import { sumCalibrationValues } from './dec1b';
 import { readRows } from 'support/files';
 import { resolve } from 'path';
 
-describe('dec1', () => {
+describe('dec1b', () => {
   it('correctly computes the sum of all calibration values', () => {
-    const input = ['1abc2', 'pqr3stu8vwx', 'a1b2c3d4e5f', 'treb7uchet'];
+    const input = [
+      'two1nine',
+      'eightwothree',
+      'abcone2threexyz',
+      'xtwone3four',
+      '4nineeightseven2',
+      'zoneight234',
+      '7pqrstsixteen',
+    ];
     const result = sumCalibrationValues(input);
-    expect(result).toEqual(142);
+    expect(result).toEqual(281);
   });
 
   it('correctly computes the sum of all calibration values in the input file', () => {
     const filePath = resolve(__dirname, './input.txt');
     const input = readRows(filePath);
     const result = sumCalibrationValues(input);
-    expect(result).toEqual(54304);
+    expect(result).toEqual(54418);
   });
 });
