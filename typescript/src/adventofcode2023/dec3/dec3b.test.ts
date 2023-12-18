@@ -1,9 +1,9 @@
-import { sumAllPartNumbers } from './dec3a';
+import { sumOfGearRatios } from './dec3b';
 import { readRows } from 'support/files';
 import { resolve } from 'path';
 
-describe('sumAllPartNumbers', () => {
-  it('correctly computes the sume of all part numbers', () => {
+describe('sumOfGearRatios', () => {
+  it('correctly computes the sume of all gear ratios', () => {
     const input = [
       '467..114..',
       '...*......',
@@ -16,14 +16,14 @@ describe('sumAllPartNumbers', () => {
       '...$.*....',
       '.664.598..',
     ];
-    const sum = sumAllPartNumbers(input);
-    expect(sum).toEqual(4361);
+    const sum = sumOfGearRatios(input);
+    expect(sum).toEqual(467835);
   });
 
-  it('correctly computes the sum of all part numbers in the input file', () => {
+  it('correctly computes the sum of all gear ratios in the input file', () => {
     const filePath = resolve(__dirname, './input.txt');
     const input = readRows(filePath);
-    const sum = sumAllPartNumbers(input);
-    expect(sum).toEqual(537832);
+    const sum = sumOfGearRatios(input);
+    expect(sum).toEqual(81939900);
   });
 });
