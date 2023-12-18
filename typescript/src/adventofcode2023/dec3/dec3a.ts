@@ -56,17 +56,7 @@ const isPartNumber = (engine: Engine, start: Coordinate, end: Coordinate): boole
     ...selectCoordinates(engine, [startX - 1, startY + 1], [endX + 1, endY + 1]), // bottom+diag
   ];
 
-  return coordinatesToCheck.some(([x, y]) => {
-    return isSymbol(engine[y]?.[x]);
-  });
-};
-
-type LocationId = string;
-
-const computeCoordinateCacheKey = (start: Coordinate, end: Coordinate): LocationId => {
-  const [startX, startY] = start;
-  const [endX, endY] = end;
-  return `${startX},${startY}:${endX},${endY}`;
+  return coordinatesToCheck.some(([x, y]) => isSymbol(engine[y]?.[x]));
 };
 
 const isNumberStart = (engine: Engine, coordinate: Coordinate): boolean => {
@@ -77,7 +67,7 @@ const isNumberStart = (engine: Engine, coordinate: Coordinate): boolean => {
 export const sumAllPartNumbers = (engineRows: string[]): number => {
   const engine = parseEngine(engineRows);
 
-  const partNumbers: Record<LocationId, number> = {};
+  let sum = 0;
 
   for (let y = 0; y < engine.length; y += 1) {
     const row = engine[y];
@@ -102,10 +92,10 @@ export const sumAllPartNumbers = (engineRows: string[]): number => {
 
       if (digitChars.length > 0 && isPartNumber(engine, [startX, y], [endX, y])) {
         const value = parseInt(digitChars.join(''), 10);
-        partNumbers[computeCoordinateCacheKey([startX, y], [endX, y])] = value;
+        sum += value;
       }
     }
   }
 
-  return Object.values(partNumbers).reduce((total, partNumber) => total + partNumber, 0);
+  return sum;
 };
