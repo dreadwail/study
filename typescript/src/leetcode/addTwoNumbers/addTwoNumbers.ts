@@ -1,65 +1,54 @@
 import { Node } from 'support/lists';
 
-export const listToNumber = (list: Node<number> | null): number => {
+export const listToNumber = (list: Node<number>) => {
+  let total = 0;
+  let multiplier = 1;
   let current: Node<number> | null = list;
 
-  let multiplier = 1;
-  let out = 0;
-
-  while (current) {
-    out += multiplier * current.value;
+  while (current !== null) {
+    total += current.value * multiplier;
     multiplier *= 10;
     current = current.next;
   }
 
-  return out;
+  return total;
 };
 
-export const addTwoNumbers = (list1: Node<number> | null, list2: Node<number> | null): Node<number> | null => {
-  if (!list1) {
-    return list2;
-  }
-  if (!list2) {
-    return list1;
-  }
-
+export const addTwoNumbers = (list1: Node<number>, list2: Node<number>): Node<number> => {
   let carry = 0;
 
-  let list1pointer: Node<number> | null = list1;
-  let list2pointer: Node<number> | null = list2;
-  const outDigits: number[] = [];
+  let list1Current: Node<number> | null = list1;
+  let list2Current: Node<number> | null = list2;
 
-  while (list1pointer || list2pointer) {
-    const list1positionValue = list1pointer ? list1pointer.value : 0;
-    const list2positionValue = list2pointer ? list2pointer.value : 0;
+  let list3: Node<number> | null = null;
+  let list3Current: Node<number> | null = null;
 
-    const subtotal = list1positionValue + list2positionValue + carry;
+  while (list1Current !== null || list2Current !== null) {
+    const list1Digit = list1Current?.value ?? 0;
+    const list2Digit = list2Current?.value ?? 0;
 
-    const digit = subtotal % 10;
-    carry = subtotal >= 10 ? 1 : 0;
+    const list3DigitRaw = list1Digit + list2Digit + carry;
+    carry = list3DigitRaw > 9 ? 1 : 0;
 
-    outDigits.push(digit);
+    const list3Digit = list3DigitRaw % 10;
+    const list3Node = new Node<number>(list3Digit);
 
-    list1pointer = list1pointer ? list1pointer.next : null;
-    list2pointer = list2pointer ? list2pointer.next : null;
+    if (!list3) {
+      list3 = list3Node;
+      list3Current = list3Node;
+    } else {
+      list3Current!.next = list3Node;
+      list3Current = list3Current!.next;
+    }
+
+    list1Current = list1Current?.next ?? null;
+    list2Current = list2Current?.next ?? null;
   }
 
-  if (carry) {
-    outDigits.push(carry);
+  if (carry > 0) {
+    const carryNode = new Node<number>(carry);
+    list3Current!.next = carryNode;
   }
 
-  if (outDigits.length === 0) {
-    return null;
-  }
-
-  const head = new Node(outDigits[0]);
-  let current = head;
-
-  for (let i = 1; i < outDigits.length; i += 1) {
-    const digit = outDigits[i];
-    current.next = new Node(digit);
-    current = current.next;
-  }
-
-  return head;
+  return list3!;
 };
