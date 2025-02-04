@@ -1,33 +1,21 @@
-type State = {
-  readonly lowestValue: number;
-  readonly highestValue: number;
-  readonly mostProfit: number;
-};
-
-export const maxProfit = (prices: number[]): number => {
-  if (prices.length <= 1) {
+export const maxProfit = (input: number[]): number => {
+  if (input.length < 2) {
     return 0;
   }
 
-  const initialState: State = {
-    lowestValue: prices[0],
-    highestValue: prices[0],
-    mostProfit: 0,
-  };
+  let lowestValue = input[0];
+  let greatestProfit = 0;
 
-  const out = prices.reduce<State>(({ lowestValue, highestValue, mostProfit }, value) => {
-    if (value < lowestValue) {
-      return { lowestValue: value, highestValue: value, mostProfit };
+  for (let index = 0; index < input.length; index += 1) {
+    const valueHere = input[index];
+    if (valueHere < lowestValue) {
+      lowestValue = valueHere;
     }
-    if (value > highestValue) {
-      return {
-        lowestValue,
-        highestValue: value,
-        mostProfit: Math.max(mostProfit, value - lowestValue),
-      };
+    const profitHere = valueHere - lowestValue;
+    if (profitHere > greatestProfit) {
+      greatestProfit = profitHere;
     }
-    return { lowestValue, highestValue, mostProfit };
-  }, initialState);
+  }
 
-  return out.mostProfit;
+  return greatestProfit;
 };
