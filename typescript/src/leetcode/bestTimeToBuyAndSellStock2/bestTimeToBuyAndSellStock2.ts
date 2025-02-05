@@ -1,29 +1,22 @@
-type State = {
-  buyPrice: number;
-  profit: number;
-};
-
 export const maxProfit = (input: number[]): number => {
-  const endState = input.reduce<State>(
-    ({ buyPrice, profit }, current, index) => {
-      if (index === 0) {
-        return { buyPrice, profit };
-      }
+  if (input.length < 2) {
+    return 0;
+  }
 
-      const previous = input[index - 1];
-      if (current <= previous) {
-        return { profit: profit + previous - buyPrice, buyPrice: current };
-      }
-      if (index === input.length - 1) {
-        return { profit: profit + current - buyPrice, buyPrice };
-      }
-      return { buyPrice, profit };
-    },
-    {
-      buyPrice: input[0],
-      profit: 0,
+  let profit = 0;
+  let costBasis: null | number = null;
+
+  for (let index = 0; index < input.length; index += 1) {
+    const valueYesterday = input[index - 1] ?? 0;
+    const valueToday = input[index];
+
+    if (costBasis !== null && valueToday > valueYesterday && valueToday > costBasis) {
+      profit += valueToday - costBasis;
+      costBasis = null;
     }
-  );
 
-  return endState.profit;
+    costBasis = valueToday;
+  }
+
+  return profit;
 };
