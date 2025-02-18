@@ -1,17 +1,19 @@
 const cache: Record<number, number> = {};
 
-export const climbStairs = (stepCountRemaining: number): number => {
-  const cached = cache[stepCountRemaining];
-  if (cached !== undefined) {
-    return cached;
+export const climbStairs = (stepCount: number): number => {
+  if (stepCount <= 3) {
+    return stepCount;
   }
 
-  if (stepCountRemaining <= 2) {
-    cache[stepCountRemaining] = stepCountRemaining;
-    return stepCountRemaining;
+  const cachedValue = cache[stepCount];
+  if (cachedValue !== undefined) {
+    return cachedValue;
   }
 
-  const result = climbStairs(stepCountRemaining - 1) + climbStairs(stepCountRemaining - 2);
-  cache[stepCountRemaining] = result;
-  return result;
+  const oneAgoStepCount = climbStairs(stepCount - 1);
+  const twoAgoStepCount = climbStairs(stepCount - 2);
+
+  const waysCount = oneAgoStepCount + twoAgoStepCount;
+  cache[stepCount] = waysCount;
+  return waysCount;
 };
