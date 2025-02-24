@@ -1,6 +1,6 @@
 # Excel sheet column number
 
-Given a column title as appear in an Excel sheet, return its corresponding column number.
+Given a column title as appears in an Excel sheet, return its corresponding column number.
 
 For example:
 
