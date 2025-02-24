@@ -1,12 +1,12 @@
-export const containsDuplicate = (nums: number[]): boolean => {
-  const set = new Set<number>();
+export const containsDuplicate = (values: number[]): boolean => {
+  const set = new Set();
 
-  for (let i = 0; i < nums.length; i += 1) {
-    const num = nums[i];
-    if (set.has(num)) {
+  for (let index = 0; index < values.length; index += 1) {
+    const valueHere = values[index];
+    if (set.has(valueHere)) {
       return true;
     }
-    set.add(num);
+    set.add(valueHere);
   }
 
   return false;
