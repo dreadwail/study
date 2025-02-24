@@ -1,21 +1,22 @@
-const letterCount = 26;
-const charCodeA = 'A'.charCodeAt(0);
+const zeroCharCode = 'A'.charCodeAt(0) - 1;
 
-const characterToValue = (char: string): number => {
-  const code = char.charCodeAt(0);
-  return code - charCodeA + 1;
+const getNumericValue = (char: string): number => {
+  const charCode = char.charCodeAt(0);
+  return charCode - zeroCharCode;
 };
 
-export const titleToNumber = (str: string): number => {
-  let columnNumber = 0;
-  let place = Math.pow(letterCount, str.length - 1);
+export const titleToNumber = (title: string): number => {
+  let sum = 0;
+  let multiple = 1;
 
-  for (let i = 0; i < str.length; i += 1) {
-    const character = str[i];
-    const value = characterToValue(character) * place;
-    place = place / letterCount;
-    columnNumber += value;
+  for (let index = title.length - 1; index >= 0; index -= 1) {
+    const charHere = title.charAt(index);
+    const numericValue = getNumericValue(charHere);
+
+    sum += numericValue * multiple;
+
+    multiple *= 26;
   }
 
-  return columnNumber;
+  return sum;
 };
