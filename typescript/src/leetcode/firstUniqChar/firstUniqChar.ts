@@ -1,25 +1,34 @@
-export const firstUniqChar = (str: string): number => {
-  if (str.length === 0) {
-    return -1;
+export const firstUniqChar = (input: string): number => {
+  const counts: Record<string, number> = {};
+  const firstIndices: Record<string, number> = {};
+
+  for (let index = 0; index < input.length; index += 1) {
+    const character = input[index];
+
+    counts[character] ??= 0;
+    counts[character] += 1;
+
+    firstIndices[character] ??= index;
   }
 
-  const characterCounts: Record<string, number> = {};
+  let nonRepeatingLowestIndex = -1;
 
-  for (let i = 0; i < str.length; i += 1) {
-    const char = str[i];
+  for (let index = 0; index < input.length; index += 1) {
+    const character = input[index];
 
-    characterCounts[char] = characterCounts[char] || 0;
-    characterCounts[char] += 1;
-  }
+    const count = counts[character];
+    const firstIndex = firstIndices[character];
 
-  for (let i = 0; i < str.length; i += 1) {
-    const char = str[i];
+    if (count > 1) {
+      continue;
+    }
 
-    const count = characterCounts[char];
-    if (count === 1) {
-      return i;
+    if (nonRepeatingLowestIndex === -1) {
+      nonRepeatingLowestIndex = firstIndex;
+    } else if (firstIndex < nonRepeatingLowestIndex) {
+      nonRepeatingLowestIndex = firstIndex;
     }
   }
 
-  return -1;
+  return nonRepeatingLowestIndex;
 };
